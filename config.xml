@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2010-2017 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+<configuration>
+    <midpoint>
+        <webApplication>
+            <importFolder>${midpoint.home}/import</importFolder>
+        </webApplication>
+	<repository>
+	    <!-- DISABLED: original file based repository -->
+	    <!--
+            <repositoryServiceFactoryClass>com.evolveum.midpoint.repo.sql.SqlRepositoryFactory</repositoryServiceFactoryClass>
+            <baseDir>${midpoint.home}</baseDir>
+	    <asServer>true</asServer>
+	    -->
+	    <!-- DISABLED: failed central Oracle DB (is 11g, need > 12c) -->
+	    <!--
+	    <repositoryServiceFactoryClass>com.evolveum.midpoint.repo.sql.SqlRepositoryFactory</repositoryServiceFactoryClass>
+      	    <database>oracle</database>
+            <jdbcUsername>midpoint</jdbcUsername>
+            <jdbcPassword>uXYodoOXleCKg3</jdbcPassword>
+	    <jdbcUrl>jdbc:oracle:thin:@zeus.int.is.cuni.cz:1521/batule2</jdbcUrl>
+	    -->
+	    <!-- Local Postgres DB -->
+	    <!-- -->
+            <repositoryServiceFactoryClass>com.evolveum.midpoint.repo.sql.SqlRepositoryFactory</repositoryServiceFactoryClass>
+            <database>postgresql</database>
+            <jdbcUsername>midpoint</jdbcUsername>
+            <jdbcPassword>Cse7BVI5wS20jGe3pPa0cA</jdbcPassword>
+            <jdbcUrl>jdbc:postgresql://localhost/midpoint</jdbcUrl>
+	    <missingSchemaAction>create</missingSchemaAction>
+	    <upgradableSchemaAction>upgrade</upgradableSchemaAction>
+        </repository>
+        <audit>
+            <auditService>
+                <auditServiceFactoryClass>com.evolveum.midpoint.audit.impl.LoggerAuditServiceFactory</auditServiceFactoryClass>
+            </auditService>
+            <auditService>
+                <auditServiceFactoryClass>com.evolveum.midpoint.repo.sql.SqlAuditServiceFactory</auditServiceFactoryClass>
+            </auditService>
+        </audit>
+        <icf>
+            <scanClasspath>true</scanClasspath>
+            <scanDirectory>${midpoint.home}/icf-connectors</scanDirectory>
+        </icf>
+        <keystore>
+            <keyStorePath>${midpoint.home}/keystore.jceks</keyStorePath>
+            <keyStorePassword>changeit</keyStorePassword>
+            <encryptionKeyAlias>default</encryptionKeyAlias>
+            <!--
+            You can use smaller cipher key size for encryption. For:
+            AES_128 "http://www.w3.org/2001/04/xmlenc#aes128-cbc";
+            AES_256 "http://www.w3.org/2001/04/xmlenc#aes256-cbc";
+            AES_192 "http://www.w3.org/2001/04/xmlenc#aes192-cbc";
+
+            in element <xmlCipher></xmlCipher>
+            By default AES_128 is used. If you change key size, than
+            you must also create secret key in key store with proper key size and change encryptionKeyAlias.
+
+            To generate keystore with keytool use command:
+            keytool -genseckey -alias default -keystore keystore.jceks -storetype jceks -keyalg AES -keysize 128
+
+            secret key password is by default 'midpoint'
+            -->
+        </keystore>
+        <!-- <profilingEnabled>true</profilingEnabled> -->
+    </midpoint>
+</configuration>
