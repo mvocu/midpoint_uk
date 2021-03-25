@@ -15,7 +15,5 @@ def configuration = configuration as ScriptedSQLConfiguration
 
 log.info("Entering " + operation + " Script")
 
-def sql = new Sql(connection)
+throw new UnsupportedOperationException("Operation " + operation + " is not supported on this resource");
 
-//return new Uid(_some_unique_identifier)
-return null

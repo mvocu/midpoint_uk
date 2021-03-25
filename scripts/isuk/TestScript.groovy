@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import groovy.sql.Sql
 import org.forgerock.openicf.connectors.scriptedsql.ScriptedSQLConfiguration
 import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
@@ -33,6 +34,6 @@ log.info("Using driver: {0} version: {1}",
 
 Sql sql = new Sql(connection)
 
-sql.eachRow("SELECT 1", {})
+sql.eachRow("SELECT 1 FROM DUAL", {})
 
 
