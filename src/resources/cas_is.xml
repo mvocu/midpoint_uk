@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+	<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" version="67">
+    <name>IS_UK</name>
+    <description>Information system of UK - SIS, WhoIS</description>
+    <connectorRef oid="e888270d-c9ba-42cf-9875-1d1b3db37456" relation="org:default" type="c:ConnectorType">
+        <!-- ConnId com.evolveum.polygon.connector.scripted.sql.ScriptedSQLConnector v2.2.1 -->
+    </connectorRef>
+    <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ConnectorConfigurationType">
+        <icfc:configurationProperties xmlns:icfssql="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-scripted-sql/com.evolveum.polygon.connector.scripted.sql.ScriptedSQLConnector">
+            <icfssql:scriptRoots>/home/midpoint/scripts/isuk</icfssql:scriptRoots>
+            <icfssql:jdbcDriver>oracle.jdbc.OracleDriver</icfssql:jdbcDriver>
+            <icfssql:jdbcUrlTemplate xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3">jdbc:oracle:thin:@zeus:1521/batule2</icfssql:jdbcUrlTemplate>
+            <icfssql:user>
+                <expression>
+                    <const xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ConstExpressionEvaluatorType">is_user</const>
+                </expression>
+            </icfssql:user>
+            <icfssql:password>
+                <expression>
+                    <const xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ConstExpressionEvaluatorType">is_pw</const>
+                </expression>
+            </icfssql:password>
+            <icfssql:classpath>/home/midpoint/lib</icfssql:classpath>
+            <icfssql:schemaScriptFileName>SchemaScript.groovy</icfssql:schemaScriptFileName>
+            <icfssql:debug>true</icfssql:debug>
+            <icfssql:scriptBaseClass>BaseScript</icfssql:scriptBaseClass>
+            <icfssql:createScriptFileName>CreateScript.groovy</icfssql:createScriptFileName>
+            <icfssql:searchScriptFileName>SearchScript.groovy</icfssql:searchScriptFileName>
+            <icfssql:testScriptFileName>TestScript.groovy</icfssql:testScriptFileName>
+            <icfssql:verbose>true</icfssql:verbose>
+            <icfssql:recompileGroovySource>true</icfssql:recompileGroovySource>
+            <icfssql:autoCommit>false</icfssql:autoCommit>
+        </icfc:configurationProperties>
+        <icfc:resultsHandlerConfiguration>
+            <icfc:enableNormalizingResultsHandler>false</icfc:enableNormalizingResultsHandler>
+            <icfc:enableFilteredResultsHandler>false</icfc:enableFilteredResultsHandler>
+            <icfc:filteredResultsHandlerInValidationMode>false</icfc:filteredResultsHandlerInValidationMode>
+            <icfc:enableCaseInsensitiveFilter>false</icfc:enableCaseInsensitiveFilter>
+            <icfc:enableAttributesToGetSearchResultsHandler>false</icfc:enableAttributesToGetSearchResultsHandler>
+        </icfc:resultsHandlerConfiguration>
+    </connectorConfiguration>
+    <schema>
+    </schema>
+    <capabilities>
+    </capabilities>
+</resource>
+
+</objects>
