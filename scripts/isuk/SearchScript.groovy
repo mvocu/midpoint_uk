@@ -46,14 +46,14 @@ def fieldMap = [
         ( BaseScript.ORGANIZATION_NAME ): [
                 "__UID__"    : "id_org",
                 "__NAME__"   : "poid",
-                "id_org"        : "id_org",
+                "r_id_org"      : "id_org",
                 "fakulta"       : "fakulta",
                 "sidlo"         : "sidlo",
                 "datum_od"      : "datum_od",
                 "datum_do"      : "datum_do",
                 "ic"            : "ic",
                 "dic"           : "dic",
-                "poid"          : "poid",
+                "r_poid"        : "poid",
                 "nazev"         : "nazev",
                 "nazev_dlouhy"  : "nazev_dlouhy",
                 "nazev_en"      : "nazev_en",
@@ -131,15 +131,14 @@ sql.eachRow((Map) [:], (String) sqlquery, { row ->
 	        uid row.id_org.toString()
        	     	id row.poid.toString()
 		setObjectClass objectClass
-            	attribute 'description', row.nazev_dlouhy
-            	attribute 'id_org', row.id_org
+            	attribute 'r_id_org', row.id_org
             	attribute 'fakulta', row.fakulta
             	attribute 'sidlo', row.sidlo
             	attribute 'datum_od', row.datum_od.toString()
             	attribute 'datum_do', row.datum_do.toString()
             	attribute 'ic', row.ic
             	attribute 'dic', row.dic
-            	attribute 'poid', row.poid
+            	attribute 'r_poid', row.poid
             	attribute 'nazev', row.nazev
             	attribute 'nazev_dlouhy', row.nazev_dlouhy
             	attribute 'nazev_en', row.nazev_en

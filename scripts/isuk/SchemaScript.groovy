@@ -4,8 +4,11 @@ import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
 import org.identityconnectors.framework.common.objects.ObjectClass
 import org.identityconnectors.framework.common.objects.OperationOptionInfoBuilder
-import org.identityconnectors.framework.spi.operations.SearchOp
+import org.identityconnectors.framework.common.objects.AttributeInfoBuilder
+import org.identityconnectors.framework.common.objects.Uid
+import org.identityconnectors.framework.common.objects.Name
 import org.identityconnectors.framework.common.objects.OperationalAttributeInfos
+import org.identityconnectors.framework.spi.operations.SearchOp
 import java.time.ZonedDateTime
 
 import static org.identityconnectors.framework.common.objects.AttributeInfo.Flags.MULTIVALUED
@@ -20,16 +23,35 @@ builder.schema({
     objectClass {
         type BaseScript.ORGANIZATION_NAME
         attributes {
-            name()
-            description()
-	    id_org BigInteger.class
+	    // black magic here - use better name for __UID__
+	    getBuilder().addAttributeInfo({ -> 
+	        def aib = new AttributeInfoBuilder(Uid.NAME);
+		aib.setNativeName("id_org");
+		aib.setType(String.class);
+		aib.setRequired(false); // Must be optional. It is not present for create operations
+		aib.setCreateable(false);
+		aib.setUpdateable(false);
+		aib.setReadable(true);	
+		aib.build()
+	    }.call())
+
+           // black magic here - use better name for __NAME__
+            getBuilder().addAttributeInfo({ -> 
+                def aib = new AttributeInfoBuilder(Name.NAME);
+                aib.setNativeName("poid");
+                aib.setType(String.class);
+                aib.setRequired(true);
+		aib.build()
+            }.call())
+
+	    r_id_org BigInteger.class
 	    fakulta BigInteger.class
 	    sidlo String.class
 	    datum_od ZonedDateTime.class
 	    datum_do ZonedDateTime.class
 	    ic String.class
 	    dic String.class
-	    poid BigInteger.class
+	    r_poid BigInteger.class
 	    nazev String.class
 	    nazev_dlouhy String.class
 	    nazev_en String.class
