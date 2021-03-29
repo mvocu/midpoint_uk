@@ -65,6 +65,7 @@ builder.schema({
             cas_domena String.class
 	    cas_identifikace String.class
 	    id_org_nadrizeny BigInteger.class
+	    poid_nadrizeny BigInteger.class
         }
     }
 
