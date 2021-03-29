@@ -28,16 +28,24 @@ log.info("Entering " + operation + " Script")
 
 def sql = new Sql(connection)
 
-def pagedResultsCookie = null
-def pageSize = 0
+def pagedResultsCookie = null as String
+def pageSize = 0 as Integer
+def pageOffset = 0 as Integer
 
 if( null != options.getPageSize() && options.getPageSize() > 0 ) {
 	pageSize = options.getPageSize()
-
-	if(!StringUtil.isBlank(options.getPagedResultsCookie())) {
-		pagedResultsCookie = options.getPagedResultsCookie()
-	}
 }
+
+if(!StringUtil.isBlank(options.getPagedResultsCookie())) {
+	pagedResultsCookie = options.getPagedResultsCookie()
+	pageOffset = pagedResultsCookie.toInteger()
+}
+
+if(null != options.getPagedResultsOffset()) {
+	pageOffset = Math.max(options.getPagedResultsOffset() - 1, 0)
+}
+
+log.warn("Page size " + pageSize + ", page offset " + pageOffset +  ", page cookie " + pagedResultsCookie);
 
 //Need to handle the __UID__ and __NAME__ in queries - this map has entries for each objectType, 
 //and is used to translate fields that might exist in the query object from the ICF identifier
@@ -66,7 +74,8 @@ def fieldMap = [
                 "kod_sims"      : "kod_sims",
                 "cas_domena"    : "cas_domena",
                 "cas_identifikace" : "cas_identifikace",
-                "id_org_nadrizeny" : "id_org_nadrizeny"
+                "id_org_nadrizeny" : "id_org_nadrizeny",
+		"poid_nadrizeny"   : "poid_nadrizeny"
 
         ],
         "__ACCOUNT__" : [
@@ -80,18 +89,18 @@ def fieldMap = [
         ]
 ]
 
-def sqlquery = "SELECT * FROM SKUNK_CAS.ORG_STRUKTURA" as String
-def whereParams = fieldMap[objectClass.objectClassValue]
-def attrs = whereParams.collect([] as HashSet){ entry -> entry.value }
+def attrs = fieldMap[objectClass.objectClassValue].collect([] as HashSet){ entry -> entry.value }
+def sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.ORG_STRUKTURA" as String
+def whereParams = [:]
 def where = ""
 def wherePage = ""
 
 if(pageSize > 0) {
 
-	if(null == pagedResultsCookie) {
-		wherePage = " WHERE ROWNUM <= " + pageSize
+	if(pageOffset == 0) {
+		wherePage = " WHERE radek <= " + pageSize
 	} else {
-        	wherePage = " WHERE ROWNUM > " + pagedResultsCookie + " AND ROWNUM <= " + ( pagedResultsCookie.toInteger() + pageSize.toInteger() )
+        	wherePage = " WHERE radek > " + pageOffset + " AND radek <= " + ( pageOffset + pageSize )
 	}
 }
 
@@ -102,17 +111,17 @@ if(filter != null) {
 
 
 log.info("Search WHERE clause is: " + where)
-log.warn("Number of parameters in query: " + whereParams.size())
 
-
-sqlquery = "SELECT " + attrs.join(",") + ", ROWNUM as radek FROM (" + sqlquery + where + " ORDER BY id_org ASC) " + wherePage
+sqlquery = "SELECT " + attrs.join(",") + ", radek FROM (" + sqlquery + where + ") " + wherePage
 
 // replace filter parameter names with database column names according to whereParams map
-sqlquery = new SimpleTemplateEngine().createTemplate(sqlquery).make(whereParams)
+sqlquery = new SimpleTemplateEngine().createTemplate(sqlquery).make(fieldMap[objectClass.objectClassValue])
 
+log.warn("SQL query: " + sqlquery);
 
 // takes parameter values from whereParams map, stored there by SQLFilterVisitor
-sql.eachRow((Map) [:], (String) sqlquery, { row -> 
+def lastRowNum = 0
+sql.eachRow((Map) whereParams, (String) sqlquery, { row -> 
 
     def connectorObject = ICFObjectBuilder.co {
         switch (objectClass) {
@@ -160,19 +169,20 @@ sql.eachRow((Map) [:], (String) sqlquery, { row ->
         }
     }
 
-    if (pageSize > 0) {
-        pageSize--
-        //Just for simple paging by ID
-        pagedResultsCookie = row.radek
-    }
+    lastRowNum = row.radek
 
     handler.handle connectorObject
 })
 
-if (pageSize <= 0) {
-    // There are no more page left
+
+if (lastRowNum < pageOffset + pageSize) {
+    // There are no more pages left
     pagedResultsCookie = null
+} else {
+    pagedResultsCookie = lastRowNum.toString()
 }
+
+log.warn("Returning page cookie " + pagedResultsCookie);
 
 return new SearchResult(pagedResultsCookie, -1)
 
