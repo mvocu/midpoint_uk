@@ -6,13 +6,18 @@ import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.StringUtil
 import org.identityconnectors.common.logging.Log
 import org.identityconnectors.framework.common.exceptions.ConnectorException
+import org.identityconnectors.framework.common.objects.AttributeUtil
 import org.identityconnectors.framework.common.objects.ObjectClass
 import org.identityconnectors.framework.common.objects.OperationOptions
 import org.identityconnectors.framework.common.objects.ResultsHandler
 import org.identityconnectors.framework.common.objects.SearchResult
+import org.identityconnectors.framework.common.objects.Uid
+import org.identityconnectors.framework.common.objects.filter.EqualsFilter
 import org.identityconnectors.framework.common.objects.filter.Filter
 
 import java.sql.Connection
+import java.time.ZonedDateTime
+import java.time.ZoneId
 
 def log = log as Log
 def operation = operation as OperationType
@@ -105,8 +110,16 @@ if(pageSize > 0) {
 }
 
 if(filter != null) {
-        def queryTemplate = filter.accept(new SQLFilterVisitor(), whereParams)
-        where =  " WHERE " + queryTemplate
+	if(filter instanceof EqualsFilter && ((EqualsFilter)filter).getAttribute().is(Uid.NAME)) {
+		// Read
+		def id = AttributeUtil.getStringValue(((EqualsFilter)filter).getAttribute())
+		where = " WHERE id_org = :UID"
+		whereParams["UID"] = id
+	} else {
+		// Search
+        	def queryTemplate = filter.accept(new SQLFilterVisitor(), whereParams)
+        	where =  " WHERE " + queryTemplate
+	}
 }
 
 
@@ -143,8 +156,8 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             	attribute 'r_id_org', row.id_org
             	attribute 'fakulta', row.fakulta
             	attribute 'sidlo', row.sidlo
-            	attribute 'datum_od', row.datum_od.toString()
-            	attribute 'datum_do', row.datum_do.toString()
+            	attribute 'datum_od', ZonedDateTime.ofInstant(row.datum_od.toInstant(), ZoneId.systemDefault())
+            	attribute 'datum_do', ZonedDateTime.ofInstant(row.datum_do.toInstant(), ZoneId.systemDefault())
             	attribute 'ic', row.ic
             	attribute 'dic', row.dic
             	attribute 'r_poid', row.poid
