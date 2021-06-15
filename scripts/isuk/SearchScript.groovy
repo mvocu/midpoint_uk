@@ -174,6 +174,7 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             	attribute 'cas_domena', row.cas_domena
             	attribute 'cas_identifikace', row.cas_identifikace
             	attribute 'id_org_nadrizeny', row.id_org_nadrizeny
+		attribute 'poid_nadrizeny', row.poid_nadrizeny
                 break;
 
             default:
