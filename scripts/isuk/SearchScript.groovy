@@ -95,7 +95,7 @@ def fieldMap = [
 ]
 
 def attrs = fieldMap[objectClass.objectClassValue].collect([] as HashSet){ entry -> entry.value }
-def sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.ORG_STRUKTURA" as String
+def sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA" as String
 def whereParams = [:]
 def where = ""
 def wherePage = ""
@@ -173,8 +173,8 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             	attribute 'kod_sims', row.kod_sims
             	attribute 'cas_domena', row.cas_domena
             	attribute 'cas_identifikace', row.cas_identifikace
-            	attribute 'id_org_nadrizeny', row.id_org_nadrizeny
-		attribute 'poid_nadrizeny', row.poid_nadrizeny
+            	attribute 'id_org_nadrizeny', row.id_org_nadrizeny.split(',').collect { value -> new BigInteger(value) }
+		attribute 'poid_nadrizeny', row.poid_nadrizeny.split(',').collect { value-> new BigInteger(value) }  
                 break;
 
             default:

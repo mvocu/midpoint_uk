@@ -64,8 +64,8 @@ builder.schema({
 	    kod_sims BigInteger.class
             cas_domena String.class
 	    cas_identifikace String.class
-	    id_org_nadrizeny BigInteger.class
-	    poid_nadrizeny BigInteger.class
+	    id_org_nadrizeny BigInteger.class, MULTIVALUED
+	    poid_nadrizeny BigInteger.class, MULTIVALUED
         }
     }
 

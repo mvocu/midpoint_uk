@@ -2,6 +2,8 @@ import groovy.sql.Sql
 import org.forgerock.openicf.connectors.scriptedsql.ScriptedSQLConfiguration
 import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
+import org.identityconnectors.framework.common.objects.ObjectClass
+import org.identityconnectors.framework.common.objects.SyncResultsHandler
 
 def configuration = configuration as ScriptedSQLConfiguration
 def operation = operation as OperationType
