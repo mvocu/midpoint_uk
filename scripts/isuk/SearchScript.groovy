@@ -125,8 +125,8 @@ if(filter != null) {
 
 log.info("Search WHERE clause is: " + where)
 
-sqlquery = "SELECT " + attrs.join(",") + ", radek FROM (" + sqlquery + where + ") " + wherePage
 sqlquerycount = "SELECT COUNT(*) as total FROM (" + sqlquery + where + ")";
+sqlquery = "SELECT " + attrs.join(",") + ", radek FROM (" + sqlquery + where + ") " + wherePage
 
 // replace filter parameter names with database column names according to whereParams map
 sqlquery = new SimpleTemplateEngine().createTemplate(sqlquery).make(fieldMap[objectClass.objectClassValue])
