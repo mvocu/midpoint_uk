@@ -205,5 +205,5 @@ if (lastRowNum < pageOffset + pageSize) {
 
 log.warn("Returning page cookie " + pagedResultsCookie)
 
-return new SearchResult(pagedResultsCookie, total - rowCount, rowCount < total)
+return new SearchResult(pagedResultsCookie, pageSize > 0 ? ((int)total - rowCount) : -1 , rowCount < total)
 
