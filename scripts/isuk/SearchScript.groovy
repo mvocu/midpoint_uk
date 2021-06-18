@@ -50,7 +50,7 @@ if(null != options.getPagedResultsOffset()) {
 	pageOffset = Math.max(options.getPagedResultsOffset() - 1, 0)
 }
 
-log.warn("Page size " + pageSize + ", page offset " + pageOffset +  ", page cookie " + pagedResultsCookie);
+log.warn("Page size " + pageSize + ", page offset " + pageOffset +  ", page cookie " + pagedResultsCookie)
 
 //Need to handle the __UID__ and __NAME__ in queries - this map has entries for each objectType, 
 //and is used to translate fields that might exist in the query object from the ICF identifier
@@ -126,15 +126,21 @@ if(filter != null) {
 log.info("Search WHERE clause is: " + where)
 
 sqlquery = "SELECT " + attrs.join(",") + ", radek FROM (" + sqlquery + where + ") " + wherePage
+sqlquerycount = "SELECT COUNT(*) as total FROM (" + sqlquery + where + ")";
 
 // replace filter parameter names with database column names according to whereParams map
 sqlquery = new SimpleTemplateEngine().createTemplate(sqlquery).make(fieldMap[objectClass.objectClassValue])
+sqlquerycount = new SimpleTemplateEngine().createTemplate(sqlquerycount).make(fieldMap[objectClass.objectClassValue]) 
 
-log.warn("SQL query: " + sqlquery);
+log.warn("SQL query: " + sqlquery)
+
+def total = 0
+sql.eachRow((Map) whereParams, (String) sqlquerycount, { row -> total = row.total })
 
 // takes parameter values from whereParams map, stored there by SQLFilterVisitor
 def lastRowNum = 0
-sql.eachRow((Map) whereParams, (String) sqlquery, { row -> 
+def rowCount = 0
+sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 
     def connectorObject = ICFObjectBuilder.co {
         switch (objectClass) {
@@ -184,7 +190,8 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
     }
 
     lastRowNum = row.radek
-
+    rowCount++
+    
     handler.handle connectorObject
 })
 
@@ -196,7 +203,7 @@ if (lastRowNum < pageOffset + pageSize) {
     pagedResultsCookie = lastRowNum.toString()
 }
 
-log.warn("Returning page cookie " + pagedResultsCookie);
+log.warn("Returning page cookie " + pagedResultsCookie)
 
-return new SearchResult(pagedResultsCookie, -1)
+return new SearchResult(pagedResultsCookie, total - rowCount, rowCount < total)
 
