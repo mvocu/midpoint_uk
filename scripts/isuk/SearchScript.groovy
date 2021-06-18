@@ -133,9 +133,12 @@ sqlquery = new SimpleTemplateEngine().createTemplate(sqlquery).make(fieldMap[obj
 sqlquerycount = new SimpleTemplateEngine().createTemplate(sqlquerycount).make(fieldMap[objectClass.objectClassValue]) 
 
 log.warn("SQL query: " + sqlquery)
+log.warn("SQL count query: " + sqlquerycount)
 
 def total = 0
 sql.eachRow((Map) whereParams, (String) sqlquerycount, { row -> total = row.total })
+
+log.warn("Total number of results: " + total)
 
 // takes parameter values from whereParams map, stored there by SQLFilterVisitor
 def lastRowNum = 0
