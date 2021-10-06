@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-Instance"
+            xmlns:tns="http://midpoint.cuni.cz/xml/ns/user"
+            xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3"
+            xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+            targetNamespace="http://example.com/xml/ns/mySchema">
+
+	<xsd:import namespace="http://ldap.cuni.cz/cas" schemaLocation="https://ldapadmin.cuni.cz/ws/cas.xsd" />
+
+    <xsd:complexType name="UserExtensionType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <a:extension ref="c:UserType"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+    
+</xsd:schema>
