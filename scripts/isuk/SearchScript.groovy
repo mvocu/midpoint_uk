@@ -134,11 +134,11 @@ sqlquerycount = new SimpleTemplateEngine().createTemplate(sqlquerycount).make(fi
 
 log.warn("SQL query: " + sqlquery)
 
-def total = 0
+int total = 0
 sql.eachRow((Map) whereParams, (String) sqlquerycount, { row -> total = row.total })
 
 // takes parameter values from whereParams map, stored there by SQLFilterVisitor
-def lastRowNum = 0
+int lastRowNum = 0
 def rowCount = 0
 sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 
@@ -189,7 +189,7 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
         }
     }
 
-    lastRowNum = row.radek
+    lastRowNum = (int)row.radek
     rowCount++
     
     handler.handle connectorObject
@@ -205,5 +205,5 @@ if (lastRowNum < pageOffset + pageSize) {
 
 log.warn("Returning page cookie " + pagedResultsCookie)
 
-return new SearchResult(pagedResultsCookie, pageSize > 0 ? ((int)total - lastRowNum) : -1 , lastRowNum < total)
+return new SearchResult(pagedResultsCookie, pageSize > 0 ? (total - lastRowNum) : -1 , lastRowNum < total)
 
