@@ -14,7 +14,7 @@ import org.identityconnectors.framework.common.objects.SearchResult
 import org.identityconnectors.framework.common.objects.Uid
 import org.identityconnectors.framework.common.objects.filter.EqualsFilter
 import org.identityconnectors.framework.common.objects.filter.Filter
-
+import org.identityconnectors.framework.spi.SearchResultsHandler
 import java.sql.Connection
 import java.time.ZonedDateTime
 import java.time.ZoneId
@@ -205,5 +205,7 @@ if (lastRowNum < pageOffset + pageSize) {
 
 log.warn("Returning page cookie " + pagedResultsCookie)
 
-return new SearchResult(pagedResultsCookie, pageSize > 0 ? (total - lastRowNum) : -1 , lastRowNum >= total)
+def result = new SearchResult(pagedResultsCookie, pageSize > 0 ? (total - lastRowNum) : -1 , lastRowNum >= total)
+((SearchResultsHandler)handler).handle(result)
+return result
 
