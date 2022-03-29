@@ -1,38 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<objects xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-	xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-	xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
-	<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" version="67">
+<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" version="80">
     <name>IS_UK</name>
     <description>Information system of UK - SIS, WhoIS</description>
-    <connectorRef oid="e888270d-c9ba-42cf-9875-1d1b3db37456" relation="org:default" type="c:ConnectorType">
-        <!-- ConnId com.evolveum.polygon.connector.scripted.sql.ScriptedSQLConnector v2.2.1 -->
-    </connectorRef>
-    <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ConnectorConfigurationType">
-        <icfc:configurationProperties xmlns:icfssql="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-scripted-sql/com.evolveum.polygon.connector.scripted.sql.ScriptedSQLConnector">
-            <icfssql:scriptRoots>/home/midpoint/scripts/isuk</icfssql:scriptRoots>
-            <icfssql:jdbcDriver>oracle.jdbc.OracleDriver</icfssql:jdbcDriver>
-            <icfssql:jdbcUrlTemplate xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3">jdbc:oracle:thin:@zeus:1521/batule2</icfssql:jdbcUrlTemplate>
-            <icfssql:user>
+    <connectorRef oid="e888270d-c9ba-42cf-9875-1d1b3db37456" relation="org:default" type="c:ConnectorType"/>
+    <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3">
+        <icfc:configurationProperties xmlns:gen438="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-scripted-sql/com.evolveum.polygon.connector.scripted.sql.ScriptedSQLConnector">
+            <gen438:scriptRoots>/home/midpoint/scripts/isuk</gen438:scriptRoots>
+            <gen438:jdbcDriver>oracle.jdbc.OracleDriver</gen438:jdbcDriver>
+            <gen438:jdbcUrlTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-scripted-sql/com.evolveum.polygon.connector.scripted.sql.ScriptedSQLConnector" xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">jdbc:oracle:thin:@zeus:1521/batule2</gen438:jdbcUrlTemplate>
+            <gen438:user>
                 <expression>
-                    <const xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ConstExpressionEvaluatorType">is_user</const>
+                    <const>is_user</const>
                 </expression>
-            </icfssql:user>
-            <icfssql:password>
+            </gen438:user>
+            <gen438:password>
                 <expression>
-                    <const xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ConstExpressionEvaluatorType">is_pw</const>
+                    <const>is_pw</const>
                 </expression>
-            </icfssql:password>
-            <icfssql:classpath>/home/midpoint/lib</icfssql:classpath>
-            <icfssql:schemaScriptFileName>SchemaScript.groovy</icfssql:schemaScriptFileName>
-            <icfssql:debug>true</icfssql:debug>
-            <icfssql:scriptBaseClass>BaseScript</icfssql:scriptBaseClass>
-            <icfssql:createScriptFileName>CreateScript.groovy</icfssql:createScriptFileName>
-            <icfssql:searchScriptFileName>SearchScript.groovy</icfssql:searchScriptFileName>
-            <icfssql:testScriptFileName>TestScript.groovy</icfssql:testScriptFileName>
-            <icfssql:verbose>true</icfssql:verbose>
-            <icfssql:recompileGroovySource>true</icfssql:recompileGroovySource>
-            <icfssql:autoCommit>false</icfssql:autoCommit>
+            </gen438:password>
+            <gen438:classpath>/home/midpoint/lib</gen438:classpath>
+            <gen438:schemaScriptFileName>SchemaScript.groovy</gen438:schemaScriptFileName>
+            <gen438:debug>true</gen438:debug>
+            <gen438:scriptBaseClass>BaseScript</gen438:scriptBaseClass>
+            <gen438:createScriptFileName>CreateScript.groovy</gen438:createScriptFileName>
+            <gen438:searchScriptFileName>SearchScript.groovy</gen438:searchScriptFileName>
+            <gen438:testScriptFileName>TestScript.groovy</gen438:testScriptFileName>
+            <gen438:verbose>true</gen438:verbose>
+            <gen438:recompileGroovySource>true</gen438:recompileGroovySource>
+            <gen438:autoCommit>false</gen438:autoCommit>
+            <gen438:deleteScriptFileName>DeleteScript.groovy</gen438:deleteScriptFileName>
+            <gen438:updateScriptFileName>UpdateScript.groovy</gen438:updateScriptFileName>
         </icfc:configurationProperties>
         <icfc:resultsHandlerConfiguration>
             <icfc:enableNormalizingResultsHandler>false</icfc:enableNormalizingResultsHandler>
@@ -43,9 +39,736 @@
         </icfc:resultsHandlerConfiguration>
     </connectorConfiguration>
     <schema>
+        <cachingMetadata>
+            <retrievalTimestamp>2022-03-28T15:35:14.422+02:00</retrievalTimestamp>
+            <serialNumber>76546256340a7628-49d9303efd4d7b4b</serialNumber>
+        </cachingMetadata>
+        <definition>
+            <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3" xmlns:ra="http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3" xmlns:tns="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" elementFormDefault="qualified" targetNamespace="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">
+                <xsd:import namespace="http://prism.evolveum.com/xml/ns/public/annotation-3"/>
+                <xsd:import namespace="http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3"/>
+                <xsd:complexType name="Organization">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <ra:resourceObject/>
+                            <ra:identifier xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:id_org</ra:identifier>
+                            <ra:secondaryIdentifier xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:poid</ra:secondaryIdentifier>
+                            <ra:displayNameAttribute xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:poid</ra:displayNameAttribute>
+                            <ra:namingAttribute xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:poid</ra:namingAttribute>
+                            <ra:nativeObjectClass>Organization</ra:nativeObjectClass>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="sidlo" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>120</a:displayOrder>
+                                    <ra:frameworkAttributeName>sidlo</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="s_poid_nadrizeny" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>130</a:displayOrder>
+                                    <ra:frameworkAttributeName>s_poid_nadrizeny</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="id_org_nadrizeny" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>140</a:displayOrder>
+                                    <ra:frameworkAttributeName>id_org_nadrizeny</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="zkratka" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>150</a:displayOrder>
+                                    <ra:frameworkAttributeName>zkratka</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="nazev_en" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>160</a:displayOrder>
+                                    <ra:frameworkAttributeName>nazev_en</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="poid_nadrizeny" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>170</a:displayOrder>
+                                    <ra:frameworkAttributeName>poid_nadrizeny</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="s_soucast" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>180</a:displayOrder>
+                                    <ra:frameworkAttributeName>s_soucast</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="nazev_dlouhy" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>190</a:displayOrder>
+                                    <ra:frameworkAttributeName>nazev_dlouhy</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="zkratka_dlouha" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>200</a:displayOrder>
+                                    <ra:frameworkAttributeName>zkratka_dlouha</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="zkratka_dlouha_en" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>210</a:displayOrder>
+                                    <ra:frameworkAttributeName>zkratka_dlouha_en</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="nazev" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>220</a:displayOrder>
+                                    <ra:frameworkAttributeName>nazev</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="nazev_dlouhy_en" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>230</a:displayOrder>
+                                    <ra:frameworkAttributeName>nazev_dlouhy_en</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="fakulta" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>240</a:displayOrder>
+                                    <ra:frameworkAttributeName>fakulta</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="kod_sims" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>250</a:displayOrder>
+                                    <ra:frameworkAttributeName>kod_sims</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="datum_do" type="xsd:dateTime">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>260</a:displayOrder>
+                                    <ra:frameworkAttributeName>datum_do</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="poid" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>110</a:displayOrder>
+                                    <ra:nativeAttributeName>poid</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__NAME__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="ic" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>270</a:displayOrder>
+                                    <ra:frameworkAttributeName>ic</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="dic" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>280</a:displayOrder>
+                                    <ra:frameworkAttributeName>dic</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="r_id_org" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>290</a:displayOrder>
+                                    <ra:frameworkAttributeName>r_id_org</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="cas_identifikace" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>300</a:displayOrder>
+                                    <ra:frameworkAttributeName>cas_identifikace</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="r_poid" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>310</a:displayOrder>
+                                    <ra:frameworkAttributeName>r_poid</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="datum_od" type="xsd:dateTime">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>320</a:displayOrder>
+                                    <ra:frameworkAttributeName>datum_od</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="s_fakulta" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>330</a:displayOrder>
+                                    <ra:frameworkAttributeName>s_fakulta</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="cas_domena" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>340</a:displayOrder>
+                                    <ra:frameworkAttributeName>cas_domena</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="zkratka_en" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>350</a:displayOrder>
+                                    <ra:frameworkAttributeName>zkratka_en</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="soucast" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>360</a:displayOrder>
+                                    <ra:frameworkAttributeName>soucast</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="id_org" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>100</a:displayOrder>
+                                    <a:access>read</a:access>
+                                    <ra:nativeAttributeName>id_org</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__UID__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+                <xsd:complexType name="Person">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <ra:resourceObject/>
+                            <ra:identifier xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:cunipersonalid</ra:identifier>
+                            <ra:secondaryIdentifier xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:unique_identifier</ra:secondaryIdentifier>
+                            <ra:displayNameAttribute xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:unique_identifier</ra:displayNameAttribute>
+                            <ra:namingAttribute xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:unique_identifier</ra:namingAttribute>
+                            <ra:nativeObjectClass>Person</ra:nativeObjectClass>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:sequence>
+                        <xsd:element name="unique_identifier" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>110</a:displayOrder>
+                                    <ra:nativeAttributeName>unique_identifier</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__NAME__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="cunipersonalid" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>100</a:displayOrder>
+                                    <a:access>read</a:access>
+                                    <ra:nativeAttributeName>cunipersonalid</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__UID__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:schema>
+        </definition>
     </schema>
+    <schemaHandling>
+        <objectType id="62">
+            <kind>entitlement</kind>
+            <intent>orgunit</intent>
+            <displayName>Organizational unit</displayName>
+            <default>false</default>
+            <objectClass>ri:Organization</objectClass>
+            <attribute id="72">
+                <ref>ri:id_org</ref>
+                <displayName>ID</displayName>
+                <description>ID of organizational unit</description>
+                <tolerant>false</tolerant>
+                <exclusiveStrong>true</exclusiveStrong>
+                <inbound id="73">
+                    <name>ID mapping</name>
+                    <description>Maps id_org to identifier</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>strong</strength>
+                    <target>
+                        <path>identifier</path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="75">
+                <ref>ri:poid</ref>
+                <displayName>Permanent ID</displayName>
+                <tolerant>true</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="76">
+                    <name>POID mapping</name>
+                    <description>Maps poid to name</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>true</exclusive>
+                    <strength>strong</strength>
+                    <target>
+                        <path>name</path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="77">
+                <ref>ri:nazev</ref>
+                <displayName>Name</displayName>
+                <tolerant>true</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="78">
+                    <name>Name mapping</name>
+                    <description>Maps nazev to name</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>strong</strength>
+                    <target>
+                        <path>displayName</path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="81">
+                <ref>ri:nazev_dlouhy</ref>
+                <displayName>Full name</displayName>
+                <tolerant>false</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="82">
+                    <name>Full name mapping</name>
+                    <description>Maps nazev_dlouhy to description</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>strong</strength>
+                    <target>
+                        <path>description</path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="86">
+                <ref>ri:cas_domena</ref>
+                <displayName>Domain</displayName>
+                <description>DNS domain name of org unit</description>
+                <tolerant>false</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="87">
+                    <name>Domain mapping</name>
+                    <description>Maps cas_domena do mailDomain</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>strong</strength>
+                    <target>
+                        <path>mailDomain</path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="115">
+                <ref>ri:id_org_nadrizeny</ref>
+                <tolerant>false</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="116">
+                    <name>OrganizationalUnit archetype mapping</name>
+                    <description>Assigns OrganizationalUnit archetype iff id_org != soucast and id_org_nadrizeny &gt; 1</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>normal</strength>
+                    <source>
+                        <path>$projection/attributes/soucast</path>
+                    </source>
+                    <source>
+                        <path>$projection/attributes/r_id_org</path>
+                    </source>
+                    <source>
+                        <path>$projection/attributes/id_org_nadrizeny</path>
+                    </source>
+                    <expression>
+                        <value xmlns="">
+                            <targetRef xmlns="">
+                                <oid>fa3955c1-f466-4f30-a0c7-34dec7a1d89a</oid>
+                                <type>ArchetypeType</type>
+                            </targetRef>
+                        </value>
+                    </expression>
+                    <target>
+                        <path>assignment</path>
+                    </target>
+                    <condition>
+                        <script>
+                            <code>
+                                r_id_org != soucast &amp;&amp; id_org_nadrizeny &gt; 1
+                            </code>
+                        </script>
+                    </condition>
+                </inbound>
+                <inbound id="119">
+                    <name>Organization archetype mapping</name>
+                    <description>Assigns Organization archetype iff id_org_nadrizeny == 1</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>normal</strength>
+                    <source>
+                        <path>$projection/attributes/id_org_nadrizeny</path>
+                    </source>
+                    <expression>
+                        <value xmlns="">
+                            <targetRef xmlns="">
+                                <oid>b9453c1f-233b-4fb8-878a-801e7c18a756</oid>
+                                <type>ArchetypeType</type>
+                            </targetRef>
+                        </value>
+                    </expression>
+                    <target>
+                        <path>assignment</path>
+                    </target>
+                    <condition>
+                        <script>
+                            <code>
+                                id_org_nadrizeny == 1
+                            </code>
+                        </script>
+                    </condition>
+                </inbound>
+                <inbound id="120">
+                    <name>Faculty archetype mapping</name>
+                    <description>Assigns Faculty archetype iff soucast == id_org &amp;&amp; id_org_nadrizeny &gt; 1</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>normal</strength>
+                    <source>
+                        <path>$projection/attributes/soucast</path>
+                    </source>
+                    <source>
+                        <path>$projection/attributes/r_id_org</path>
+                    </source>
+                    <source>
+                        <path>$projection/attributes/id_org_nadrizeny</path>
+                    </source>
+                    <expression>
+                        <value xmlns="">
+                            <targetRef xmlns="">
+                                <oid>52308e18-5bcb-4efc-ab88-295d86252a38</oid>
+                                <type>ArchetypeType</type>
+                            </targetRef>
+                        </value>
+                    </expression>
+                    <target>
+                        <path>assignment</path>
+                    </target>
+                    <condition>
+                        <script>
+                            <code>
+                                r_id_org == soucast &amp;&amp; id_org_nadrizeny &gt; 1
+                            </code>
+                        </script>
+                    </condition>
+                </inbound>
+            </attribute>
+            <association id="89">
+                <ref>ri:Parent</ref>
+                <displayName>Parent organization unit</displayName>
+                <tolerant>false</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="90">
+                    <name>Parent mapping</name>
+                    <description>Maps poid_nadrizeny to assignment</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>strong</strength>
+                    <expression>
+                        <assignmentTargetSearch>
+                            <targetType>c:OrgType</targetType>
+                            <filter>
+                                <q:and>
+                                    <q:equal xmlns="">
+                                        <q:path>c:name</q:path>
+                                        <expression xmlns="">
+                                            <path>
+                      $projection/attributes/s_poid_nadrizeny
+                  </path>
+                                        </expression>
+                                    </q:equal>
+                                    <q:or>
+                                        <q:ref>
+                                            <q:path>c:archetypeRef</q:path>
+                                            <q:value>
+                                                <q:oid>b9453c1f-233b-4fb8-878a-801e7c18a756</q:oid>
+                                            </q:value>
+                                        </q:ref>
+                                        <q:ref>
+                                            <q:path>c:archetypeRef</q:path>
+                                            <q:value>
+                                                <q:oid>fa3955c1-f466-4f30-a0c7-34dec7a1d89a</q:oid>
+                                            </q:value>
+                                        </q:ref>
+                                        <q:ref>
+                                            <q:path>c:archetypeRef</q:path>
+                                            <q:value>
+                                                <q:oid>52308e18-5bcb-4efc-ab88-295d86252a38</q:oid>
+                                            </q:value>
+                                        </q:ref>
+                                    </q:or>
+                                </q:and>
+                            </filter>
+                        </assignmentTargetSearch>
+                    </expression>
+                    <target>
+                        <path>assignment</path>
+                    </target>
+                </inbound>
+                <kind>entitlement</kind>
+                <intent>orgunit</intent>
+                <direction>subjectToObject</direction>
+                <associationAttribute>ri:s_poid_nadrizeny</associationAttribute>
+                <valueAttribute>ri:poid</valueAttribute>
+                <explicitReferentialIntegrity>false</explicitReferentialIntegrity>
+            </association>
+            <association id="92">
+                <ref>ri:Faculty</ref>
+                <displayName>Faculty</displayName>
+                <tolerant>false</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="93">
+                    <name>Faculty mapping</name>
+                    <description>Maps faculty to assignment</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>normal</strength>
+                    <expression>
+                        <assignmentTargetSearch>
+                            <targetType>c:OrgType</targetType>
+                            <filter>
+                                <q:and>
+                                    <q:equal xmlns="">
+                                        <q:path>c:identifier</q:path>
+                                        <expression xmlns="">
+                                            <path>
+                     $projection/attributes/s_fakulta
+                  </path>
+                                        </expression>
+                                    </q:equal>
+                                    <q:ref>
+                                        <q:path>c:archetypeRef</q:path>
+                                        <q:value>
+                                            <q:oid>52308e18-5bcb-4efc-ab88-295d86252a38</q:oid>
+                                        </q:value>
+                                    </q:ref>
+                                </q:and>
+                            </filter>
+                            <assignmentProperties xsi:type="c:AssignmentPropertiesSpecificationType">
+                                <relation>org:faculty</relation>
+                            </assignmentProperties>
+                        </assignmentTargetSearch>
+                    </expression>
+                    <target>
+                        <path>assignment</path>
+                    </target>
+                </inbound>
+                <kind>entitlement</kind>
+                <intent>orgunit</intent>
+                <direction>subjectToObject</direction>
+                <associationAttribute>ri:s_fakulta</associationAttribute>
+                <valueAttribute>ri:id_org</valueAttribute>
+                <explicitReferentialIntegrity>false</explicitReferentialIntegrity>
+            </association>
+            <association id="94">
+                <ref>ri:Soucast</ref>
+                <displayName>Soucast</displayName>
+                <tolerant>false</tolerant>
+                <exclusiveStrong>false</exclusiveStrong>
+                <inbound id="95">
+                    <name>Soucast mapping</name>
+                    <description>Maps soucast to assignment</description>
+                    <authoritative>true</authoritative>
+                    <exclusive>false</exclusive>
+                    <strength>strong</strength>
+                    <expression>
+                        <assignmentTargetSearch>
+                            <targetType>c:OrgType</targetType>
+                            <filter>
+                                <q:and>
+                                    <q:equal xmlns="">
+                                        <q:path>c:identifier</q:path>
+                                        <expression xmlns="">
+                                            <path>
+                     $projection/attributes/s_soucast
+                  </path>
+                                        </expression>
+                                    </q:equal>
+                                    <q:ref>
+                                        <q:path>c:archetypeRef</q:path>
+                                        <q:value>
+                                            <q:oid>52308e18-5bcb-4efc-ab88-295d86252a38</q:oid>
+                                        </q:value>
+                                    </q:ref>
+                                </q:and>
+                            </filter>
+                            <assignmentProperties xsi:type="c:AssignmentPropertiesSpecificationType">
+                                <relation>org:partof</relation>
+                            </assignmentProperties>
+                        </assignmentTargetSearch>
+                    </expression>
+                    <target>
+                        <path>assignment</path>
+                    </target>
+                </inbound>
+                <kind>entitlement</kind>
+                <intent>orgunit</intent>
+                <direction>subjectToObject</direction>
+                <associationAttribute>ri:s_soucast</associationAttribute>
+                <valueAttribute>ri:id_org</valueAttribute>
+                <explicitReferentialIntegrity>false</explicitReferentialIntegrity>
+            </association>
+        </objectType>
+        <objectType id="110">
+            <kind>account</kind>
+            <intent>default</intent>
+            <displayName>Person</displayName>
+            <default>false</default>
+            <objectClass>ri:Person</objectClass>
+        </objectType>
+    </schemaHandling>
     <capabilities>
+        <cachingMetadata>
+            <retrievalTimestamp>2022-03-28T15:35:14.416+02:00</retrievalTimestamp>
+            <serialNumber>21c38112a53bf3d1-4aebf52a4aea0356</serialNumber>
+        </cachingMetadata>
+        <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3">
+            <cap:schema/>
+            <cap:liveSync/>
+            <cap:testConnection/>
+            <cap:create/>
+            <cap:update>
+                <cap:addRemoveAttributeValues>true</cap:addRemoveAttributeValues>
+            </cap:update>
+            <cap:delete/>
+            <cap:script>
+                <cap:host>
+                    <cap:type>resource</cap:type>
+                </cap:host>
+                <cap:host>
+                    <cap:type>connector</cap:type>
+                </cap:host>
+            </cap:script>
+            <cap:pagedSearch/>
+            <cap:read>
+                <cap:returnDefaultAttributesOption>false</cap:returnDefaultAttributesOption>
+            </cap:read>
+        </native>
     </capabilities>
+    <synchronization>
+        <objectSynchronization>
+            <name>Organization synchronization</name>
+            <objectClass>Organization</objectClass>
+            <kind>entitlement</kind>
+            <intent>orgunit</intent>
+            <focusType>c:OrgType</focusType>
+            <enabled>true</enabled>
+            <correlation>
+                <q:and>
+                    <q:equal xmlns="">
+                        <q:path>name</q:path>
+                        <expression xmlns="">
+                            <path>$projection/attributes/ri:poid</path>
+                        </expression>
+                    </q:equal>
+                    <q:or>
+                        <q:ref>
+                            <q:path>archetypeRef</q:path>
+                            <q:value>
+                                <q:oid>b9453c1f-233b-4fb8-878a-801e7c18a756</q:oid>
+                            </q:value>
+                        </q:ref>
+                        <q:ref>
+                            <q:path>archetypeRef</q:path>
+                            <q:value>
+                                <q:oid>fa3955c1-f466-4f30-a0c7-34dec7a1d89a</q:oid>
+                            </q:value>
+                        </q:ref>
+                        <q:ref>
+                            <q:path>archetypeRef</q:path>
+                            <q:value>
+                                <q:oid>52308e18-5bcb-4efc-ab88-295d86252a38</q:oid>
+                            </q:value>
+                        </q:ref>
+                    </q:or>
+                </q:and>
+            </correlation>
+            <objectTemplateRef oid="24a356ab-254b-4afe-9ef9-9f97598852b2" relation="org:default" type="c:ObjectTemplateType"/>
+            <reconcile>false</reconcile>
+            <reaction>
+                <situation>unmatched</situation>
+                <synchronize>true</synchronize>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#addFocus</handlerUri>
+                </action>
+            </reaction>
+            <reaction>
+                <situation>unlinked</situation>
+                <synchronize>true</synchronize>
+                <reconcile>false</reconcile>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
+                </action>
+            </reaction>
+            <reaction>
+                <situation>linked</situation>
+                <synchronize>true</synchronize>
+                <reconcile>false</reconcile>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#synchronize</handlerUri>
+                </action>
+            </reaction>
+        </objectSynchronization>
+        <objectSynchronization>
+            <name>Person synchronization</name>
+            <kind>account</kind>
+            <intent>default</intent>
+            <focusType>c:UserType</focusType>
+            <enabled>true</enabled>
+            <reconcile>false</reconcile>
+        </objectSynchronization>
+    </synchronization>
 </resource>
-
-</objects>
