@@ -21,6 +21,7 @@ switch (operation) {
 
         handleSync(sql, token, handler)
         break
+	
     case OperationType.GET_LATEST_SYNC_TOKEN:
         return handleGetLatestSyncToken(sql)
 }
