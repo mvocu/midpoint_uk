@@ -113,6 +113,11 @@ if(filter != null) {
 	if(filter instanceof EqualsFilter && ((EqualsFilter)filter).getAttribute().is(Uid.NAME)) {
 		// Read
 		def id = AttributeUtil.getStringValue(((EqualsFilter)filter).getAttribute())
+		log.warn("Reading object with id [{0}]", id);
+		if(id == null || !id.isNumber() ) {
+			log.warn("Empty UID parameter");
+			return;
+		}
 		where = " WHERE id_org = :UID"
 		whereParams["UID"] = id
 	} else {
@@ -123,7 +128,7 @@ if(filter != null) {
 }
 
 
-log.info("Search WHERE clause is: " + where)
+log.info("Search WHERE clause is: {0}", where)
 
 sqlquerycount = "SELECT COUNT(*) as total FROM (" + sqlquery + where + ")";
 sqlquery = "SELECT " + attrs.join(",") + ", radek FROM (" + sqlquery + where + ") " + wherePage
@@ -132,7 +137,7 @@ sqlquery = "SELECT " + attrs.join(",") + ", radek FROM (" + sqlquery + where + "
 sqlquery = new SimpleTemplateEngine().createTemplate(sqlquery).make(fieldMap[objectClass.objectClassValue])
 sqlquerycount = new SimpleTemplateEngine().createTemplate(sqlquerycount).make(fieldMap[objectClass.objectClassValue]) 
 
-log.warn("SQL query: " + sqlquery)
+log.warn("SQL query: {0}", sqlquery)
 
 int total = 0
 sql.eachRow((Map) whereParams, (String) sqlquerycount, { row -> total = row.total })
@@ -161,6 +166,7 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 		setObjectClass objectClass
             	attribute 'r_id_org', row.id_org
             	attribute 'fakulta', row.fakulta
+		attribute 's_fakulta', row.fakulta.toString()
             	attribute 'sidlo', row.sidlo
             	attribute 'datum_od', ZonedDateTime.ofInstant(row.datum_od.toInstant(), ZoneId.systemDefault())
             	attribute 'datum_do', ZonedDateTime.ofInstant(row.datum_do.toInstant(), ZoneId.systemDefault())
@@ -176,11 +182,13 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             	attribute 'zkratka_en', row.zkratka_en
             	attribute 'zkratka_dlouha_en', row.zkratka_dlouha_en
             	attribute 'soucast', row.soucast
+		attribute 's_soucast', row.soucast.toString()
             	attribute 'kod_sims', row.kod_sims
             	attribute 'cas_domena', row.cas_domena
             	attribute 'cas_identifikace', row.cas_identifikace
             	attribute 'id_org_nadrizeny', row.id_org_nadrizeny.split(',').collect { value -> new BigInteger(value) }
 		attribute 'poid_nadrizeny', row.poid_nadrizeny.split(',').collect { value-> new BigInteger(value) }  
+		attribute 's_poid_nadrizeny', row.poid_nadrizeny.split(',')
                 break;
 
             default:

@@ -46,7 +46,8 @@ builder.schema({
 
 	    r_id_org BigInteger.class
 	    fakulta BigInteger.class
-	    sidlo String.class
+	    s_fakulta String.class
+	    sidlo BigInteger.class
 	    datum_od ZonedDateTime.class
 	    datum_do ZonedDateTime.class
 	    ic String.class
@@ -61,11 +62,39 @@ builder.schema({
 	    zkratka_en String.class
 	    zkratka_dlouha_en String.class
 	    soucast BigInteger.class
-	    kod_sims BigInteger.class
+	    s_soucast String.class
+	    kod_sims String.class
             cas_domena String.class
 	    cas_identifikace String.class
 	    id_org_nadrizeny BigInteger.class, MULTIVALUED
 	    poid_nadrizeny BigInteger.class, MULTIVALUED
+	    s_poid_nadrizeny String.class, MULTIVALUED
+        }
+    }
+
+    objectClass {
+	type BaseScript.PERSON_NAME
+        attributes {
+            // black magic here - use better name for __UID__
+            getBuilder().addAttributeInfo({ -> 
+                def aib = new AttributeInfoBuilder(Uid.NAME);
+                aib.setNativeName("cunipersonalid");
+                aib.setType(String.class);
+                aib.setRequired(false); // Must be optional. It is not present for create operations
+                aib.setCreateable(false);
+                aib.setUpdateable(false);
+                aib.setReadable(true);  
+                aib.build()
+            }.call())
+
+           // black magic here - use better name for __NAME__
+            getBuilder().addAttributeInfo({ -> 
+                def aib = new AttributeInfoBuilder(Name.NAME);
+                aib.setNativeName("unique_identifier");
+                aib.setType(String.class);
+                aib.setRequired(true);
+                aib.build()
+            }.call())
         }
     }
 
