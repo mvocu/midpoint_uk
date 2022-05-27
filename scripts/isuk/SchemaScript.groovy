@@ -95,6 +95,26 @@ builder.schema({
                 aib.setRequired(true);
                 aib.build()
             }.call())
+	    
+	    jmeno String.class
+	    prijmeni String.class
+	    rodne_cislo String.class
+	    datum_narozeni ZonedDateTime.class
+	    stat String.class
+	    pohlavi String.class
+	    preferred_language String.class
+	    handicap String.class, MULTIVALUED
+	    mail String.class, MULTIVALUED
+	    phone String.class, MULTIVALUED
+	    mobile String.class
+	    identifikace String.class
+	    adresa_stat String.class
+	    adresa_mesto String.class
+	    adresa_ulice String.class
+	    adresa_cev String.class
+	    adresa_corg String.class
+	    adresa_psc String.class
+	    uid String.class
         }
     }
 
