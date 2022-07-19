@@ -106,7 +106,7 @@ builder.schema({
 	    handicap String.class, MULTIVALUED
 	    mail String.class, MULTIVALUED
 	    phone String.class, MULTIVALUED
-	    mobile String.class
+	    mobile String.class, MULTIVALUED
 	    identifikace String.class
 	    adresa_stat String.class
 	    adresa_mesto String.class
