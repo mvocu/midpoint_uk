@@ -1,5 +1,7 @@
 import groovy.sql.Sql
 import groovy.text.SimpleTemplateEngine
+import groovy.transform.BaseScript
+
 import org.forgerock.openicf.connectors.scriptedsql.ScriptedSQLConfiguration
 import org.forgerock.openicf.misc.scriptedcommon.ICFObjectBuilder
 import org.forgerock.openicf.misc.scriptedcommon.OperationType
@@ -83,19 +85,58 @@ def fieldMap = [
 		"poid_nadrizeny"   : "poid_nadrizeny"
 
         ],
-        "__ACCOUNT__" : [
-                "__UID__"     : "id",
-                "__NAME__"    : "uid"
 
+	( BaseScript.PERSON_NAME ): [
+                "__UID__"     : "cislo_osoby",
+                "__NAME__"    : "cuni_unique_id",
+		"jmeno"		: "jmeno",
+		"prijmeni"	: "prijmeni",		
+		"rodne_cislo"	: "rodne_cislo",
+		"datum_narozeni" : "datum_narozeni",
+		"stat"		: "st",
+		"pohlavi"	: "pohlavi"
+		/*
+		 preferred_language String.class
+		 handicap String.class, MULTIVALUED
+		 mail String.class, MULTIVALUED
+		 phone String.class, MULTIVALUED
+		 mobile String.class, MULTIVALUED
+		 identifikace String.class
+		 adresa_stat String.class
+		 adresa_mesto String.class
+		 adresa_ulice String.class
+		 adresa_cev String.class
+		 adresa_corg String.class
+		 adresa_psc String.class
+		 uid String.class
+ */
+ 
         ],
-        "__GROUP__"   : [
+	
+        ( BaseScript.GROUP_NAME )  : [
                 "__UID__"    	: "id",
                 "__NAME__"   	: "name"
         ]
 ]
 
 def attrs = fieldMap[objectClass.objectClassValue].collect([] as HashSet){ entry -> entry.value }
-def sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA" as String
+def sqlquery = "" 
+
+switch(objectClass) {
+	case BaseScript.ORGANIZATION_NAME:
+		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA" as String
+		break;
+
+	case BaseScript.PERSON_NAME:
+		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM SKUNK_CAS.LDAP_OSOBA" as String 
+		break;	
+		
+	default:
+                throw new UnsupportedOperationException(operation.name() + " operation of type:" +
+                        objectClass.objectClassValue + " is not supported.")
+}
+	
+
 def whereParams = [:]
 def where = ""
 def wherePage = ""
@@ -118,7 +159,7 @@ if(filter != null) {
 			log.warn("Empty UID parameter");
 			return;
 		}
-		where = " WHERE id_org = :UID"
+		where = " WHERE " + fieldMap[objectClass.objectClassValue]["__UID__"] + " = :UID"
 		whereParams["UID"] = id
 	} else {
 		// Search
@@ -149,12 +190,40 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 
     def connectorObject = ICFObjectBuilder.co {
         switch (objectClass) {
-/*
-            case ObjectClass.ACCOUNT:
-                uid row.id as String
-                id row.uid
-                break;
 
+            case BaseScript.PERSON:
+                uid row.cislo_osoby.toString()
+                id row.cuni_unique_id.toString()
+		setObjectClass(objectClass)
+		attribute 'jmeno', row.jmeno
+		attribute 'prijmeni', row.prijmeni
+		attribute 'rodne_cislo', row.rodne_cislo
+		attribute 'datum_narozeni', ZonedDateTime.ofInstant(row.datum_narozeni.toInstant(), ZoneId.systemDefault())
+		attribute 'stat', row.stat
+		attribute 'pohlavi', row.pohlavi
+		/*		
+		jmeno String.class
+		prijmeni String.class
+		rodne_cislo String.class
+		datum_narozeni ZonedDateTime.class
+		stat String.class
+		pohlavi String.class
+		preferred_language String.class
+		handicap String.class, MULTIVALUED
+		mail String.class, MULTIVALUED
+		phone String.class, MULTIVALUED
+		mobile String.class, MULTIVALUED
+		identifikace String.class
+		adresa_stat String.class
+		adresa_mesto String.class
+		adresa_ulice String.class
+		adresa_cev String.class
+		adresa_corg String.class
+		adresa_psc String.class
+		uid String.class
+*/
+                break;
+/*
             case ObjectClass.GROUP:
                 uid row.id as String
                 id row.name
