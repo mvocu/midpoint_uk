@@ -206,24 +206,24 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 		attribute 'preferred_language', row.preferredlanguage
 		// handicap
 		attribute 'handicap', sql.rows(["id" : row.cislo_osoby], 
-			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id"
+			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id"
 			)*.hodnota 
 			
 		// mail
 		attribute 'mail', sql.rows(["id" : row.cislo_osoby], 
-			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
+			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
 			)*.hodnota 
 		// mail_o365
 		attribute 'mail_o365', sql.rows(["id" : row.cislo_osoby],
-			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
+			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
 			)*.hodnota
 		// phone
 		attribute 'phone', sql.rows(["id" : row.cislo_osoby],
-			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
+			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
 			)*.hodnota
 		// mobile
 		attribute 'mobile', sql.rows(["id" : row.cislo_osoby],
-			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
+			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
 			)*.hodnota
 		/*		
 		identifikace String.class
