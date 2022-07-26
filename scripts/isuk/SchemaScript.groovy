@@ -105,6 +105,7 @@ builder.schema({
 	    preferred_language String.class
 	    handicap String.class, MULTIVALUED
 	    mail String.class, MULTIVALUED
+	    mail_o365 String.class, MULTIVALUED
 	    phone String.class, MULTIVALUED
 	    mobile String.class, MULTIVALUED
 	    identifikace String.class

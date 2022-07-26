@@ -205,21 +205,27 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 		attribute 'pohlavi', row.pohlavi
 		attribute 'preferred_language', row.preferredlanguage
 		// handicap
-		attribute 'handicap', sql.rows(
-			["id" : row.cislo_osoby], 
+		attribute 'handicap', sql.rows(["id" : row.cislo_osoby], 
 			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id"
 			)*.hodnota 
 			
 		// mail
-		attribute 'mail', sql.rows(
-			["id" : row.cislo_osoby], 
-			"SELECT vk.EMAIL FROM skunk.PER_OSOBA po JOIN skunk.PER_KONTAKT pk ON pk.ID_OSOBA = po.ID_OSOBA JOIN skunk.VAL_KONTAKT vk ON vk.VAL_KONTAKT = pk.VAL_KONTAKT WHERE pk.KONTAKT_TYP = 7 AND po.CISLO_UK = :id"
-			)*.email 
+		attribute 'mail', sql.rows(["id" : row.cislo_osoby], 
+			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
+			)*.hodnota 
+		// mail_o365
+		attribute 'mail_o365', sql.rows(["id" : row.cislo_osoby],
+			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
+			)*.hodnota
+		// phone
+		attribute 'phone', sql.rows(["id" : row.cislo_osoby],
+			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
+			)*.hodnota
+		// mobile
+		attribute 'mobile', sql.rows(["id" : row.cislo_osoby],
+			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
+			)*.hodnota
 		/*		
-		handicap String.class, MULTIVALUED
-		mail String.class, MULTIVALUED
-		phone String.class, MULTIVALUED
-		mobile String.class, MULTIVALUED
 		identifikace String.class
 		adresa_stat String.class
 		adresa_mesto String.class
