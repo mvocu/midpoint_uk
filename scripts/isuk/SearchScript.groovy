@@ -205,11 +205,16 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 		attribute 'pohlavi', row.pohlavi
 		attribute 'preferred_language', row.preferredlanguage
 		// handicap
-		sql.eachRow(["id" : row.cislo_osoby], "SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id", 
-			{ subrow -> attribute 'handicap', subrow.hodnota })
+		attribute 'handicap', sql.rows(
+			["id" : row.cislo_osoby], 
+			"SELECT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id"
+			)*.hodnota 
+			
 		// mail
-		sql.eachRow(["id" : row.cislo_osoby], "SELECT vk.EMAIL FROM skunk.PER_OSOBA po JOIN skunk.PER_KONTAKT pk ON pk.ID_OSOBA = po.ID_OSOBA JOIN skunk.VAL_KONTAKT vk ON vk.VAL_KONTAKT = pk.VAL_KONTAKT WHERE pk.KONTAKT_TYP = 7 AND po.CISLO_UK = :id", 
-			{ subrow -> attribute 'mail', subrow.email } )
+		attribute 'mail', sql.rows(
+			["id" : row.cislo_osoby], 
+			"SELECT vk.EMAIL FROM skunk.PER_OSOBA po JOIN skunk.PER_KONTAKT pk ON pk.ID_OSOBA = po.ID_OSOBA JOIN skunk.VAL_KONTAKT vk ON vk.VAL_KONTAKT = pk.VAL_KONTAKT WHERE pk.KONTAKT_TYP = 7 AND po.CISLO_UK = :id"
+			)*.email 
 		/*		
 		handicap String.class, MULTIVALUED
 		mail String.class, MULTIVALUED
