@@ -85,6 +85,7 @@ class SQLFilterVisitor implements FilterVisitor<String, Map<String, Object>> {
     def String addParameter(final Map<String, Object> params, final Attribute attribute) {
         def name = attribute.name + params.size();
         params.put(name, AttributeUtil.getSingleValue(attribute))
+        return name
     }
 
     String visitContainsFilter(Map<String, Object> params, ContainsFilter filter) {

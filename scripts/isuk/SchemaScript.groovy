@@ -78,7 +78,7 @@ builder.schema({
             // black magic here - use better name for __UID__
             getBuilder().addAttributeInfo({ -> 
                 def aib = new AttributeInfoBuilder(Uid.NAME);
-                aib.setNativeName("cunipersonalid");
+                aib.setNativeName("cislo_osoby");
                 aib.setType(String.class);
                 aib.setRequired(false); // Must be optional. It is not present for create operations
                 aib.setCreateable(false);
@@ -90,7 +90,7 @@ builder.schema({
            // black magic here - use better name for __NAME__
             getBuilder().addAttributeInfo({ -> 
                 def aib = new AttributeInfoBuilder(Name.NAME);
-                aib.setNativeName("unique_identifier");
+                aib.setNativeName("cuni_unique_id");
                 aib.setType(String.class);
                 aib.setRequired(true);
                 aib.build()

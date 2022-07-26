@@ -1,6 +1,5 @@
 import groovy.sql.Sql
 import groovy.text.SimpleTemplateEngine
-import groovy.transform.BaseScript
 
 import org.forgerock.openicf.connectors.scriptedsql.ScriptedSQLConfiguration
 import org.forgerock.openicf.misc.scriptedcommon.ICFObjectBuilder
@@ -123,12 +122,12 @@ def attrs = fieldMap[objectClass.objectClassValue].collect([] as HashSet){ entry
 def sqlquery = "" 
 
 switch(objectClass) {
-	case BaseScript.ORGANIZATION_NAME:
+	case BaseScript.ORGANIZATION:
 		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA" as String
 		break;
 
-	case BaseScript.PERSON_NAME:
-		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM SKUNK_CAS.LDAP_OSOBA" as String 
+	case BaseScript.PERSON:
+		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')" as String 
 		break;	
 		
 	default:
@@ -168,20 +167,22 @@ if(filter != null) {
 	}
 }
 
-
-log.info("Search WHERE clause is: {0}", where)
+log.warn("Search WHERE clause is: {0} with params {1}", where, whereParams)
 
 sqlquerycount = "SELECT COUNT(*) as total FROM (" + sqlquery + where + ")";
-sqlquery = "SELECT " + attrs.join(",") + ", radek FROM (" + sqlquery + where + ") " + wherePage
+sqlquery = "SELECT " + attrs.join(",") + ",radek FROM (" + sqlquery + where + ") " + wherePage
 
 // replace filter parameter names with database column names according to whereParams map
 sqlquery = new SimpleTemplateEngine().createTemplate(sqlquery).make(fieldMap[objectClass.objectClassValue])
 sqlquerycount = new SimpleTemplateEngine().createTemplate(sqlquerycount).make(fieldMap[objectClass.objectClassValue]) 
 
 log.warn("SQL query: {0}", sqlquery)
+log.warn("SQL count query: {0}", sqlquerycount)
 
 int total = 0
 sql.eachRow((Map) whereParams, (String) sqlquerycount, { row -> total = row.total })
+
+log.warn("Found {0} total records", total)
 
 // takes parameter values from whereParams map, stored there by SQLFilterVisitor
 int lastRowNum = 0
@@ -194,12 +195,12 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             case BaseScript.PERSON:
                 uid row.cislo_osoby.toString()
                 id row.cuni_unique_id.toString()
-		setObjectClass(objectClass)
+		setObjectClass objectClass
 		attribute 'jmeno', row.jmeno
 		attribute 'prijmeni', row.prijmeni
 		attribute 'rodne_cislo', row.rodne_cislo
 		attribute 'datum_narozeni', ZonedDateTime.ofInstant(row.datum_narozeni.toInstant(), ZoneId.systemDefault())
-		attribute 'stat', row.stat
+		attribute 'stat', row.st
 		attribute 'pohlavi', row.pohlavi
 		/*		
 		jmeno String.class
