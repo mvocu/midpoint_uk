@@ -45,7 +45,7 @@ Object handleGetLatestSyncToken(Sql sql) {
     int result = 0
 
     sql.eachRow("select max(x_last_modified) from skunk_cas.ldap_org_struktura",
-            {row -> if(row.x_last_modified) > result { result = row.x_last_modified }})
+            {row -> if(row.x_last_modified > result) { result = row.x_last_modified }})
 
     return result
 }
