@@ -7,7 +7,9 @@ UPDATE skunk_cas.LDAP_ORG_STRUKTURA
 SET
   x_exportovat_typ = 'D', 
   x_zaznam_platny = 0, 
-  x_dtime_delete = sysdate
+  x_dtime_delete = sysdate,
+  X_LAST_MODIFIED = SYSDATE,
+  X_MODIFICATION_TYPE = 'D'
 WHERE
   x_zaznam_platny = 1 AND 
   x_exportovat_typ IS NULL AND 
@@ -89,7 +91,9 @@ UPDATE SET
   dst.POID_NADRIZENY = src.POID_NADRIZENY,
   dst.X_ZAZNAM_PLATNY = 1,
   dst.X_EXPORTOVAT_TYP = DECODE(dst.X_ZAZNAM_PLATNY, 1, 'U', 'C'),
-  dst.X_DTIME_UPDATE = SYSDATE
+  dst.X_DTIME_UPDATE = SYSDATE,
+  dst.X_LAST_MODIFIED  = SYSDATE,
+  dst.X_MODIFICATION_TYPE = DECODE(dst.X_ZAZNAM_PLATNY, 1, 'U', 'C')
 WHERE 
   dst.X_ZAZNAM_PLATNY = 0 OR 
   DECODE(src.FAKULTA , dst.FAKULTA , 0, 1) = 1 OR 
@@ -141,7 +145,9 @@ INSERT (
   dst.X_EXPORTOVAT_TYP,
   dst.X_DTIME_CREATE,
   dst.X_DTIME_UPDATE,
-  dst.X_DTIME_DELETE 
+  dst.X_DTIME_DELETE,
+  dst.X_LAST_MODIFIED,
+  dst.X_MODIFICATION_TYPE 
 )
 VALUES (
   src.ID_ORG,
@@ -170,6 +176,11 @@ VALUES (
   'C',
   SYSDATE,
   NULL,
-  NULL 
-);'''		
+  NULL,
+  SYSDATE,
+  'C'
+);'''
+
+	sql.execute(deleteQuery);
+	sql.execute(updateQuery);
 }
