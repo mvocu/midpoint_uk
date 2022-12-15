@@ -26,26 +26,35 @@ switch (operation) {
         return handleGetLatestSyncToken(sql)
 }
 
+
 void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
-    switch(objectclass) {
+    switch(objectClass) {
+
         case BaseScript.ORGANIZATION:
-            log.debug("Updating organizations")
+            log.info("Updating organizations")
             UpdateDbScript.updateOrgs(sql)
-            log.debug("Organization update complete")
+            log.info("Organization update complete")
             break
 
+        case ObjectClass.ALL:
+            log.info("Updating organizations")
+            UpdateDbScript.updateOrgs(sql)
+            log.info("Organization update complete")
+	    break
+
         default:
-            log.warn("Objectclass [{0}] is not (yet) supported", objectclass)
+            log.warn("Objectclass [{0}] is not (yet) supported", objectClass)
             break
     }
     // todo implement
 }
 
+
 Object handleGetLatestSyncToken(Sql sql) {
     int result = 0
 
     sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
-            {row -> if(row.x_last_modified > result) { result = row.last }})
+            {row -> if(row.last > result) { result = row.last }})
 
     return result
 }

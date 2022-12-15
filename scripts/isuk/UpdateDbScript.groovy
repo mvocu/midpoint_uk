@@ -1,6 +1,6 @@
 import groovy.sql.Sql
 
-void updateOrgs(Sql sql) {
+static void updateOrgs(Sql sql) {
 
 	def deleteQuery = '''\
 UPDATE skunk_cas.LDAP_ORG_STRUKTURA  
@@ -14,7 +14,7 @@ WHERE
   x_zaznam_platny = 1 AND 
   x_exportovat_typ IS NULL AND 
   ID_ORG NOT IN (SELECT ID_ORG FROM SKUNK_CAS.ORG_STRUKTURA) 
-;'''
+''' as String
 
 	def updateQuery = '''\
 MERGE INTO SKUNK_CAS.LDAP_ORG_STRUKTURA dst
@@ -179,8 +179,9 @@ VALUES (
   NULL,
   SYSDATE,
   'C'
-);'''
+)''' as String
 
 	sql.execute(deleteQuery);
 	sql.execute(updateQuery);
+	sql.commit();
 }
