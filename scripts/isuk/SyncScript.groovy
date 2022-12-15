@@ -32,13 +32,13 @@ void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
         case BaseScript.ORGANIZATION:
             log.info("Updating organizations")
-            UpdateDbScript.updateOrgs(sql)
+            UpdateDb.updateOrgs(sql)
             log.info("Organization update complete")
             break
 
         case ObjectClass.ALL:
             log.info("Updating organizations")
-            UpdateDbScript.updateOrgs(sql)
+            UpdateDb.updateOrgs(sql)
             log.info("Organization update complete")
 	    break
 

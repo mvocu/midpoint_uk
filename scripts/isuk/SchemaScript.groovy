@@ -20,7 +20,10 @@ def configuration = configuration as ScriptedSQLConfiguration
 
 
 builder.schema({
-    objectClass {
+    objectClass SchemaAdapter.createOrganizationSchema()
+/*
+			{
+
         type BaseScript.ORGANIZATION_NAME
         attributes {
 	    // black magic here - use better name for __UID__
@@ -71,6 +74,7 @@ builder.schema({
 	    s_poid_nadrizeny String.class, MULTIVALUED
         }
     }
+*/
 
     objectClass {
 	type BaseScript.PERSON_NAME

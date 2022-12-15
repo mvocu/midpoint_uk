@@ -81,20 +81,19 @@ def fieldMap = [
                 "cas_domena"    : "cas_domena",
                 "cas_identifikace" : "cas_identifikace",
                 "id_org_nadrizeny" : "id_org_nadrizeny",
-		"poid_nadrizeny"   : "poid_nadrizeny"
-
+				"poid_nadrizeny"   : "poid_nadrizeny"
         ],
 
 	( BaseScript.PERSON_NAME ): [
                 "__UID__"     : "cislo_osoby",
                 "__NAME__"    : "cuni_unique_id",
-		"jmeno"		: "jmeno",
-		"prijmeni"	: "prijmeni",		
-		"rodne_cislo"	: "rodne_cislo",
-		"datum_narozeni" : "datum_narozeni",
-		"stat"		: "st",
-		"pohlavi"	: "pohlavi",
-		"preferred_language" : "preferredlanguage"
+				"jmeno"		: "jmeno",
+				"prijmeni"	: "prijmeni",
+				"rodne_cislo"	: "rodne_cislo",
+				"datum_narozeni" : "datum_narozeni",
+				"stat"		: "st",
+				"pohlavi"	: "pohlavi",
+				"preferred_language" : "preferredlanguage"
 		/*
 		 preferred_language String.class
 		 handicap String.class, MULTIVALUED
@@ -110,7 +109,6 @@ def fieldMap = [
 		 adresa_psc String.class
 		 uid String.class
  */
- 
         ],
 	
         ( BaseScript.GROUP_NAME )  : [
@@ -124,16 +122,21 @@ def sqlquery = ""
 
 switch(objectClass) {
 	case BaseScript.ORGANIZATION:
-		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA" as String
+		sqlquery = "SELECT " + attrs.join(",")
+				+ ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA"
+						as String
 		break;
 
 	case BaseScript.PERSON:
-		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')" as String 
+		sqlquery = "SELECT " + attrs.join(",")
+				+ ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA"
+				+ " WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')"
+						as String
 		break;	
 		
 	default:
-                throw new UnsupportedOperationException(operation.name() + " operation of type:" +
-                        objectClass.objectClassValue + " is not supported.")
+		throw new UnsupportedOperationException(operation.name() + " operation of type:"
+        	+ objectClass.objectClassValue + " is not supported.")
 }
 	
 
@@ -196,35 +199,35 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             case BaseScript.PERSON:
                 uid row.cislo_osoby.toString()
                 id row.cuni_unique_id.toString()
-		setObjectClass objectClass
-		attribute 'jmeno', row.jmeno
-		attribute 'prijmeni', row.prijmeni
-		attribute 'rodne_cislo', row.rodne_cislo
-		attribute 'datum_narozeni', ZonedDateTime.ofInstant(row.datum_narozeni.toInstant(), ZoneId.systemDefault())
-		attribute 'stat', row.st
-		attribute 'pohlavi', row.pohlavi
-		attribute 'preferred_language', row.preferredlanguage
-		// handicap
-		attribute 'handicap', sql.rows(["id" : row.cislo_osoby], 
-			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id"
-			)*.hodnota 
+				setObjectClass objectClass
+				attribute 'jmeno', row.jmeno
+				attribute 'prijmeni', row.prijmeni
+				attribute 'rodne_cislo', row.rodne_cislo
+				attribute 'datum_narozeni', ZonedDateTime.ofInstant(row.datum_narozeni.toInstant(), ZoneId.systemDefault())
+				attribute 'stat', row.st
+				attribute 'pohlavi', row.pohlavi
+				attribute 'preferred_language', row.preferredlanguage
+				// handicap
+				attribute 'handicap', sql.rows(["id" : row.cislo_osoby],
+					"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id"
+					)*.hodnota
 			
-		// mail
-		attribute 'mail', sql.rows(["id" : row.cislo_osoby], 
-			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
-			)*.hodnota 
-		// mail_o365
-		attribute 'mail_o365', sql.rows(["id" : row.cislo_osoby],
-			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
-			)*.hodnota
-		// phone
-		attribute 'phone', sql.rows(["id" : row.cislo_osoby],
-			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
-			)*.hodnota
-		// mobile
-		attribute 'mobile', sql.rows(["id" : row.cislo_osoby],
-			"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
-			)*.hodnota
+				// mail
+				attribute 'mail', sql.rows(["id" : row.cislo_osoby],
+					"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
+					)*.hodnota
+				// mail_o365
+				attribute 'mail_o365', sql.rows(["id" : row.cislo_osoby],
+					"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
+					)*.hodnota
+				// phone
+				attribute 'phone', sql.rows(["id" : row.cislo_osoby],
+					"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
+					)*.hodnota
+				// mobile
+				attribute 'mobile', sql.rows(["id" : row.cislo_osoby],
+					"SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
+					)*.hodnota
 		/*		
 		identifikace String.class
 		adresa_stat String.class
@@ -243,12 +246,12 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
                 break;
 */
             case BaseScript.ORGANIZATION:
-	        uid row.id_org.toString()
+	        	uid row.id_org.toString()
        	     	id row.poid.toString()
-		setObjectClass objectClass
+				setObjectClass objectClass
             	attribute 'r_id_org', row.id_org
             	attribute 'fakulta', row.fakulta
-		attribute 's_fakulta', row.fakulta.toString()
+				attribute 's_fakulta', row.fakulta.toString()
             	attribute 'sidlo', row.sidlo
             	attribute 'datum_od', ZonedDateTime.ofInstant(row.datum_od.toInstant(), ZoneId.systemDefault())
             	attribute 'datum_do', ZonedDateTime.ofInstant(row.datum_do.toInstant(), ZoneId.systemDefault())
@@ -264,13 +267,13 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             	attribute 'zkratka_en', row.zkratka_en
             	attribute 'zkratka_dlouha_en', row.zkratka_dlouha_en
             	attribute 'soucast', row.soucast
-		attribute 's_soucast', row.soucast.toString()
+				attribute 's_soucast', row.soucast.toString()
             	attribute 'kod_sims', row.kod_sims
             	attribute 'cas_domena', row.cas_domena
             	attribute 'cas_identifikace', row.cas_identifikace
             	attribute 'id_org_nadrizeny', row.id_org_nadrizeny.split(',').collect { value -> new BigInteger(value) }
-		attribute 'poid_nadrizeny', row.poid_nadrizeny.split(',').collect { value-> new BigInteger(value) }  
-		attribute 's_poid_nadrizeny', row.poid_nadrizeny.split(',')
+				attribute 'poid_nadrizeny', row.poid_nadrizeny.split(',').collect { value-> new BigInteger(value) }
+				attribute 's_poid_nadrizeny', row.poid_nadrizeny.split(',')
                 break;
 
             default:
