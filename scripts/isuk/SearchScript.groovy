@@ -126,29 +126,29 @@ log.warn("Found {0} total records", total)
 // takes parameter values from whereParams map, stored there by SQLFilterVisitor
 int lastRowNum = 0
 def rowCount = 0
-sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
+sql.eachRow((Map) whereParams, (String) sqlquery, { row -> 
+	def connectorObject = null
         switch (objectClass) {
 
             case BaseScript.PERSON:
-				SchemaAdapter.mapPersonToIcfObject(row, sql)
+		connectorObject = SchemaAdapter.mapPersonToIcfObject(row, sql)
                 break;
 /*
             case ObjectClass.GROUP:
                 break;
 */
             case BaseScript.ORGANIZATION:
-				SchemaAdapter.mapOrganizationToIcfObject(row, sql)
+		connectorObject = SchemaAdapter.mapOrganizationToIcfObject(row, sql)
                 break;
 
             default:
                 throw new UnsupportedOperationException(operation.name() + " operation of type:" +
                         objectClass.objectClassValue + " is not supported.")
         }
-
     	lastRowNum = (int)row.radek
     	rowCount++
-    
-	    handler.handle connectorObject
+
+   	handler.handle connectorObject
 })
 
 

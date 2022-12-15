@@ -185,7 +185,7 @@ class SchemaAdapter {
         return ICFObjectBuilder.co {
                     uid row.id_org.toString()
                     id row.poid.toString()
-                    setObjectClass objectClass
+                    setObjectClass BaseScript.ORGANIZATION
                     attribute 'r_id_org', row.id_org
                     attribute 'fakulta', row.fakulta
                     attribute 's_fakulta', row.fakulta.toString()
@@ -219,7 +219,7 @@ class SchemaAdapter {
         return ICFObjectBuilder.co {
                     uid row.cislo_osoby.toString()
                     id row.cuni_unique_id.toString()
-                    setObjectClass objectClass
+                    setObjectClass BaseScript.PERSON
                     attribute 'jmeno', row.jmeno
                     attribute 'prijmeni', row.prijmeni
                     attribute 'rodne_cislo', row.rodne_cislo
