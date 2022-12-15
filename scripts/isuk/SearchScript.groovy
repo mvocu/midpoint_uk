@@ -57,7 +57,8 @@ log.warn("Page size " + pageSize + ", page offset " + pageOffset +  ", page cook
 //and is used to translate fields that might exist in the query object from the ICF identifier
 //back to the real property name.
 def fieldMap = [
-        ( BaseScript.ORGANIZATION_NAME ): [
+        ( BaseScript.ORGANIZATION_NAME ): SchemaAdapter.getOrganizationFieldMap(),
+		/* [
                 "__UID__"    : "id_org",
                 "__NAME__"   : "poid",
                 "r_id_org"      : "id_org",
@@ -82,7 +83,7 @@ def fieldMap = [
                 "cas_identifikace" : "cas_identifikace",
                 "id_org_nadrizeny" : "id_org_nadrizeny",
 				"poid_nadrizeny"   : "poid_nadrizeny"
-        ],
+        ], */
 
 	( BaseScript.PERSON_NAME ): [
                 "__UID__"     : "cislo_osoby",
