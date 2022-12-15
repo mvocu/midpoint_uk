@@ -123,16 +123,11 @@ def sqlquery = ""
 
 switch(objectClass) {
 	case BaseScript.ORGANIZATION:
-		sqlquery = "SELECT " + attrs.join(",")
-				+ ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA"
-						as String
+		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA"	as String
 		break;
 
 	case BaseScript.PERSON:
-		sqlquery = "SELECT " + attrs.join(",")
-				+ ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA"
-				+ " WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')"
-						as String
+		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')" as String
 		break;	
 		
 	default:
