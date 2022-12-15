@@ -61,5 +61,7 @@ class SchemaAdapter {
                 poid_nadrizeny BigInteger.class, MULTIVALUED
                 s_poid_nadrizeny String.class, MULTIVALUED
             }
+    	}
     }
+
 }
