@@ -17,8 +17,8 @@
             </xsd:appinfo>
         </xsd:annotation>
         <xsd:sequence>
-            <xsd:element name="membershipStatus" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="orgMember" type="tns:OrgMemberType" a:minOccurs="0" a:maxOccurs="1" />
+            <xsd:element name="membershipStatus" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="orgMember" type="tns:OrgMemberType" minOccurs="0" maxOccurs="1" />
         </xsd:sequence>
     </xsd:complexType>
 
@@ -30,8 +30,8 @@
         </xsd:annotation>
         <xsd:sequence>
             <!-- core attributes -->
-            <xsd:element name="membershipType" type="xsd:string" minOccurs="0" a:maxOccurs="1"/>
-            <xsd:element name="sponsored" type="xsd:boolean" minOccurs="0" a:maxOccurs="1" />
+            <xsd:element name="membershipType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sponsored" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
             <!-- defined attributes -->
         </xsd:sequence>
     </xsd:complexType>

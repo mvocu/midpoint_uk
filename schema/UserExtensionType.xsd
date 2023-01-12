@@ -17,12 +17,12 @@
             </xsd:appinfo>
         </xsd:annotation>
         <xsd:sequence>
-            <xsd:element name="uniqueid" type="xsd:string" a:minOccurs="0" a:maxOccurs="1" />
-            <xsd:element name="serviceUser" type="xsd:boolean" a:minOccurs="0" a:maxOccurs="1" />
-            <xsd:element name="sponsoredUser" type="xsd:boolean" a:minOccurs="0" a:maxOccurs="1" />
+            <xsd:element name="uniqueid" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="serviceUser" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="sponsoredUser" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
             <xsd:element name='mobile' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='pager' type='xsd:string' minOccurs='0' maxOccurs='1' />
-            <xsd:element name='mailRecords' type='MailRecordType' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='mailRecords' type='tns:MailRecordType' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='address' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='sshPublicKey' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='userCertDNs' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
