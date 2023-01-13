@@ -223,7 +223,7 @@ class SchemaAdapter {
                     attribute 'jmeno', row.jmeno
                     attribute 'prijmeni', row.prijmeni
                     attribute 'rodne_cislo', row.rodne_cislo
-                    attribute 'datum_narozeni', ZonedDateTime.ofInstant(row.datum_narozeni.toInstant(), ZoneId.systemDefault())
+                    attribute 'datum_narozeni', row.datum_narozeni ? ZonedDateTime.ofInstant(row.datum_narozeni.toInstant(), ZoneId.systemDefault()) : null
                     attribute 'stat', row.st
                     attribute 'pohlavi', row.pohlavi
                     attribute 'preferred_language', row.preferredlanguage

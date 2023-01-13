@@ -17,7 +17,10 @@
             </xsd:appinfo>
         </xsd:annotation>
         <xsd:sequence>
-            <xsd:element name="uniqueid" type="xsd:string" minOccurs="0" maxOccurs="1" />
+	    <xsd:element name="uniqueid" type="xsd:string" minOccurs="0" maxOccurs="1" />
+	    <xsd:element name="birthCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+	    <xsd:element name="birthDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" />
+	    <xsd:element name="phone" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
             <xsd:element name="serviceUser" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
             <xsd:element name="sponsoredUser" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
             <xsd:element name='mobile' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
