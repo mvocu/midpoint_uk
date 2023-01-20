@@ -234,19 +234,19 @@ class SchemaAdapter {
 
                     // mail
                     attribute 'mail', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
+                            "SELECT DISTINCT lower(hodnota) as hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
                     )*.hodnota
                     // mail_o365
                     attribute 'mail_o365', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
+                            "SELECT DISTINCT lower(hodnota) as hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
                     )*.hodnota
                     // phone
                     attribute 'phone', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
+                            "SELECT DISTINCT replace(hodnota, ' ', '') as hodnota  FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
                     )*.hodnota
                     // mobile
                     attribute 'mobile', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
+                            "SELECT DISTINCT replace(hodnota, ' ', '') as hodnota  FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
                     )*.hodnota
                     /*
                     identifikace String.class

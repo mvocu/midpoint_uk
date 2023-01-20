@@ -25,18 +25,21 @@
             <xsd:element name="sponsoredUser" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
             <xsd:element name='mobile' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='pager' type='xsd:string' minOccurs='0' maxOccurs='1' />
-            <xsd:element name='mailRecords' type='tns:MailRecordType' minOccurs='0' maxOccurs='unbounded' />
+	    <xsd:element name='mailRecords' type='tns:MailRecordType' minOccurs='0' maxOccurs='unbounded' />
+	    <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='address' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='sshPublicKey' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='userCertDNs' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='externalIds' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='login' type='xsd:string' minOccurs='0' maxOccurs='1' />
             <xsd:element name='userCertificates' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='cardNumbers' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='cardChipNumbers' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='consentIds' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='mfaPolicy' type='xsd:string' minOccurs='0' maxOccurs='1' />
             <xsd:element name='o365PrimaryEmailAddress' type='xsd:string' minOccurs='0' maxOccurs='1' />
-            <xsd:element name='o365EmailAddresses' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+	    <xsd:element name='o365EmailAddresses' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+	    <xsd:element name='o365PrincipalName' type='xsd:string' minOccurs='0' maxOccurs='1' />
         </xsd:sequence>
     </xsd:complexType>
 
@@ -49,7 +52,7 @@
         <xsd:sequence>
             <xsd:element name='mail' type='xsd:string' minOccurs='0' maxOccurs='1' />
             <xsd:element name="isPrimary" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
-            <xsd:element name='targeSystem' type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name='domain' type="xsd:string" minOccurs="0" maxOccurs="1" />
         </xsd:sequence>
     </xsd:complexType>
 
