@@ -3,8 +3,13 @@ import org.forgerock.openicf.connectors.scriptedsql.ScriptedSQLConfiguration
 import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
 import org.identityconnectors.framework.common.objects.ObjectClass
+import org.identityconnectors.framework.common.objects.SyncDeltaBuilder
+import org.identityconnectors.framework.common.objects.SyncDeltaType
 import org.identityconnectors.framework.common.objects.SyncResultsHandler
 import org.identityconnectors.framework.common.objects.SyncToken
+import org.identityconnectors.framework.common.objects.Uid
+
+import java.sql.Timestamp
 
 def configuration = configuration as ScriptedSQLConfiguration
 def operation = operation as OperationType
@@ -32,56 +37,84 @@ void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
     def attrs
     def sqlquery = ""
-    Integer token
+    long token
 
     if (tokenObject == null) {
         tokenObject = getLatestSyncToken(objectClass);
     }
     def fromTokenValue = tokenObject.getValue()
-    if (fromTokenValue instanceof Integer) {
-        token = (Integer)fromTokenValue
+    if (fromTokenValue instanceof long) {
+        token = (long)fromTokenValue
     } else {
         log.warn("Synchronization token is not integer, ignoring")
     }
 
-    def finalToken = token
+    def finalToken = tokenObject
+    def tokenTimestamp = new Timestamp(token)
 
-    switch(objectClass) {
-
-        case BaseScript.ORGANIZATION:
-            log.info("Updating organizations")
-            UpdateDb.updateOrgs(sql)
-            log.info("Organization update complete")
-            break
-
-        case BaseScript.PERSON:
-            log.info("Updating people")
-            log.info("People update complete")
-            log.info("Reading update people records")
-            attrs = SchemaAdapter.getPersonFieldMap().collect([] as HashSet) { entry -> entry.value }
-            sqlquery = "SELECT " + attrs.join(",") + " FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people'" as String
-            log.info("People sync complete")
-            break
-
-        case ObjectClass.ALL:
-            log.info("Updating organizations")
-            UpdateDb.updateOrgs(sql)
-            log.info("Organization update complete")
-	    break
-
-        default:
-            log.warn("Objectclass [{0}] is not (yet) supported", objectClass)
-            break
+    if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL)
+    {
+        log.info("Updating organizations")
+        UpdateDb.updateOrgs(sql)
+        log.info("Organization update complete")
     }
-    // todo implement
+
+    if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
+        log.info("Updating people")
+        log.info("People update complete")
+        log.info("Reading update people records")
+        attrs = SchemaAdapter.getPersonFieldMap().collect([] as HashSet) { entry -> entry.value }
+        sqlquery = "SELECT " + attrs.join(",") + " FROM SKUNK_CAS.LDAP_OSOBA WHERE cuni_unique_id > 0 AND ou = 'people' AND X_LAST_MODIFIED > :token" as String
+        sql.eachRow(['token': tokenTimestamp], sqlquery, {
+            row ->
+                {
+                    def deltaBuilder = new SyncDeltaBuilder()
+                    def deltaToken = new SyncToken(row.x_last_modified.getTime())
+                    finalToken = deltaToken
+                    deltaBuilder.setToken(deltaToken)
+
+
+                    switch (row.x_modification_type) {
+                        case 'U':
+                            deltaBuilder.setDeltaType(SyncDeltaType.UPDATE)
+                            deltaBuilder.setObject(SchemaAdapter.mapPersonToIcfObject(row, sql))
+                            break;
+
+                        case 'D':
+                            deltaBuilder.setDeltaType(SyncDeltaType.DELETE)
+                            deltaBuilder.setObjectClass(BaseScript.PERSON)
+                            uidAttr = SchemaAdapter.getPersonFieldMap()['__UID__'];
+                            deltaBuilder.setUid(new Uid(row.getAt(uidAttr)?.toString()))
+                            break;
+
+                        case 'C':
+                            deltaBuilder.setDeltaType(SyncDeltaType.CREATE_OR_UPDATE)
+                            deltaBuilder.setObject(SchemaAdapter.mapPersonToIcfObject(row, sql))
+                            break;
+                    }
+
+                    handler.handle(deltaBuilder.build())
+                }
+        })
+
+        ((org.identityconnectors.framework.spi.SyncTokenResultsHandler) handler).handleResult(finalToken)
+        log.info("People sync complete")
+    }
+
 }
 
 
 Object handleGetLatestSyncToken(Sql sql) {
     long result = 0
 
-    sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
-            {row -> if(row.last?.getTime() > result) { result = row.last.getTime() }})
+    if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL) {
+        sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
+                { row -> if (row.last?.getTime() > result) { result = row.last.getTime() } })
+    }
+    if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
+        sql.eachRow("select max(x_last_modified) as kast from skunk_cas.ldap_osoba",
+                { row -> if (row.last?.getTime() > result) { result = row.last.getTime() } })
+    }
 
     return new SyncToken(result)
 }
