@@ -25,7 +25,7 @@ switch (operation) {
         def token = token as Object
         def handler = handler as SyncResultsHandler
 
-        handleSync(sql, token, handler)
+        return handleSync(sql, token, handler)
         break
 	
     case OperationType.GET_LATEST_SYNC_TOKEN:
@@ -33,23 +33,22 @@ switch (operation) {
 }
 
 
-void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
+Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
     def attrs
     def sqlquery = ""
-    long token
+    Long token
 
     if (tokenObject == null) {
-        tokenObject = getLatestSyncToken(objectClass);
+        tokenObject = getLatestSyncToken(objectClass).getValue();
     }
-    def fromTokenValue = tokenObject.getValue()
-    if (fromTokenValue instanceof long) {
-        token = (long)fromTokenValue
+    if (tokenObject instanceof Long) {
+        token = (Long)tokenObject
     } else {
         log.warn("Synchronization token is not integer, ignoring")
     }
 
-    def finalToken = tokenObject
+    def finalToken = new SyncToken(tokenObject)
     def tokenTimestamp = new Timestamp(token)
 
     if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL)
@@ -69,7 +68,7 @@ void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
             row ->
                 {
                     def deltaBuilder = new SyncDeltaBuilder()
-                    def deltaToken = new SyncToken(row.x_last_modified.getTime())
+                    def deltaToken = new SyncToken(row.x_last_modified.timestampValue().getTime())
                     finalToken = deltaToken
                     deltaBuilder.setToken(deltaToken)
 
@@ -97,23 +96,23 @@ void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                 }
         })
 
-        ((org.identityconnectors.framework.spi.SyncTokenResultsHandler) handler).handleResult(finalToken)
         log.info("People sync complete")
     }
 
+    return finalToken
 }
 
 
 Object handleGetLatestSyncToken(Sql sql) {
-    long result = 0
+    Long result = 0
 
     if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL) {
         sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
-                { row -> if (row.last?.getTime() > result) { result = row.last.getTime() } })
+                { row -> if (row.last?.timestampValue().getTime() > result) { result = row.last.timestampValue().getTime() } })
     }
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
-        sql.eachRow("select max(x_last_modified) as kast from skunk_cas.ldap_osoba",
-                { row -> if (row.last?.getTime() > result) { result = row.last.getTime() } })
+        sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_osoba",
+                { row -> if (row.last?.timestampValue().getTime() > result) { result = row.last.timestampValue().getTime() } })
     }
 
     return new SyncToken(result)
