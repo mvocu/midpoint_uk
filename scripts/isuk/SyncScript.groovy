@@ -78,10 +78,10 @@ void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
 
 Object handleGetLatestSyncToken(Sql sql) {
-    Integer result = 0
+    long result = 0
 
     sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
-            {row -> if(row.last > result) { result = row.last }})
+            {row -> if(row.last?.getTime() > result) { result = row.last.getTime() }})
 
     return new SyncToken(result)
 }
