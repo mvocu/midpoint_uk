@@ -12,9 +12,9 @@
                    <a:extension ref="c:OrgType"/>
                </xsd:appinfo>
            </xsd:annotation>
-           <xsd:sequence>
-				<xsd:element name="test">
-				</xsd:element>
+	   <xsd:sequence>
+		   <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+	           <xsd:element name="hasO365Email" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
            </xsd:sequence>
        </xsd:complexType>
 </xsd:schema>
