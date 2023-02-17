@@ -4,6 +4,7 @@ import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
 import org.identityconnectors.framework.common.objects.ObjectClass
 import org.identityconnectors.framework.common.objects.SyncResultsHandler
+import org.identityconnectors.framework.common.objects.SyncToken
 
 def configuration = configuration as ScriptedSQLConfiguration
 def operation = operation as OperationType
@@ -51,10 +52,10 @@ void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
 
 Object handleGetLatestSyncToken(Sql sql) {
-    int result = 0
+    long result = 0
 
     sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
-            {row -> if(row.last > result) { result = row.last }})
+            {row -> if(row.last?.getTime() > result) { result = row.last.getTime() }})
 
-    return result
+    return new SyncToken(result)
 }
