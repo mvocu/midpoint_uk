@@ -4,6 +4,7 @@ import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
 import org.identityconnectors.framework.common.objects.ObjectClass
 import org.identityconnectors.framework.common.objects.SyncResultsHandler
+import org.identityconnectors.framework.common.objects.SyncToken
 
 def configuration = configuration as ScriptedSQLConfiguration
 def operation = operation as OperationType
@@ -28,12 +29,38 @@ switch (operation) {
 
 
 void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
+
+    def attrs
+    def sqlquery = ""
+    Integer token
+
+    if (tokenObject == null) {
+        tokenObject = getLatestSyncToken(objectClass);
+    }
+    def fromTokenValue = tokenObject.getValue()
+    if (fromTokenValue instanceof Integer) {
+        token = (Integer)fromTokenValue
+    } else {
+        log.warn("Synchronization token is not integer, ignoring")
+    }
+
+    def finalToken = token
+
     switch(objectClass) {
 
         case BaseScript.ORGANIZATION:
             log.info("Updating organizations")
             UpdateDb.updateOrgs(sql)
             log.info("Organization update complete")
+            break
+
+        case BaseScript.PERSON:
+            log.info("Updating people")
+            log.info("People update complete")
+            log.info("Reading update people records")
+            attrs = SchemaAdapter.getPersonFieldMap().collect([] as HashSet) { entry -> entry.value }
+            sqlquery = "SELECT " + attrs.join(",") + " FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people'" as String
+            log.info("People sync complete")
             break
 
         case ObjectClass.ALL:
@@ -51,10 +78,10 @@ void handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
 
 Object handleGetLatestSyncToken(Sql sql) {
-    int result = 0
+    Integer result = 0
 
     sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
             {row -> if(row.last > result) { result = row.last }})
 
-    return result
+    return new SyncToken(result)
 }
