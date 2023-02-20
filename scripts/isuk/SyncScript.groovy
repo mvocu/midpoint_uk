@@ -61,10 +61,10 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
         log.info("Updating people")
         log.info("People update complete")
-        log.info("Reading update people records")
+        log.info("Reading updated people records")
         attrs = SchemaAdapter.getPersonFieldMap().collect([] as HashSet) { entry -> entry.value }
-        sqlquery = "SELECT " + attrs.join(",") + " FROM SKUNK_CAS.LDAP_OSOBA WHERE cuni_unique_id > 0 AND ou = 'people' AND X_LAST_MODIFIED > :token" as String
-        sql.eachRow(['token': tokenTimestamp], sqlquery, {
+        sqlquery = "SELECT " + attrs.join(",") + ",x_last_modified,x_modification_type FROM SKUNK_CAS.LDAP_OSOBA WHERE cuni_unique_id > 0 AND ou = 'people' AND X_LAST_MODIFIED > ? ORDER BY x_last_modified ASC"
+        sql.eachRow(sqlquery, [ tokenTimestamp ], {
             row ->
                 {
                     def deltaBuilder = new SyncDeltaBuilder()
@@ -82,7 +82,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                         case 'D':
                             deltaBuilder.setDeltaType(SyncDeltaType.DELETE)
                             deltaBuilder.setObjectClass(BaseScript.PERSON)
-                            uidAttr = SchemaAdapter.getPersonFieldMap()['__UID__'];
+                            uidAttr = SchemaAdapter.getPersonFieldMap()['__UID__']
                             deltaBuilder.setUid(new Uid(row.getAt(uidAttr)?.toString()))
                             break;
 
