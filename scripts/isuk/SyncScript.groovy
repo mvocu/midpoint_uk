@@ -56,6 +56,41 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
         log.info("Updating organizations")
         UpdateDb.updateOrgs(sql)
         log.info("Organization update complete")
+        log.info("Reading updated organization records")
+        attrs = SchemaAdapter.getOrganizationFieldMap().collect([] as HashSet) { entry -> entry.value }
+        sqlquery = "SELECT " + attrs.join(",") + ", x_last_modified, x_modification_type FROM SKUNK_CAS.LDAP_ORG_STRUKTURA WHERE x_last_modified > ? ORDER BY x_last_modified ASC"
+        sql.eachRow(sqlquery, [ tokenTimestamp ], {
+            row ->
+                {
+                    def deltaBuilder = new SyncDeltaBuilder()
+                    def deltaToken = new SyncToken(row.x_last_modified.timestampValue().getTime())
+                    finalToken = deltaToken
+                    deltaBuilder.setToken(deltaToken)
+
+
+                    switch (row.x_modification_type) {
+                        case 'U':
+                            deltaBuilder.setDeltaType(SyncDeltaType.UPDATE)
+                            deltaBuilder.setObject(SchemaAdapter.mapOrganizationToIcfObject(row, sql))
+                            break;
+
+                        case 'D':
+                            deltaBuilder.setDeltaType(SyncDeltaType.DELETE)
+                            deltaBuilder.setObjectClass(BaseScript.PERSON)
+                            uidAttr = SchemaAdapter.getOrganizationFieldMap()['__UID__']
+                            deltaBuilder.setUid(new Uid(row.getAt(uidAttr)?.toString()))
+                            break;
+
+                        case 'C':
+                            deltaBuilder.setDeltaType(SyncDeltaType.CREATE_OR_UPDATE)
+                            deltaBuilder.setObject(SchemaAdapter.mapOrganizationToIcfObject(row, sql))
+                            break;
+                    }
+
+                    handler.handle(deltaBuilder.build())
+                }
+        })
+        log.info("Organization sync complete")
     }
 
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
@@ -95,7 +130,6 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                     handler.handle(deltaBuilder.build())
                 }
         })
-
         log.info("People sync complete")
     }
 
