@@ -101,7 +101,7 @@ class SchemaAdapter {
                 handicap String.class, MULTIVALUED
                 mail String.class, MULTIVALUED
                 mail_o365 String.class, MULTIVALUED
-                mail_o365_primary String.class,
+                mail_o365_primary String.class
                 phone String.class, MULTIVALUED
                 mobile String.class, MULTIVALUED
                 identifikace String.class
@@ -228,11 +228,11 @@ class SchemaAdapter {
                     def ruzne =  [ : ]
                     sql.eachRow([ "id" : row.cislo_osoby],
                             "SELECT DISTINCT nazev, hodnota FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1",
-                            { row ->
-                                if(ruzne.containsKey(row.nazev)) {
-                                    (ruzne[row.nazev] as List).add(row.hodnota)
+                            {
+                                if(ruzne.containsKey(it.nazev)) {
+                                    (ruzne[it.nazev] as List).add(it.hodnota)
                                 } else {
-                                    ruzne[row.nazev] = [ hodnota ]
+                                    ruzne[it.nazev] = [ it.hodnota ]
                                 }
                             }
                     )
