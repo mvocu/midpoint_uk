@@ -101,6 +101,7 @@ class SchemaAdapter {
                 handicap String.class, MULTIVALUED
                 mail String.class, MULTIVALUED
                 mail_o365 String.class, MULTIVALUED
+                mail_o365_primary String.class,
                 phone String.class, MULTIVALUED
                 mobile String.class, MULTIVALUED
                 identifikace String.class
@@ -154,13 +155,8 @@ class SchemaAdapter {
                 "datum_narozeni" : "datum_narozeni",
                 "stat"		: "st",
                 "pohlavi"	: "pohlavi",
-                "preferred_language" : "preferredlanguage"
+                "preferred_language" : "preferredlanguage",
                 /*
-                 preferred_language String.class
-                 handicap String.class, MULTIVALUED
-                 mail String.class, MULTIVALUED
-                 phone String.class, MULTIVALUED
-                 mobile String.class, MULTIVALUED
                  identifikace String.class
                  adresa_stat String.class
                  adresa_mesto String.class
@@ -227,27 +223,32 @@ class SchemaAdapter {
                     attribute 'stat', row.st
                     attribute 'pohlavi', row.pohlavi
                     attribute 'preferred_language', row.preferredlanguage
-                    // handicap
-                    attribute 'handicap', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'cuniHandicap' AND cislo_osoby = :id"
-                    )*.hodnota
 
+                    // get attributes from ldap_ruzne
+                    def ruzne =  [ : ]
+                    sql.eachRow([ "id" : row.cislo_osoby],
+                            "SELECT DISTINCT nazev, hodnota FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1",
+                            { row ->
+                                if(ruzne.containsKey(row.nazev)) {
+                                    (ruzne[row.nazev] as List).add(row.hodnota)
+                                } else {
+                                    ruzne[row.nazev] = [ hodnota ]
+                                }
+                            }
+                    )
+
+                    // handicap
+                    attribute 'handicap', ruzne['cuniHandicap']
                     // mail
-                    attribute 'mail', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT lower(hodnota) as hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail' AND cislo_osoby = :id"
-                    )*.hodnota
+                    attribute 'mail', ruzne['mail']
                     // mail_o365
-                    attribute 'mail_o365', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT lower(hodnota) as hodnota FROM skunk_cas.ldap_ruzne WHERE nazev = 'mail_o365' AND cislo_osoby = :id"
-                    )*.hodnota
+                    attribute 'mail_o365', ruzne['mail_o365']
+                    // mail_o365_primary
+                    attribute 'mail_o365_primary', ruzne['mail_o365_primary']?.first()
                     // phone
-                    attribute 'phone', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT replace(hodnota, ' ', '') as hodnota  FROM skunk_cas.ldap_ruzne WHERE nazev = 'telephoneNumber' AND cislo_osoby = :id"
-                    )*.hodnota
+                    attribute 'phone', ruzne['telephoneNumber']
                     // mobile
-                    attribute 'mobile', sql.rows(["id" : row.cislo_osoby],
-                            "SELECT DISTINCT replace(hodnota, ' ', '') as hodnota  FROM skunk_cas.ldap_ruzne WHERE nazev = 'mobile' AND cislo_osoby = :id"
-                    )*.hodnota
+                    attribute 'mobile', ruzne['mobile']
                     /*
                     identifikace String.class
                     adresa_stat String.class
