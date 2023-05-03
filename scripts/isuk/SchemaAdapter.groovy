@@ -150,7 +150,7 @@ class SchemaAdapter {
                 studyprogram String.class
                 studysubject1 String.class
                 studysubject2 String.class
-                jazykvyuky String.class
+                jazyk_vyuky String.class
                 id_org_whois String.class // string, to be used in association
                 id_vztah_whois BigInteger.class
                 hrany String.class, MULTIVALUED
@@ -223,7 +223,7 @@ class SchemaAdapter {
                 "studyprogram"       : "studyprogram",
                 "studysubject1"      : "studysubject1",
                 "studysubject2"      : "studysubject2",
-                "jazykvyuky"         : "jazykvyuky",
+                "jazyk_vyuky"        : "jazyk_vyuky",
                 "id_org_whois"       : "id_org_whois",
                 "id_vztah_whois"     : "id_vztah_whois",
         ]
@@ -324,12 +324,12 @@ class SchemaAdapter {
             attribute 'typ', row.typ
             attribute 'zdroj', row.zdroj
             attribute 'id_org', row.id_org
-            attribute 'zdroj_identifikator', row.zdroj.identifikator
+            attribute 'zdroj_identifikator', row.zdroj_identifikator
             attribute 'cislo_osoby', row.cislo_osoby.toString()
             attribute 'studyprogram', row.studyprogram
             attribute 'studysubject1', row.studysubject1
             attribute 'studysubject2', row.studysubject2
-            attribute 'jazykvyuky', row.jazykvyuky
+            attribute 'jazyk_vyuky', row.jazyk_vyuky
             attribute 'id_org_whois', row.id_org_whois.toString()
             attribute 'id_vztah_whois', row.id_vztah_whois
 

@@ -138,7 +138,7 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 				connectorObject = SchemaAdapter.mapPersonToIcfObject(row, sql)
                 break;
 
-            case ObjectClass.RELATION:
+            case BaseScript.RELATION:
 				connectorObject = SchemaAdapter.mapRelationToIcfObject(row, sql)
                 break;
 
