@@ -133,6 +133,46 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
         log.info("People sync complete")
     }
 
+    if(objectClass == BaseScript.RELATION || objectClass == ObjectClass.ALL) {
+        log.info("Updating relations")
+        log.info("Relations update complete")
+        log.info("Reading updated relation records")
+        attrs = SchemaAdapter.getRelationFieldMap().collect([] as HashSet) { entry -> entry.value }
+        sqlquery = "SELECT " + attrs.join(",") + ",x_last_modified,x_modification_type FROM SKUNK_CAS.LDAP_VZTAH WHERE X_LAST_MODIFIED > ? ORDER BY x_last_modified ASC"
+        sql.eachRow(sqlquery, [ tokenTimestamp ], {
+            row ->
+                {
+                    def deltaBuilder = new SyncDeltaBuilder()
+                    def deltaToken = new SyncToken(row.x_last_modified.timestampValue().getTime())
+                    finalToken = deltaToken
+                    deltaBuilder.setToken(deltaToken)
+
+
+                    switch (row.x_modification_type) {
+                        case 'U':
+                            deltaBuilder.setDeltaType(SyncDeltaType.UPDATE)
+                            deltaBuilder.setObject(SchemaAdapter.mapRelationToIcfObject(row, sql))
+                            break;
+
+                        case 'D':
+                            deltaBuilder.setDeltaType(SyncDeltaType.DELETE)
+                            deltaBuilder.setObjectClass(BaseScript.RELATION)
+                            uidAttr = SchemaAdapter.getPersonFieldMap()['__UID__']
+                            deltaBuilder.setUid(new Uid(row.getAt(uidAttr)?.toString()))
+                            break;
+
+                        case 'C':
+                            deltaBuilder.setDeltaType(SyncDeltaType.CREATE_OR_UPDATE)
+                            deltaBuilder.setObject(SchemaAdapter.mapRelationToIcfObject(row, sql))
+                            break;
+                    }
+
+                    handler.handle(deltaBuilder.build())
+                }
+        })
+        log.info("Relation sync complete")
+    }
+
     return finalToken
 }
 
@@ -146,6 +186,10 @@ Object handleGetLatestSyncToken(Sql sql) {
     }
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
         sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_osoba",
+                { row -> if (row.last?.timestampValue().getTime() > result) { result = row.last.timestampValue().getTime() } })
+    }
+    if(objectClass == BaseScript.RELATION || objectClass == ObjectClass.ALL) {
+        sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_vztah",
                 { row -> if (row.last?.timestampValue().getTime() > result) { result = row.last.timestampValue().getTime() } })
     }
 
