@@ -54,7 +54,7 @@ log.warn("Page size " + pageSize + ", page offset " + pageOffset +  ", page cook
 def fieldMap = [
 	( BaseScript.ORGANIZATION_NAME ): SchemaAdapter.getOrganizationFieldMap(),
 	( BaseScript.PERSON_NAME ): SchemaAdapter.getPersonFieldMap(),
-	( BaseScript.GROUP_NAME )  : SchemaAdapter.getGroupFieldMap()
+	( BaseScript.RELATION_NAME )  : SchemaAdapter.getRelationFieldMap()
 ]
 
 def attrs = fieldMap[objectClass.objectClassValue].collect([] as HashSet){ entry -> entry.value }
@@ -68,7 +68,11 @@ switch(objectClass) {
 	case BaseScript.PERSON:
 		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')" as String
 		break;	
-		
+
+	case BaseScript.RELATION:
+		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY id ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_VZTAH WHERE x_zaznam_platny = 1)" as String
+		break;
+
 	default:
 		throw new UnsupportedOperationException(operation.name() + " operation of type:"
         	+ objectClass.objectClassValue + " is not supported.")
@@ -131,14 +135,15 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
         switch (objectClass) {
 
             case BaseScript.PERSON:
-		connectorObject = SchemaAdapter.mapPersonToIcfObject(row, sql)
+				connectorObject = SchemaAdapter.mapPersonToIcfObject(row, sql)
                 break;
-/*
-            case ObjectClass.GROUP:
+
+            case ObjectClass.RELATION:
+				connectorObject = SchemaAdapter.mapRelationToIcfObject(row, sql)
                 break;
-*/
+
             case BaseScript.ORGANIZATION:
-		connectorObject = SchemaAdapter.mapOrganizationToIcfObject(row, sql)
+				connectorObject = SchemaAdapter.mapOrganizationToIcfObject(row, sql)
                 break;
 
             default:

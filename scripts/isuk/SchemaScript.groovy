@@ -14,6 +14,7 @@ def configuration = configuration as ScriptedSQLConfiguration
 builder.schema({
     objectClass SchemaAdapter.createOrganizationSchema()
     objectClass SchemaAdapter.createPersonSchema()
+    objectClass SchemaAdapter.createRelationSchema()
 
     defineOperationOption OperationOptionInfoBuilder.buildPagedResultsOffset(), SearchOp
     defineOperationOption OperationOptionInfoBuilder.buildPageSize(), SearchOp
