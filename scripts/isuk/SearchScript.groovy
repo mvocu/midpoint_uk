@@ -66,11 +66,17 @@ switch(objectClass) {
 		break;
 
 	case BaseScript.PERSON:
-		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')" as String
+		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek" +
+				" FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')" as String
 		break;	
 
 	case BaseScript.RELATION:
-		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY id ASC) AS radek FROM (SELECT * FROM SKUNK_CAS.LDAP_VZTAH WHERE x_zaznam_platny = 1)" as String
+		sqlquery = "SELECT " + attrs.join(",") + ", hrany, ROW_NUMBER() OVER (ORDER BY id ASC) AS radek " +
+				" FROM (SELECT " + attrs.collect({ "lv." + it}).join(",") + ", LISTAGG(rh.ID_ORG || ':' || rh.SOUVISLOST, ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
+				" FROM SKUNK_CAS.LDAP_VZTAH lv"  +
+				" LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah" +
+				" WHERE x_zaznam_platny = 1"  +
+				" GROUP BY " + attrs.collect({ "lv." + it}).join(",") + ")" as String
 		break;
 
 	default:

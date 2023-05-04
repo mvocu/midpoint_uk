@@ -226,7 +226,7 @@ class SchemaAdapter {
                 "jazyk_vyuky"        : "jazyk_vyuky",
                 "id_org_whois"       : "id_org_whois",
                 "id_vztah_whois"     : "id_vztah_whois",
-                "hrany"              : "hrany",
+                // "hrany"              : "hrany",
         ]
     }
 
@@ -334,6 +334,7 @@ class SchemaAdapter {
             attribute 'id_org_whois', row.id_org_whois.toString()
             attribute 'id_vztah_whois', row.id_vztah_whois
 
+            /*
             def hrany = []
 
             if(row.id_vztah_whois) {
@@ -344,7 +345,9 @@ class SchemaAdapter {
                         }
                 )
             }
-            attribute 'hrany', hrany
+            */
+
+            attribute 'hrany', hrany.split(",")
         }
     }
 
