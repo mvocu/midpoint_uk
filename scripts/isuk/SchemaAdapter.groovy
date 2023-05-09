@@ -226,7 +226,7 @@ class SchemaAdapter {
                 "jazyk_vyuky"        : "jazyk_vyuky",
                 "id_org_whois"       : "id_org_whois",
                 "id_vztah_whois"     : "id_vztah_whois",
-                //"hrany"              : "hrany",
+                "hrany"              : "hrany",
         ]
     }
 
@@ -347,7 +347,7 @@ class SchemaAdapter {
             }
             */
 
-            attribute 'hrany', hrany.split(",")
+            attribute 'hrany', row.hrany?.split(",")?.grep({it != ":"})
         }
     }
 

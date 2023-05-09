@@ -57,7 +57,7 @@ def fieldMap = [
 	( BaseScript.RELATION_NAME )  : SchemaAdapter.getRelationFieldMap()
 ]
 
-def attrs = fieldMap[objectClass.objectClassValue].collect([] as HashSet){ entry -> entry.value }
+def attrs = fieldMap[objectClass.objectClassValue].collect({ entry -> entry.value }).unique()
 def sqlquery = "" 
 
 switch(objectClass) {
@@ -71,12 +71,13 @@ switch(objectClass) {
 		break;	
 
 	case BaseScript.RELATION:
-		sqlquery = "SELECT " + attrs.join(",") + ", hrany, ROW_NUMBER() OVER (ORDER BY id ASC) AS radek " +
-				" FROM (SELECT " + attrs.collect({ "lv." + it}).join(",") + ", LISTAGG(rh.ID_ORG || ':' || rh.SOUVISLOST, ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
+ 		def cols = attrs.grep({it != "hrany"}).collect({"lv." + it}).join(",")
+		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id ASC) AS radek " +
+				" FROM (SELECT " + cols + ", LISTAGG(rh.ID_ORG || ':' || rh.SOUVISLOST, ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
 				" FROM SKUNK_CAS.LDAP_VZTAH lv"  +
 				" LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah" +
 				" WHERE x_zaznam_platny = 1"  +
-				" GROUP BY " + attrs.collect({ "lv." + it}).join(",") + ")" as String
+				" GROUP BY " + cols + ")" as String
 		break;
 
 	default:
