@@ -17,7 +17,7 @@
             </xsd:appinfo>
         </xsd:annotation>
         <xsd:sequence>
-	    <xsd:element name="uniqueid" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <xsd:element name="uniqueid" type="xsd:string" minOccurs="0" maxOccurs="1">
                <xsd:annotation>
                     <xsd:appinfo>
                         <a:indexed>true</a:indexed>
@@ -25,10 +25,10 @@
                         <a:displayOrder>100</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-	    </xsd:element>
-	    <xsd:element name="birthCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
-	    <xsd:element name="birthDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" />
-	    <xsd:element name="phone" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+            </xsd:element>
+            <xsd:element name="birthCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="birthDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="phone" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
             <xsd:element name="serviceUser" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
             <xsd:element name="sponsoredUser" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
             <xsd:element name='mobile' type='xsd:string' minOccurs='0' maxOccurs='unbounded'>
@@ -39,7 +39,7 @@
                         <a:displayOrder>120</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-	    </xsd:element>
+            </xsd:element>
             <xsd:element name='pager' type='xsd:string' minOccurs='0' maxOccurs='1'>
                <xsd:annotation>
                     <xsd:appinfo>
@@ -49,8 +49,8 @@
                     </xsd:appinfo>
                 </xsd:annotation>
             </xsd:element>
-	    <xsd:element name='mailRecords' type='tns:MailRecordType' minOccurs='0' maxOccurs='unbounded' />
-	    <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='mailRecords' type='tns:MailRecordType' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='address' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='sshPublicKey' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='userCertDNs' type='xsd:string' minOccurs='0' maxOccurs='unbounded'>
@@ -61,7 +61,7 @@
                         <a:displayOrder>140</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-	    </xsd:element>
+            </xsd:element>
             <xsd:element name='externalIds' type='xsd:string' minOccurs='0' maxOccurs='unbounded'>
                <xsd:annotation>
                     <xsd:appinfo>
@@ -70,7 +70,7 @@
                         <a:displayOrder>150</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-	    </xsd:element>
+            </xsd:element>
             <xsd:element name='login' type='xsd:string' minOccurs='0' maxOccurs='1'>
                <xsd:annotation>
                     <xsd:appinfo>
@@ -79,7 +79,7 @@
                         <a:displayOrder>160</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-	    </xsd:element>
+            </xsd:element>
             <xsd:element name='userCertificates' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='cardNumbers' type='xsd:string' minOccurs='0' maxOccurs='unbounded'>
                <xsd:annotation>
@@ -89,7 +89,7 @@
                         <a:displayOrder>170</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-	    </xsd:element>
+            </xsd:element>
             <xsd:element name='cardChipNumbers' type='xsd:string' minOccurs='0' maxOccurs='unbounded'>
                <xsd:annotation>
                     <xsd:appinfo>
@@ -98,13 +98,14 @@
                         <a:displayOrder>180</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-	    </xsd:element>
+            </xsd:element>
             <xsd:element name='consentIds' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='mfaPolicy' type='xsd:string' minOccurs='0' maxOccurs='1' />
             <xsd:element name='o365PrimaryEmailAddress' type='xsd:string' minOccurs='0' maxOccurs='1' />
-	    <xsd:element name='o365EmailAddresses' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
-	    <xsd:element name='o365PrincipalName' type='xsd:string' minOccurs='0' maxOccurs='1' />
-	    <xsd:element name='o365AssignedLicenses' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='o365EmailAddresses' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='o365PrincipalName' type='xsd:string' minOccurs='0' maxOccurs='1' />
+            <xsd:element name='o365AssignedLicenses' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='affiliation' type='xsd:string' minOccurs='0' maxOccurs="unbounded" />
         </xsd:sequence>
     </xsd:complexType>
 
