@@ -154,6 +154,12 @@ class SchemaAdapter {
                 id_org_whois String.class // string, to be used in association
                 id_vztah_whois BigInteger.class
                 hrany String.class, MULTIVALUED
+                vztah_typ BigInteger.class
+                id_funkce BigInteger.class
+                studium_typ String.class
+                zamestnani_typ BigInteger.class
+                clenstvi_typ BigInteger.class
+                externista_typ BigInteger.class
             }
         }
     }
@@ -227,6 +233,12 @@ class SchemaAdapter {
                 "id_org_whois"       : "id_org_whois",
                 "id_vztah_whois"     : "id_vztah_whois",
                 "hrany"              : "hrany",
+                "vztah_typ"          : "vztah_typ",
+                "id_funkce"          : "id_funkce",
+                "studium_typ"        : "studium_typ",
+                "zamestnani_typ"     : "zamestnani_typ",
+                "clenstvi_typ"       : "clenstvi_typ",
+                "externista_typ"     : "externista_typ"
         ]
     }
 
