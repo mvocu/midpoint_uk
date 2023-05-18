@@ -219,26 +219,26 @@ class SchemaAdapter {
 
     def static getRelationFieldMap() {
         return [
-                "__UID__"            : "id",
-                "__NAME__"           : "id",
-                "typ"                : "typ",
-                "zdroj"              : "zdroj",
-                "id_org"             : "id_org",
-                "zdroj_identifikator": "zdroj_identifikator",
-                "cislo_osoby"        : "cislo_osoby",
-                "studyprogram"       : "studyprogram",
-                "studysubject1"      : "studysubject1",
-                "studysubject2"      : "studysubject2",
-                "jazyk_vyuky"        : "jazyk_vyuky",
-                "id_org_whois"       : "id_org_whois",
-                "id_vztah_whois"     : "id_vztah_whois",
+                "__UID__"            : "lv.id",
+                "__NAME__"           : "lv.id",
+                "typ"                : "lv.typ",
+                "zdroj"              : "lv.zdroj",
+                "id_org"             : "lv.id_org",
+                "zdroj_identifikator": "lv.zdroj_identifikator",
+                "cislo_osoby"        : "lv.cislo_osoby",
+                "studyprogram"       : "lv.studyprogram",
+                "studysubject1"      : "lv.studysubject1",
+                "studysubject2"      : "lv.studysubject2",
+                "jazyk_vyuky"        : "lv.jazyk_vyuky",
+                "id_org_whois"       : "lv.id_org_whois",
+                "id_vztah_whois"     : "lv.id_vztah_whois",
                 "hrany"              : "hrany",
-                "vztah_typ"          : "vztah_typ",
-                "id_funkce"          : "id_funkce",
-                "studium_typ"        : "studium_typ",
-                "zamestnani_typ"     : "zamestnani_typ",
-                "clenstvi_typ"       : "clenstvi_typ",
-                "externista_typ"     : "externista_typ"
+                "vztah_typ"          : "rv.vztah_typ",
+                "id_funkce"          : "rv.id_funkce",
+                "studium_typ"        : "rv.studium_typ",
+                "zamestnani_typ"     : "rv.zamestnani_typ",
+                "clenstvi_typ"       : "rv.clenstvi_typ",
+                "externista_typ"     : "rv.externista_typ"
         ]
     }
 

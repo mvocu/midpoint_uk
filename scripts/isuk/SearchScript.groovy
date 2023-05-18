@@ -71,11 +71,12 @@ switch(objectClass) {
 		break;	
 
 	case BaseScript.RELATION:
- 		def cols = attrs.grep({it != "hrany"}).collect({"lv." + it}).join(",")
+ 		def cols = attrs.grep({it != "hrany"}).join(",")
 		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id ASC) AS radek " +
 				" FROM (SELECT " + cols + ", LISTAGG(decode(rh.id_org, null, null, rh.ID_ORG || ':' || rh.SOUVISLOST), ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
 				" FROM SKUNK_CAS.LDAP_VZTAH lv"  +
-				" LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah" +
+				" LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah "
+				" LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah " +
 				" WHERE x_zaznam_platny = 1"  +
 				" GROUP BY " + cols + ")" as String
 		break;
