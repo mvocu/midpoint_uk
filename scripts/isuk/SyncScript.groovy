@@ -138,12 +138,14 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
         log.info("Relations update complete")
         log.info("Reading updated relation records")
         attrs = SchemaAdapter.getRelationFieldMap().collect([] as HashSet) { entry -> entry.value }
-        sqlquery = "SELECT " + attrs.collect({"lv." + it}).join(",") + ", x_last_modified, x_modification_type " +
-                " LISTAGG(rh.ID_ORG || ':' || rh.SOUVISLOST, ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
+        def cols = attrs.grep({it != "hrany"}).collect({"lv." + it}).join(",")
+        sqlquery = "SELECT " + cols + ", x_last_modified, x_modification_type, " +
+                " LISTAGG(DECODE(rh.ID_ORG, null, null, rh.ID_ORG || ':' || rh.SOUVISLOST), ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
                 " FROM SKUNK_CAS.LDAP_VZTAH lv " +
                 " LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah" +
-                " WHERE X_LAST_MODIFIED > ? ORDER BY x_last_modified ASC" +
-                " GROUP BY " + attrs.collect({"lv." + it}).join(",")
+                " WHERE X_LAST_MODIFIED > ? " + 
+                " GROUP BY " + cols + ", x_last_modified, x_modification_type " + 
+                " ORDER BY x_last_modified ASC" 
 
         sql.eachRow(sqlquery, [ tokenTimestamp ], {
             row ->
@@ -152,7 +154,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                     def deltaToken = new SyncToken(row.x_last_modified.timestampValue().getTime())
                     finalToken = deltaToken
                     deltaBuilder.setToken(deltaToken)
-
+                    def process = true
 
                     switch (row.x_modification_type) {
                         case 'U':
@@ -171,9 +173,14 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                             deltaBuilder.setDeltaType(SyncDeltaType.CREATE_OR_UPDATE)
                             deltaBuilder.setObject(SchemaAdapter.mapRelationToIcfObject(row, sql))
                             break;
+
+			default:
+			    process = false
+			    log.info("Unknown changetype for row {0}", row)
+ 			    break
                     }
 
-                    handler.handle(deltaBuilder.build())
+                   if(process) handler.handle(deltaBuilder.build())
                 }
         })
         log.info("Relation sync complete")
