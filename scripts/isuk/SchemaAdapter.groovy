@@ -360,6 +360,12 @@ class SchemaAdapter {
             */
 
             attribute 'hrany', row.hrany?.split(",")?.grep({it != ":"})
+            attribute "vztah_typ", row.vztah_typ
+            attribute "id_funkce", row.id_funkce
+            attribute "studium_typ", row.studium_typ
+            attribute "zamestnani_typ", row.zamestnani_typ
+            attribute "clenstvi_typ", row.clenstvi_typ
+            attribute "externista_typ", row.externista_typ
         }
     }
 

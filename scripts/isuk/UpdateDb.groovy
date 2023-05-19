@@ -185,3 +185,11 @@ VALUES (
 	sql.execute(updateQuery);
 	sql.commit();
 }
+
+static void updatePeople(Sql sql) {
+	sql.commit();
+}
+
+static void updateRelations(Sql sql) {
+	sql.commit();
+}

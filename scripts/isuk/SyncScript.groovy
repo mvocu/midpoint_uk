@@ -95,6 +95,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
         log.info("Updating people")
+        UpdateDb.updatePeople(sql);
         log.info("People update complete")
         log.info("Reading updated people records")
         attrs = SchemaAdapter.getPersonFieldMap().collect([] as HashSet) { entry -> entry.value }
@@ -135,6 +136,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 
     if(objectClass == BaseScript.RELATION || objectClass == ObjectClass.ALL) {
         log.info("Updating relations")
+        UpdateDb.updateRelations(sql)
         log.info("Relations update complete")
         log.info("Reading updated relation records")
         attrs = SchemaAdapter.getRelationFieldMap().collect([] as HashSet) { entry -> entry.value }
@@ -175,10 +177,10 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                             deltaBuilder.setObject(SchemaAdapter.mapRelationToIcfObject(row, sql))
                             break;
 
-			default:
-			    process = false
-			    log.info("Unknown changetype for row {0}", row)
- 			    break
+                        default:
+                            process = false
+                            log.info("Unknown changetype for row {0}", row)
+                            break;
                     }
                    log.info("Going to process delta {0}", deltaBuilder.build())
                    if(process) handler.handle(deltaBuilder.build())
