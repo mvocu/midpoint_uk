@@ -332,7 +332,7 @@ class SchemaAdapter {
         return ICFObjectBuilder.co {
             uid row.id.toString()
             id row.id.toString()
-
+            setObjectClass BaseScript.RELATION
             attribute 'r_id', row.id
             attribute 'typ', row.typ
             attribute 'zdroj', row.zdroj

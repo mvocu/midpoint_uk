@@ -142,7 +142,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
         sqlquery = "SELECT " + cols + ", x_last_modified, x_modification_type, " +
                 " LISTAGG(DECODE(rh.ID_ORG, null, null, rh.ID_ORG || ':' || rh.SOUVISLOST), ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
                 " FROM SKUNK_CAS.LDAP_VZTAH lv " +
-                " LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah "
+                " LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah " +
                 " LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah " +
                 " WHERE X_LAST_MODIFIED > ? " + 
                 " GROUP BY " + cols + ", x_last_modified, x_modification_type " + 
@@ -166,7 +166,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                         case 'D':
                             deltaBuilder.setDeltaType(SyncDeltaType.DELETE)
                             deltaBuilder.setObjectClass(BaseScript.RELATION)
-                            uidAttr = SchemaAdapter.getPersonFieldMap()['__UID__']
+                            uidAttr = SchemaAdapter.getRelationFieldMap()['__UID__'].split('[.]').last()
                             deltaBuilder.setUid(new Uid(row.getAt(uidAttr)?.toString()))
                             break;
 
@@ -180,7 +180,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 			    log.info("Unknown changetype for row {0}", row)
  			    break
                     }
-
+                   log.info("Going to process delta {0}", deltaBuilder.build())
                    if(process) handler.handle(deltaBuilder.build())
                 }
         })
