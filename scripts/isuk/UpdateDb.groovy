@@ -206,7 +206,7 @@ ON (lv.X_ZAZNAM_PLATNY = 1
   AND lv.zdroj_identifikator = r.STUD_ID)
 WHEN MATCHED THEN 
    UPDATE SET lv.ID_VZTAH_WHOIS = r.ID_VZTAH
-   WHERE lv.ID_VZTAH_WHOIS IS NULL;
+   WHERE lv.ID_VZTAH_WHOIS IS NULL
 ''' as String
 
 	sql.execute(mergeStudVztahyQuery);
