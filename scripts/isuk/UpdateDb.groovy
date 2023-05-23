@@ -191,5 +191,24 @@ static void updatePeople(Sql sql) {
 }
 
 static void updateRelations(Sql sql) {
+	def mergeStudVztahyQuery = '''
+MERGE INTO LDAP_VZTAH lv 
+USING (
+    SELECT po.CISLO_UK , rv.ID_VZTAH, rv.ID_ORG , rs.STUD_ID  
+    FROM skunk.PER_OSOBA po 
+    JOIN skunk.REL_VZTAH rv ON rv.ID_OSOBA = po.ID_OSOBA AND sysdate BETWEEN rv.DATUM_OD AND rv.DATUM_DO
+    JOIN skunk.REL_STUDIUM rs ON rs.ID_VZTAH = rv.ID_VZTAH AND rv.VZTAH_TYP IN (2, 7)
+  ) r
+ON (lv.X_ZAZNAM_PLATNY = 1 
+  AND lv.CISLO_OSOBY = r.CISLO_UK 
+  AND lv.ID_ORG_WHOIS = r.ID_ORG 
+  AND lv.zdroj LIKE 'studium.%' 
+  AND lv.zdroj_identifikator = r.STUD_ID)
+WHEN MATCHED THEN 
+   UPDATE SET lv.ID_VZTAH_WHOIS = r.ID_VZTAH
+   WHERE lv.ID_VZTAH_WHOIS IS NULL;
+''' as String
+
+	sql.execute(mergeStudVztahyQuery);
 	sql.commit();
 }

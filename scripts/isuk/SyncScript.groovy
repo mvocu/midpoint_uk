@@ -145,7 +145,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
                 " LISTAGG(DECODE(rh.ID_ORG, null, null, rh.ID_ORG || ':' || rh.SOUVISLOST), ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
                 " FROM SKUNK_CAS.LDAP_VZTAH lv " +
                 " LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah " +
-                " LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah " +
+                " LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah AND rh.id_org <> rv.id_org " +
                 " WHERE X_LAST_MODIFIED > ? " + 
                 " GROUP BY " + cols + ", x_last_modified, x_modification_type " + 
                 " ORDER BY x_last_modified ASC" 

@@ -77,7 +77,7 @@ switch(objectClass) {
 				" FROM (SELECT " + cols + ", LISTAGG(decode(rh.id_org, null, null, rh.ID_ORG || ':' || rh.SOUVISLOST), ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
 				" FROM SKUNK_CAS.LDAP_VZTAH lv"  +
 				" LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah " +
-				" LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah " +
+				" LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah AND rh.id_org <> rv.id_org " +
 				" WHERE x_zaznam_platny = 1"  +
 				" GROUP BY " + cols + ")" as String
 		break;
