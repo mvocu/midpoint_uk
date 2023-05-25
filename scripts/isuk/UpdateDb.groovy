@@ -209,6 +209,31 @@ WHEN MATCHED THEN
    WHERE lv.ID_VZTAH_WHOIS IS NULL
 ''' as String
 
+	def mergeCZVVztahyQuery = '''
+MERGE INTO LDAP_VZTAH LV
+USING (
+  SELECT * FROM 
+  ( 
+    SELECT ROW_NUMBER() OVER (PARTITION BY rv.ID_OSOBA , rv.ID_ORG  ORDER BY rv.DATUM_OD DESC) AS rn, po.CISLO_UK , rv.*
+    FROM skunk.PER_OSOBA po 
+    JOIN skunk.REL_VZTAH rv  ON rv.ID_OSOBA = po.ID_OSOBA 
+    WHERE rv.VZTAH_TYP = 7 AND sysdate BETWEEN rv.DATUM_OD AND rv.DATUM_DO 
+    ORDER BY rv.ID_VZTAH, po.CISLO_UK 
+  )
+  WHERE rn = 1 
+) r 
+ON (
+    lv.X_ZAZNAM_PLATNY = 1
+    AND lv.CISLO_OSOBY = r.CISLO_UK
+    AND lv.ID_ORG_WHOIS = r.ID_ORG
+    AND lv.zdroj = 'studium.czv_aktivni'
+)
+WHEN MATCHED THEN 
+  UPDATE SET lv.ID_VZTAH_WHOIS = r.ID_VZTAH
+  WHERE lv.ID_VZTAH_WHOIS IS NULL
+  ''' as String
+
 	sql.execute(mergeStudVztahyQuery);
+	sql.execute(mergeCZVVztahyQuery);
 	sql.commit();
 }
