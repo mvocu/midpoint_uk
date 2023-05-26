@@ -233,7 +233,35 @@ WHEN MATCHED THEN
   WHERE lv.ID_VZTAH_WHOIS IS NULL
   ''' as String
 
+	def mergeHranyQuery = '''
+MERGE INTO LDAP_VZTAH lv2 
+USING (
+SELECT r.id, LISTAGG(r.id_org || ':' || r.souvislost || ':' || r.funkce, ';') WITHIN GROUP (ORDER BY r.id_vztah_hrana) AS hrany
+ FROM
+   (
+    SELECT DISTINCT lv.ID, rh.ID_ORG, rh.ID_VZTAH_HRANA, rh.SOUVISLOST, LISTAGG(rf.NAZEV_FUNKCE_KOD, ',') WITHIN GROUP (ORDER BY rf.ID_FUNKCE) AS funkce
+    FROM LDAP_VZTAH lv 
+    JOIN skunk.REL_HRANA rh ON rh.ID_VZTAH = lv.ID_VZTAH_WHOIS AND sysdate BETWEEN rh.DATUM_OD AND rh.DATUM_DO  
+    LEFT JOIN skunk.REL_FUNKCE rf ON rf.ID_VZTAH_HRANA = rh.ID_VZTAH_HRANA AND sysdate BETWEEN rf.DATUM_OD AND rf.DATUM_DO 
+    WHERE lv.X_ZAZNAM_PLATNY = 1 
+    GROUP BY lv.ID, rh.ID_ORG, rh.ID_VZTAH_HRANA, rh.SOUVISLOST
+   ) r
+  GROUP BY r.id
+ ) r2
+ON (
+   lv2.X_ZAZNAM_PLATNY = 1
+   AND lv2.id = r2.id
+)
+WHEN MATCHED THEN 
+   UPDATE SET 
+     lv2.HRANY = r2.hrany,
+     lv2.X_LAST_MODIFIED = sysdate,
+     lv2.X_MODIFICATION_TYPE = decode(lv2.X_MODIFICATION_TYPE, 'C', 'C', 'D', 'D', 'U')
+   WHERE decode(r2.hrany, lv2.hrany, 0, 1) = 1;
+''' as String
+
 	sql.execute(mergeStudVztahyQuery);
 	sql.execute(mergeCZVVztahyQuery);
+	sql.execute(mergeHranyQuery);
 	sql.commit();
 }

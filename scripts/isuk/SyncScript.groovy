@@ -140,15 +140,12 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
         log.info("Relations update complete")
         log.info("Reading updated relation records")
         attrs = SchemaAdapter.getRelationFieldMap().collect([] as HashSet) { entry -> entry.value }
-        def cols = attrs.grep({it != "hrany"}).join(",")
-        sqlquery = "SELECT " + cols + ", x_last_modified, x_modification_type, " +
-                " LISTAGG(DECODE(rh.ID_ORG, null, null, rh.ID_ORG || ':' || rh.SOUVISLOST), ',') WITHIN GROUP (ORDER BY rh.ID_ORG) AS hrany " +
+        def cols = attrs.join(",")
+        sqlquery = "SELECT " + cols + ", x_last_modified, x_modification_type " +
                 " FROM SKUNK_CAS.LDAP_VZTAH lv " +
                 " LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah " +
-                " LEFT JOIN SKUNK.REL_HRANA rh ON lv.id_vztah_whois = rh.id_vztah " +
-                " WHERE X_LAST_MODIFIED > ? " + 
-                " GROUP BY " + cols + ", x_last_modified, x_modification_type " + 
-                " ORDER BY x_last_modified ASC" 
+                " WHERE X_LAST_MODIFIED > ? " +
+                " ORDER BY x_last_modified ASC"
 
         sql.eachRow(sqlquery, [ tokenTimestamp ], {
             row ->

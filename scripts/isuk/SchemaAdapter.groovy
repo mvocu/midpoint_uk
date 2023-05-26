@@ -232,7 +232,7 @@ class SchemaAdapter {
                 "jazyk_vyuky"        : "lv.jazyk_vyuky",
                 "id_org_whois"       : "lv.id_org_whois",
                 "id_vztah_whois"     : "lv.id_vztah_whois",
-                "hrany"              : "hrany",
+                "hrany"              : "lv.hrany",
                 "vztah_typ"          : "rv.vztah_typ",
                 "id_funkce"          : "rv.id_funkce",
                 "studium_typ"        : "rv.studium_typ",
@@ -359,7 +359,7 @@ class SchemaAdapter {
             }
             */
 
-            attribute 'hrany', row.hrany?.split(",")?.grep({it != ":"})
+            attribute 'hrany', row.hrany?.split(";")
             attribute "vztah_typ", row.vztah_typ
             attribute "id_funkce", row.id_funkce
             attribute "studium_typ", row.studium_typ
