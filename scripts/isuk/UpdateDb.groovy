@@ -257,7 +257,7 @@ WHEN MATCHED THEN
      lv2.HRANY = r2.hrany,
      lv2.X_LAST_MODIFIED = sysdate,
      lv2.X_MODIFICATION_TYPE = decode(lv2.X_MODIFICATION_TYPE, 'C', 'C', 'D', 'D', 'U')
-   WHERE decode(r2.hrany, lv2.hrany, 0, 1) = 1;
+   WHERE decode(r2.hrany, lv2.hrany, 0, 1) = 1
 ''' as String
 
 	sql.execute(mergeStudVztahyQuery);
