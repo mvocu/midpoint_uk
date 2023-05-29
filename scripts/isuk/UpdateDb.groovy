@@ -236,15 +236,15 @@ WHEN MATCHED THEN
 	def mergeHranyQuery = '''
 MERGE INTO LDAP_VZTAH lv2 
 USING (
-SELECT r.id, LISTAGG(r.id_org || ':' || r.souvislost || ':' || r.funkce, ';') WITHIN GROUP (ORDER BY r.id_vztah_hrana) AS hrany
+SELECT DISTINCT r.id, LISTAGG(r.id_org || ':' || r.souvislost || ':' || r.funkce, ';') WITHIN GROUP (ORDER BY r.funkce) AS hrany
  FROM
    (
-    SELECT DISTINCT lv.ID, rh.ID_ORG, rh.ID_VZTAH_HRANA, rh.SOUVISLOST, LISTAGG(rf.NAZEV_FUNKCE_KOD, ',') WITHIN GROUP (ORDER BY rf.ID_FUNKCE) AS funkce
+    SELECT DISTINCT lv.ID, rh.ID_ORG, rh.SOUVISLOST, LISTAGG(rf.NAZEV_FUNKCE_KOD, ',') WITHIN GROUP (ORDER BY rf.ID_FUNKCE) AS funkce
     FROM LDAP_VZTAH lv 
     JOIN skunk.REL_HRANA rh ON rh.ID_VZTAH = lv.ID_VZTAH_WHOIS AND sysdate BETWEEN rh.DATUM_OD AND rh.DATUM_DO  
     LEFT JOIN skunk.REL_FUNKCE rf ON rf.ID_VZTAH_HRANA = rh.ID_VZTAH_HRANA AND sysdate BETWEEN rf.DATUM_OD AND rf.DATUM_DO 
     WHERE lv.X_ZAZNAM_PLATNY = 1 
-    GROUP BY lv.ID, rh.ID_ORG, rh.ID_VZTAH_HRANA, rh.SOUVISLOST
+    GROUP BY lv.ID, rh.ID_ORG, rh.SOUVISLOST
    ) r
   GROUP BY r.id
  ) r2
