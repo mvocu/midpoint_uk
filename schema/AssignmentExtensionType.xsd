@@ -19,12 +19,12 @@
         <xsd:sequence>
             <xsd:element name="affiliation" type="xsd:string" minOccurs="0" maxOccurs="1" />
             <xsd:element name="affiliationType" type="xsd:integer" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="studyType" type="xsd:integer" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="studyType" type="xsd:string" minOccurs="0" maxOccurs="1" />
             <xsd:element name="employmentType" type="xsd:integer" minOccurs="0" maxOccurs="1" />
             <xsd:element name="membershipType" type="xsd:integer" minOccurs="0" maxOccurs="1" />
             <xsd:element name="externalType" type="xsd:integer" minOccurs="0" maxOccurs="1" />
             <xsd:element name="relation" type="xsd:integer" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="function" type="xsd:integer" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="functions" type="xsd:integer" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
     </xsd:complexType>
 
