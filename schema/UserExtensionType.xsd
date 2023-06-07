@@ -51,6 +51,7 @@
             </xsd:element>
             <xsd:element name='mailRecords' type='tns:MailRecordType' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
+            <xsd:element name='phoneData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='address' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='sshPublicKey' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
             <xsd:element name='userCertDNs' type='xsd:string' minOccurs='0' maxOccurs='unbounded'>
