@@ -112,6 +112,9 @@ class SchemaAdapter {
                 adresa_corg String.class
                 adresa_psc String.class
                 uid String.class
+                phone_whois String.class, MULTIVALUED
+                mail_whois String.class, MULTIVALUED
+                mobile_whois String.class, MULTIVALUED
             }
         }
     }
@@ -315,6 +318,12 @@ class SchemaAdapter {
             attribute 'phone', ruzne['telephoneNumber']
             // mobile
             attribute 'mobile', ruzne['mobile']
+            // phone_whois
+            attribute 'phone_whois', ruzne['phone_whois']
+            // mail_whois
+            attribute 'mail_whois', ruzne['mail_whois']
+            // mobile_whois
+            attribute 'mobile_whois', ruzne['mobile_whois']
             /*
                     identifikace String.class
                     adresa_stat String.class

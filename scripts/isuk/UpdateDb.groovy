@@ -1,5 +1,113 @@
 import groovy.sql.Sql
 
+static void updatePersons(Sql sql) {
+	def deleteContactsQuery = '''\
+UPDATE LDAP_RUZNE lr
+SET 
+  x_zaznam_platny = 0,
+  x_last_modified = sysdate,
+  x_dtime_delete = sysdate,
+  x_modification_type = 'D'
+WHERE lr.x_zaznam_platny = 1 AND lr.nazev IN ('phone_whois', 'mobile_whois', 'mail_whois') AND NOT EXISTS (
+SELECT * 
+FROM
+(
+SELECT 
+  po.CISLO_UK AS cislo_osoby,
+  decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'phone_whois', 7, 'mail_whois', 20, 'mobile_whois', NULL) AS nazev,
+  decode(pk.KONTAKT_TYP, 1, 'skunk.telefon', 2, 'skunk.mobil', 7, 'skunk.email', 20, 'skunk.sms', NULL) AS zdroj,
+  decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, vk.TELEFON, 7, vk.EMAIL, null) AS hodnota,
+  row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
+  pk.CTX_ORG AS id_org,
+  pk.ID_KONTAKT AS zdroj_identifikator
+FROM 
+  skunk.PER_OSOBA po 
+  JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA 
+  JOIN skunk.VAL_KONTAKT vk ON pk.VAL_KONTAKT = vk.VAL_KONTAKT
+WHERE pk.KONTAKT_TYP IN (1,2,7,20) AND pk.VEREJNY = 1 
+) src
+WHERE 
+  lr.nazev = src.nazev 
+  AND lr.zdroj = src.zdroj
+  AND lr.poradi = src.poradi
+  AND lr.cislo_osoby = src.cislo_osoby
+)''' as String
+
+	def updateContactsQuery = '''\
+MERGE INTO LDAP_RUZNE lr 
+USING (
+SELECT 
+  po.CISLO_UK AS cislo_osoby,
+  decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'phone_whois', 7, 'mail_whois', 20, 'mobile_whois', NULL) AS nazev,
+  decode(pk.KONTAKT_TYP, 1, 'skunk.telefon', 2, 'skunk.mobil', 7, 'skunk.email', 20, 'skunk.sms', NULL) AS zdroj,
+  decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, vk.TELEFON, 7, vk.EMAIL, null) AS hodnota,
+  row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
+  pk.CTX_ORG AS id_org,
+  pk.ID_KONTAKT AS zdroj_identifikator
+FROM 
+  LDAP_OSOBA lo
+  JOIN skunk.PER_OSOBA po ON po.cislo_uk = lo.cislo_osoby AND lo.x_zaznam_platny = 1
+  JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA 
+  JOIN skunk.VAL_KONTAKT vk ON pk.VAL_KONTAKT = vk.VAL_KONTAKT 
+WHERE pk.KONTAKT_TYP IN (1,2,7,20) AND pk.VEREJNY = 1 
+) src
+ON (
+  lr.cislo_osoby = src.cislo_osoby AND
+  lr.nazev = src.nazev AND 
+  lr.zdroj = src.zdroj AND 
+  lr.poradi = src.poradi
+)
+WHEN MATCHED THEN 
+UPDATE SET 
+  lr.hodnota = src.hodnota,
+  lr.zdroj_identifikator = src.zdroj_identifikator,
+  lr.id_org = src.id_org,
+  lr.x_modification_type = decode(lr.x_zaznam_platny, 0, 'C', 'U'),
+  lr.x_zaznam_platny = 1,
+  lr.x_last_modified = sysdate,
+  lr.x_dtime_update = sysdate
+WHERE 
+  lr.x_zaznam_platny = 0 OR
+  lr.hodnota <> src.hodnota OR 
+  lr.zdroj_identifikator <> src.zdroj_identifikator OR 
+  lr.id_org <> src.id_org
+WHEN NOT MATCHED THEN  
+INSERT ( 
+  id, 
+  nazev, 
+  zdroj,
+  id_org,
+  zdroj_identifikator,
+  cislo_osoby,
+  hodnota,
+  poradi,
+  x_zaznam_platny,
+  x_exportovat_typ,
+  x_dtime_create,
+  x_dtime_update,
+  x_dtime_delete,
+  x_last_modified,
+  x_modification_type)
+VALUES (
+  skunk_cas.seq_ldap_id.nextval,
+  src.nazev,
+  src.zdroj,
+  src.id_org,
+  src.zdroj_identifikator,
+  src.cislo_osoby,
+  src.hodnota,
+  src.poradi,
+  '1',
+  'C',
+  sysdate,
+  NULL,
+  NULL,
+  sysdate,
+  'C'
+)''' as String
+
+}
+
 static void updateOrgs(Sql sql) {
 
 	def deleteQuery = '''\
