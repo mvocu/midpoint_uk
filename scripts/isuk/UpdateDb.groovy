@@ -16,7 +16,7 @@ SELECT
   po.CISLO_UK AS cislo_osoby,
   decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'phone_whois', 7, 'mail_whois', 20, 'mobile_whois', NULL) AS nazev,
   decode(pk.KONTAKT_TYP, 1, 'skunk.telefon', 2, 'skunk.mobil', 7, 'skunk.email', 20, 'skunk.sms', NULL) AS zdroj,
-  decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, vk.TELEFON, 7, vk.EMAIL, null) AS hodnota,
+  decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, '+'||substr(vk.telefon,1,12), 7, vk.EMAIL, null) AS hodnota,
   row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
   pk.CTX_ORG AS id_org,
   pk.ID_KONTAKT AS zdroj_identifikator
