@@ -1,6 +1,6 @@
 import groovy.sql.Sql
 
-static void updatePersons(Sql sql) {
+static void updatePeople(Sql sql) {
 	def deleteContactsQuery = '''\
 UPDATE LDAP_RUZNE lr
 SET 
@@ -106,6 +106,9 @@ VALUES (
   'C'
 )''' as String
 
+	sql.execute(deleteContactsQuery);
+	sql.execute(updateContactsQuery);
+	sql.commit();
 }
 
 static void updateOrgs(Sql sql) {
@@ -291,10 +294,6 @@ VALUES (
 
 	sql.execute(deleteQuery);
 	sql.execute(updateQuery);
-	sql.commit();
-}
-
-static void updatePeople(Sql sql) {
 	sql.commit();
 }
 
