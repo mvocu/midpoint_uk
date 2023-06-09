@@ -295,13 +295,24 @@ class SchemaAdapter {
 
             // get attributes from ldap_ruzne
             def ruzne = [:]
+            def orderedRuzne = ['phone_whois', 'mail_whois', 'mobile_whois'];
             sql.eachRow(["id": row.cislo_osoby],
-                    "SELECT DISTINCT nazev, hodnota FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1",
+                    "SELECT DISTINCT nazev, hodnota, poradi FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1 ORDER BY poradi",
                     {
                         if (ruzne.containsKey(it.nazev)) {
-                            (ruzne[it.nazev] as List).add(it.hodnota)
+                            if(orderedRuzne.contains(it.nazev)) {
+                                (ruzne[it.nazev] as List).add(it.poradi + ":" + it.hodnota)
+                            } else {
+                                if(!(ruzne[it.nazev] as List).contains(it.hodnota)) {
+                                    (ruzne[it.nazev] as List).add(it.hodnota)
+                                }
+                            }
                         } else {
-                            ruzne[it.nazev] = [it.hodnota]
+                            if(orderedRuzne.contains(it.nazev)) {
+                                ruzne[it.nazev] = [ it.poradi + ":" + it.hodnota ]
+                            } else {
+                                ruzne[it.nazev] = [it.hodnota]
+                            }
                         }
                     }
             )
