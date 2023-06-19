@@ -52,33 +52,18 @@ log.warn("Page size " + pageSize + ", page offset " + pageOffset +  ", page cook
 //and is used to translate fields that might exist in the query object from the ICF identifier
 //back to the real property name.
 def fieldMap = [
-	( BaseScript.ORGANIZATION_NAME ): SchemaAdapter.getOrganizationFieldMap(),
 	( BaseScript.PERSON_NAME ): SchemaAdapter.getPersonFieldMap(),
-	( BaseScript.RELATION_NAME )  : SchemaAdapter.getRelationFieldMap()
 ]
 
 def attrs = fieldMap[objectClass.objectClassValue].collect({ entry -> entry.value }).unique()
 def sqlquery = "" 
 
 switch(objectClass) {
-	case BaseScript.ORGANIZATION:
-		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA"	as String
-		break;
 
 	case BaseScript.PERSON:
-		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY cislo_osoby ASC) AS radek" +
-				" FROM (SELECT * FROM SKUNK_CAS.LDAP_OSOBA WHERE x_zaznam_platny = 1 AND cuni_unique_id > 0 AND ou = 'people')" as String
+		sqlquery = "SELECT " + attrs.join(",") + ",ROW_NUMBER() OVER (ORDER BY oidos ASC) AS radek" +
+				" FROM osoba" as String
 		break;	
-
-	case BaseScript.RELATION:
- 		def cols = attrs.join(",")
-		def p_cols = attrs.collect({ it -> it.split('[.]')?.last()}).join(",")
-		sqlquery = "SELECT " + p_cols + ", ROW_NUMBER() OVER (ORDER BY id ASC) AS radek " +
-				" FROM (SELECT " + cols +
-                " FROM SKUNK_CAS.LDAP_VZTAH lv"  +
-				" LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah " +
-				" WHERE x_zaznam_platny = 1 )" as String
-		break;
 
 	default:
 		throw new UnsupportedOperationException(operation.name() + " operation of type:"
@@ -143,14 +128,6 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 
             case BaseScript.PERSON:
 				connectorObject = SchemaAdapter.mapPersonToIcfObject(row, sql)
-                break;
-
-            case BaseScript.RELATION:
-				connectorObject = SchemaAdapter.mapRelationToIcfObject(row, sql)
-                break;
-
-            case BaseScript.ORGANIZATION:
-				connectorObject = SchemaAdapter.mapOrganizationToIcfObject(row, sql)
                 break;
 
             default:

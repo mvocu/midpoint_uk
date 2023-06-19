@@ -51,52 +51,7 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
     def finalToken = new SyncToken(tokenObject)
     def tokenTimestamp = new Timestamp(token)
 
-    if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL)
-    {
-        log.info("Updating organizations")
-        UpdateDb.updateOrgs(sql)
-        log.info("Organization update complete")
-        log.info("Reading updated organization records")
-        attrs = SchemaAdapter.getOrganizationFieldMap().collect([] as HashSet) { entry -> entry.value }
-        sqlquery = "SELECT " + attrs.join(",") + ", x_last_modified, x_modification_type FROM SKUNK_CAS.LDAP_ORG_STRUKTURA WHERE x_last_modified > ? ORDER BY x_last_modified ASC"
-        sql.eachRow(sqlquery, [ tokenTimestamp ], {
-            row ->
-                {
-                    def deltaBuilder = new SyncDeltaBuilder()
-                    def deltaToken = new SyncToken(row.x_last_modified.timestampValue().getTime())
-                    finalToken = deltaToken
-                    deltaBuilder.setToken(deltaToken)
-
-
-                    switch (row.x_modification_type) {
-                        case 'U':
-                            deltaBuilder.setDeltaType(SyncDeltaType.UPDATE)
-                            deltaBuilder.setObject(SchemaAdapter.mapOrganizationToIcfObject(row, sql))
-                            break;
-
-                        case 'D':
-                            deltaBuilder.setDeltaType(SyncDeltaType.DELETE)
-                            deltaBuilder.setObjectClass(BaseScript.PERSON)
-                            uidAttr = SchemaAdapter.getOrganizationFieldMap()['__UID__']
-                            deltaBuilder.setUid(new Uid(row.getAt(uidAttr)?.toString()))
-                            break;
-
-                        case 'C':
-                            deltaBuilder.setDeltaType(SyncDeltaType.CREATE_OR_UPDATE)
-                            deltaBuilder.setObject(SchemaAdapter.mapOrganizationToIcfObject(row, sql))
-                            break;
-                    }
-
-                    handler.handle(deltaBuilder.build())
-                }
-        })
-        log.info("Organization sync complete")
-    }
-
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
-        log.info("Updating people")
-        UpdateDb.updatePeople(sql);
-        log.info("People update complete")
         log.info("Reading updated people records")
         attrs = SchemaAdapter.getPersonFieldMap().collect([] as HashSet) { entry -> entry.value }
         sqlquery = "SELECT " + attrs.join(",") + ",x_last_modified,x_modification_type FROM SKUNK_CAS.LDAP_OSOBA WHERE cuni_unique_id > 0 AND ou = 'people' AND X_LAST_MODIFIED > ? ORDER BY x_last_modified ASC"
@@ -134,58 +89,6 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
         log.info("People sync complete")
     }
 
-    if(objectClass == BaseScript.RELATION || objectClass == ObjectClass.ALL) {
-        log.info("Updating relations")
-        UpdateDb.updateRelations(sql)
-        log.info("Relations update complete")
-        log.info("Reading updated relation records")
-        attrs = SchemaAdapter.getRelationFieldMap().collect([] as HashSet) { entry -> entry.value }
-        def cols = attrs.join(",")
-        sqlquery = "SELECT " + cols + ", x_last_modified, x_modification_type " +
-                " FROM SKUNK_CAS.LDAP_VZTAH lv " +
-                " LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah " +
-                " WHERE X_LAST_MODIFIED > ? " +
-                " ORDER BY x_last_modified ASC"
-
-        sql.eachRow(sqlquery, [ tokenTimestamp ], {
-            row ->
-                {
-                    def deltaBuilder = new SyncDeltaBuilder()
-                    def deltaToken = new SyncToken(row.x_last_modified.timestampValue().getTime())
-                    finalToken = deltaToken
-                    deltaBuilder.setToken(deltaToken)
-                    def process = true
-
-                    switch (row.x_modification_type) {
-                        case 'U':
-                            deltaBuilder.setDeltaType(SyncDeltaType.UPDATE)
-                            deltaBuilder.setObject(SchemaAdapter.mapRelationToIcfObject(row, sql))
-                            break;
-
-                        case 'D':
-                            deltaBuilder.setDeltaType(SyncDeltaType.DELETE)
-                            deltaBuilder.setObjectClass(BaseScript.RELATION)
-                            uidAttr = SchemaAdapter.getRelationFieldMap()['__UID__'].split('[.]').last()
-                            deltaBuilder.setUid(new Uid(row.getAt(uidAttr)?.toString()))
-                            break;
-
-                        case 'C':
-                            deltaBuilder.setDeltaType(SyncDeltaType.CREATE_OR_UPDATE)
-                            deltaBuilder.setObject(SchemaAdapter.mapRelationToIcfObject(row, sql))
-                            break;
-
-                        default:
-                            process = false
-                            log.info("Unknown changetype for row {0}", row)
-                            break;
-                    }
-                   log.info("Going to process delta {0}", deltaBuilder.build())
-                   if(process) handler.handle(deltaBuilder.build())
-                }
-        })
-        log.info("Relation sync complete")
-    }
-
     return finalToken
 }
 
@@ -193,16 +96,8 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
 Object handleGetLatestSyncToken(Sql sql) {
     Long result = 0
 
-    if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL) {
-        sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_org_struktura",
-                { row -> if (row.last?.timestampValue().getTime() > result) { result = row.last.timestampValue().getTime() } })
-    }
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
         sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_osoba",
-                { row -> if (row.last?.timestampValue().getTime() > result) { result = row.last.timestampValue().getTime() } })
-    }
-    if(objectClass == BaseScript.RELATION || objectClass == ObjectClass.ALL) {
-        sql.eachRow("select max(x_last_modified) as last from skunk_cas.ldap_vztah",
                 { row -> if (row.last?.timestampValue().getTime() > result) { result = row.last.timestampValue().getTime() } })
     }
 
