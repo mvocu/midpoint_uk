@@ -115,6 +115,7 @@ class SchemaAdapter {
                 phone_whois String.class, MULTIVALUED
                 mail_whois String.class, MULTIVALUED
                 mobile_whois String.class, MULTIVALUED
+                pager_whois String.class, MULTIVALUED
             }
         }
     }
@@ -295,7 +296,7 @@ class SchemaAdapter {
 
             // get attributes from ldap_ruzne
             def ruzne = [:]
-            def orderedRuzne = ['phone_whois', 'mail_whois', 'mobile_whois'];
+            def orderedRuzne = ['phone_whois', 'mail_whois', 'mobile_whois', 'pager_whois'];
             sql.eachRow(["id": row.cislo_osoby],
                     "SELECT DISTINCT nazev, hodnota, poradi FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1 ORDER BY poradi",
                     {
@@ -335,6 +336,8 @@ class SchemaAdapter {
             attribute 'mail_whois', ruzne['mail_whois']
             // mobile_whois
             attribute 'mobile_whois', ruzne['mobile_whois']
+            // pager_whois
+            attribute 'pager_whois', ruzne['pager_whois']
             /*
                     identifikace String.class
                     adresa_stat String.class
