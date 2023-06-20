@@ -8,13 +8,13 @@ SET
   x_last_modified = sysdate,
   x_dtime_delete = sysdate,
   x_modification_type = 'D'
-WHERE lr.x_zaznam_platny = 1 AND lr.nazev IN ('phone_whois', 'mobile_whois', 'mail_whois') AND NOT EXISTS (
+WHERE lr.x_zaznam_platny = 1 AND lr.nazev IN ('phone_whois', 'mobile_whois', 'mail_whois', 'pager_whois') AND NOT EXISTS (
 SELECT * 
 FROM
 (
 SELECT 
   po.CISLO_UK AS cislo_osoby,
-  decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'phone_whois', 7, 'mail_whois', 20, 'mobile_whois', NULL) AS nazev,
+  decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'mobile_whois', 7, 'mail_whois', 20, 'pager_whois', NULL) AS nazev,
   decode(pk.KONTAKT_TYP, 1, 'skunk.telefon', 2, 'skunk.mobil', 7, 'skunk.email', 20, 'skunk.sms', NULL) AS zdroj,
   decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, '+'||substr(vk.telefon,1,12), 7, vk.EMAIL, null) AS hodnota,
   row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
@@ -38,7 +38,7 @@ MERGE INTO LDAP_RUZNE lr
 USING (
 SELECT 
   po.CISLO_UK AS cislo_osoby,
-  decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'phone_whois', 7, 'mail_whois', 20, 'mobile_whois', NULL) AS nazev,
+  decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'mobile_whois', 7, 'mail_whois', 20, 'pager_whois', NULL) AS nazev,
   decode(pk.KONTAKT_TYP, 1, 'skunk.telefon', 2, 'skunk.mobil', 7, 'skunk.email', 20, 'skunk.sms', NULL) AS zdroj,
   decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, '+'||substr(vk.telefon,1,12), 7, vk.EMAIL, null) AS hodnota,
   row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
