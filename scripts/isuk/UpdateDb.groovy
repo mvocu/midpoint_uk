@@ -106,8 +106,27 @@ VALUES (
   'C'
 )''' as String
 
+	def markPeopleUpdateQuery = '''\
+MERGE INTO LDAP_OSOBA lo 
+USING (
+  SELECT CISLO_OSOBY, max(X_LAST_MODIFIED) AS x_last_modified
+  FROM LDAP_RUZNE lr
+  WHERE lr.nazev IN ('phone_whois', 'mobile_whois', 'mail_whois', 'pager_whois')
+  GROUP BY CISLO_OSOBY
+  ) src
+ON (
+  src.CISLO_OSOBY = lo.CISLO_OSOBY AND lo.X_ZAZNAM_PLATNY = 1
+)
+WHEN MATCHED THEN
+UPDATE SET 
+  lo.X_LAST_MODIFIED = src.X_LAST_MODIFIED,
+  lo.X_MODIFICATION_TYPE = decode(lo.X_MODIFICATION_TYPE, 'D', 'D', 'C', 'C', 'U')
+WHERE src.X_LAST_MODIFIED > lo.X_LAST_MODIFIED
+''' as String
+
 	sql.execute(deleteContactsQuery);
 	sql.execute(updateContactsQuery);
+	sql.execute(markPeopleUpdateQuery);
 	sql.commit();
 }
 
