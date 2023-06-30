@@ -15,6 +15,7 @@ builder.schema({
     objectClass SchemaAdapter.createOrganizationSchema()
     objectClass SchemaAdapter.createPersonSchema()
     objectClass SchemaAdapter.createRelationSchema()
+    objectClass SchemaAdapter.createFunctionSchema()
 
     defineOperationOption OperationOptionInfoBuilder.buildPagedResultsOffset(), SearchOp
     defineOperationOption OperationOptionInfoBuilder.buildPageSize(), SearchOp

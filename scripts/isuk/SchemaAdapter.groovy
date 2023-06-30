@@ -288,7 +288,7 @@ class SchemaAdapter {
                 "__NAME__"           : "kod",
                 "r_kod"              : "kod",
                 "typ_kod"            : "funkce_typ",
-                //"nazev"              : "nazev",  -- not native column
+                "nazev"              : "nazev", 
                 "dulezitost"         : "dulezitost",
                 "samospravni_funkce" : "samospravni_funkce",
                 "datum_od"         : "datum_od",
@@ -446,12 +446,13 @@ class SchemaAdapter {
         return ICFObjectBuilder.co {
             uid row.id_kod.toString()
             id row.kod.toString()
+            setObjectClass BaseScript.FUNCTION
 
-            r_kod row.kod
-            typ_kod row.funkce_typ
-            dulezitost row.dulezitost
-            samospravni_funkce row.samospravni_funkce
-            nazev row.nazev
+            attribute 'r_kod', row.kod
+            attribute 'typ_kod', row.funkce_typ
+            attribute 'dulezitost', row.dulezitost
+            attribute 'samospravni_funkce', row.samospravni_funkce
+            attribute 'nazev', row.nazev
             attribute 'datum_od', ZonedDateTime.ofInstant(row.datum_od.toInstant(), ZoneId.systemDefault())
             attribute 'datum_do', ZonedDateTime.ofInstant(row.datum_do.toInstant(), ZoneId.systemDefault())
 
@@ -460,3 +461,5 @@ class SchemaAdapter {
              */
 
         }
+    }
+}

@@ -82,9 +82,9 @@ switch(objectClass) {
 		break;
 
 	case BaseScript.FUNCTION:
-		sqlquery = "SELECT " + attrs.join(",") + " WAVKY.MULTILANG_PKG.GET_TEXT('cs', nazev) as nazev, ROW_NUMBER() OVER (ORDER BY id_kod ASC) as radek" +
-				" FROM CIS2.E_REL_FUNKCE_NAZEV " +
-				" WHERE sysdate BETWEEN datum_od AND datum_do" as String
+                def cols = attrs.findAll({ it != 'nazev' })
+		sqlquery = "SELECT " + cols.join(",") + ", WAVKY.MULTILANG_PKG.GET_TEXT('cs', nazev) as nazev, ROW_NUMBER() OVER (ORDER BY id_kod ASC) as radek" +
+				" FROM CIS2.E_REL_FUNKCE_NAZEV " as String
 		break;
 
 	default:
