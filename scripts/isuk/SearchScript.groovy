@@ -52,9 +52,10 @@ log.warn("Page size " + pageSize + ", page offset " + pageOffset +  ", page cook
 //and is used to translate fields that might exist in the query object from the ICF identifier
 //back to the real property name.
 def fieldMap = [
-	( BaseScript.ORGANIZATION_NAME ): SchemaAdapter.getOrganizationFieldMap(),
-	( BaseScript.PERSON_NAME ): SchemaAdapter.getPersonFieldMap(),
-	( BaseScript.RELATION_NAME )  : SchemaAdapter.getRelationFieldMap()
+		( BaseScript.ORGANIZATION_NAME ): SchemaAdapter.getOrganizationFieldMap(),
+		( BaseScript.PERSON_NAME ): SchemaAdapter.getPersonFieldMap(),
+		( BaseScript.RELATION_NAME )  : SchemaAdapter.getRelationFieldMap(),
+		( BaseScript.FUNCTION_NAME ) : SchemaAdapter.getFunctionFieldMap()
 ]
 
 def attrs = fieldMap[objectClass.objectClassValue].collect({ entry -> entry.value }).unique()
@@ -78,6 +79,12 @@ switch(objectClass) {
                 " FROM SKUNK_CAS.LDAP_VZTAH lv"  +
 				" LEFT JOIN SKUNK.REL_VZTAH rv ON lv.id_vztah_whois = rv.id_vztah " +
 				" WHERE x_zaznam_platny = 1 )" as String
+		break;
+
+	case BaseScript.FUNCTION:
+		sqlquery = "SELECT " + attrs.join(",") + " WAVKY.MULTILANG_PKG.GET_TEXT('cs', nazev) as nazev, ROW_NUMBER() OVER (ORDER BY id_kod ASC) as radek" +
+				" FROM CIS2.E_REL_FUNKCE_NAZEV " +
+				" WHERE sysdate BETWEEN datum_od AND datum_do" as String
 		break;
 
 	default:
@@ -152,6 +159,10 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
             case BaseScript.ORGANIZATION:
 				connectorObject = SchemaAdapter.mapOrganizationToIcfObject(row, sql)
                 break;
+
+			case BaseScript.FUNCTION:
+				connectorObject = SchemaAdapter.mapFunctionToIcfObject(row, sql)
+				break;
 
             default:
                 throw new UnsupportedOperationException(operation.name() + " operation of type:" +

@@ -168,6 +168,42 @@ class SchemaAdapter {
         }
     }
 
+    def static createFunctionSchema() {
+        return {
+            type BaseScript.FUNCTION_NAME
+            attributes {
+                // black magic here - use better name for __UID__
+                getBuilder().addAttributeInfo({ ->
+                    def aib = new AttributeInfoBuilder(Uid.NAME);
+                    aib.setNativeName("id_kod");
+                    aib.setType(String.class);
+                    aib.setRequired(false); // Must be optional. It is not present for create operations
+                    aib.setCreateable(false);
+                    aib.setUpdateable(false);
+                    aib.setReadable(true);
+                    aib.build()
+                }.call())
+
+                // black magic here - use better name for __NAME__
+                getBuilder().addAttributeInfo({ ->
+                    def aib = new AttributeInfoBuilder(Name.NAME);
+                    aib.setNativeName("kod");
+                    aib.setType(String.class);
+                    aib.setRequired(true);
+                    aib.build()
+                }.call())
+
+                r_kod BigInteger.class
+                typ_kod BigInteger.class
+                nazev String.class
+                dulezitost BigInteger.class
+                samospravni_funkce BigInteger.class
+                datum_od ZonedDateTime.class
+                datum_do ZonedDateTime.class
+            }
+        }
+    }
+
     def static getOrganizationFieldMap() {
         return [
                 "__UID__"          : "id_org",
@@ -243,6 +279,20 @@ class SchemaAdapter {
                 "zamestnani_typ"     : "rv.zamestnani_typ",
                 "clenstvi_typ"       : "rv.clenstvi_typ",
                 "externista_typ"     : "rv.externista_typ"
+        ]
+    }
+
+    def static getFunctionFieldMap() {
+        return [
+                "__UID__"            : "id_kod",
+                "__NAME__"           : "kod",
+                "r_kod"              : "kod",
+                "typ_kod"            : "funkce_typ",
+                //"nazev"              : "nazev",  -- not native column
+                "dulezitost"         : "dulezitost",
+                "samospravni_funkce" : "samospravni_funkce",
+                "datum_od"         : "datum_od",
+                "datum_do"         : "datum_do"
         ]
     }
 
@@ -392,4 +442,21 @@ class SchemaAdapter {
         }
     }
 
-}
+    def static mapFunctionToIcfObject(GroovyResultSet row, Sql sql) {
+        return ICFObjectBuilder.co {
+            uid row.id_kod.toString()
+            id row.kod.toString()
+
+            r_kod row.kod
+            typ_kod row.funkce_typ
+            dulezitost row.dulezitost
+            samospravni_funkce row.samospravni_funkce
+            nazev row.nazev
+            attribute 'datum_od', ZonedDateTime.ofInstant(row.datum_od.toInstant(), ZoneId.systemDefault())
+            attribute 'datum_do', ZonedDateTime.ofInstant(row.datum_do.toInstant(), ZoneId.systemDefault())
+
+            /*
+            nazev String.class
+             */
+
+        }

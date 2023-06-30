@@ -14,6 +14,9 @@ class BaseScript extends Script {
     public static final String RELATION_NAME = "Relation"
     public static final ObjectClass RELATION = new ObjectClass(BaseScript.RELATION_NAME)
 
+    public static final String FUNCTION_NAME = "Function"
+    public static final ObjectClass FUNCTION = new ObjectClass(BaseScript.FUNCTION_NAME)
+
     @Override
     Object run() {
         return null
