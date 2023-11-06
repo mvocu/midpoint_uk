@@ -13,8 +13,18 @@
                </xsd:appinfo>
            </xsd:annotation>
 	   <xsd:sequence>
+		   <xsd:element name='dnsDomain' type='xsd:string' minOccurs='0' maxOccurs='1'>
+ 	               <xsd:annotation>
+                    		<xsd:appinfo>
+                        		<a:indexed>true</a:indexed>
+                        		<a:displayName>DNS domain assigned to organization unit</a:displayName>
+                        		<a:displayOrder>100</a:displayOrder>
+                    		</xsd:appinfo>
+			</xsd:annotation>
+		   </xsd:element>
 		   <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
-	           <xsd:element name="hasO365Email" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+		   <xsd:element name="hasO365Email" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+		   <xsd:element name='isServicedeskGroup' type='xsd:boolean' minOccurs='0' maxOccurs='1' />
            </xsd:sequence>
        </xsd:complexType>
 </xsd:schema>
