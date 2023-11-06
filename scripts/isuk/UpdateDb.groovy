@@ -126,8 +126,9 @@ WHERE src.X_LAST_MODIFIED > lo.X_LAST_MODIFIED
 
 	sql.execute(deleteContactsQuery);
 	sql.execute(updateContactsQuery);
-	sql.execute(markPeopleUpdateQuery);
 	sql.commit();
+	//sql.execute(markPeopleUpdateQuery);
+	//sql.commit();
 }
 
 static void updateOrgs(Sql sql) {

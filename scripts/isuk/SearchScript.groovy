@@ -162,9 +162,9 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
 				connectorObject = SchemaAdapter.mapOrganizationToIcfObject(row, sql)
                 break;
 
-			case BaseScript.FUNCTION:
+            case BaseScript.FUNCTION:
 				connectorObject = SchemaAdapter.mapFunctionToIcfObject(row, sql)
-				break;
+		break;
 
             default:
                 throw new UnsupportedOperationException(operation.name() + " operation of type:" +
