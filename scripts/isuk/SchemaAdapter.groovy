@@ -302,15 +302,15 @@ class SchemaAdapter {
             uid row.id_org.toString()
             id row.poid.toString()
             setObjectClass BaseScript.ORGANIZATION
-            attribute 'r_id_org', row.id_org
-            attribute 'fakulta', row.fakulta
-            attribute 's_fakulta', row.fakulta.toString()
-            attribute 'sidlo', row.sidlo
+            attribute 'r_id_org', row.id_org.toBigInteger()
+            attribute 'fakulta', row.fakulta?.toBigInteger()
+            attribute 's_fakulta', row.fakulta?.toString()
+            attribute 'sidlo', row.sidlo?.toBigInteger()
             attribute 'datum_od', ZonedDateTime.ofInstant(row.datum_od.toInstant(), ZoneId.systemDefault())
             attribute 'datum_do', ZonedDateTime.ofInstant(row.datum_do.toInstant(), ZoneId.systemDefault())
             attribute 'ic', row.ic
             attribute 'dic', row.dic
-            attribute 'r_poid', row.poid
+            attribute 'r_poid', row.poid?.toBigInteger()
             attribute 'nazev', row.nazev
             attribute 'nazev_dlouhy', row.nazev_dlouhy
             attribute 'nazev_en', row.nazev_en
@@ -319,7 +319,7 @@ class SchemaAdapter {
             attribute 'zkratka_dlouha', row.zkratka_dlouha
             attribute 'zkratka_en', row.zkratka_en
             attribute 'zkratka_dlouha_en', row.zkratka_dlouha_en
-            attribute 'soucast', row.soucast
+            attribute 'soucast', row.soucast?.toBigInteger()
             attribute 's_soucast', row.soucast.toString()
             attribute 'kod_sims', row.kod_sims
             attribute 'cas_domena', row.cas_domena
