@@ -406,18 +406,18 @@ class SchemaAdapter {
             uid row.id.toString()
             id row.id.toString()
             setObjectClass BaseScript.RELATION
-            attribute 'r_id', row.id
+            attribute 'r_id', row.id?.toBigInteger()
             attribute 'typ', row.typ
             attribute 'zdroj', row.zdroj
-            attribute 'id_org', row.id_org
-            attribute 'zdroj_identifikator', row.zdroj_identifikator
+            attribute 'id_org', row.id_org?.toBigInteger()
+            attribute 'zdroj_identifikator', row.zdroj_identifikator?.toBigInteger()
             attribute 'cislo_osoby', row.cislo_osoby.toString()
             attribute 'studyprogram', row.studyprogram
             attribute 'studysubject1', row.studysubject1
             attribute 'studysubject2', row.studysubject2
             attribute 'jazyk_vyuky', row.jazyk_vyuky
             attribute 'id_org_whois', row.id_org_whois.toString()
-            attribute 'id_vztah_whois', row.id_vztah_whois
+            attribute 'id_vztah_whois', row.id_vztah_whois?.toBigInteger()
 
             /*
             def hrany = []
@@ -433,12 +433,12 @@ class SchemaAdapter {
             */
 
             attribute 'hrany', row.hrany?.split(";")
-            attribute "vztah_typ", row.vztah_typ
-            attribute "id_funkce", row.id_funkce
+            attribute "vztah_typ", row.vztah_typ?.toBigInteger()
+            attribute "id_funkce", row.id_funkce?.toBigInteger()
             attribute "studium_typ", row.studium_typ
-            attribute "zamestnani_typ", row.zamestnani_typ
-            attribute "clenstvi_typ", row.clenstvi_typ
-            attribute "externista_typ", row.externista_typ
+            attribute "zamestnani_typ", row.zamestnani_typ?.toBigInteger()
+            attribute "clenstvi_typ", row.clenstvi_typ?.toBigInteger()
+            attribute "externista_typ", row.externista_typ?.toBigInteger()
         }
     }
 
