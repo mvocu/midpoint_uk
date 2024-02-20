@@ -1,0 +1,88 @@
+<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="a3cde3f5-ba9a-4221-ab75-2067c12c3a48" version="12" >
+    <name>cuniM365_Group</name>
+    <metadata>
+        <requestTimestamp>2023-01-26T17:34:46.217+01:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2023-01-26T17:34:46.275+01:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>
+        <modifyTimestamp>2023-10-19T17:25:33.400+02:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</modifyChannel>
+    </metadata>
+    <operationExecution id="1">
+        <recordType>simple</recordType>
+        <timestamp>2023-01-26T17:34:46.328+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:ArchetypeType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000028838</token>
+            </executionResult>
+            <objectName>M365_Group</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="2">
+        <recordType>complex</recordType>
+        <timestamp>2023-03-23T02:55:59.775+01:00</timestamp>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <taskRef oid="e5d06247-e120-4a44-9492-8eb98240fd64" relation="org:default" type="c:TaskType"/>
+        <activityPath/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="3">
+        <recordType>complex</recordType>
+        <timestamp>2023-03-23T23:49:01.579+01:00</timestamp>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <taskRef oid="73c66162-eeb0-403f-8246-1fb3cd22258f" relation="org:default" type="c:TaskType"/>
+        <activityPath/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="4">
+        <recordType>simple</recordType>
+        <timestamp>2023-10-19T17:25:33.412+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ArchetypeType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000012530579</token>
+            </executionResult>
+            <objectName>cuniM365_Group</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <activation>
+        <effectiveStatus>enabled</effectiveStatus>
+        <enableTimestamp>2023-01-26T17:34:46.269+01:00</enableTimestamp>
+    </activation>
+    <archetypePolicy>
+        <display>
+            <label>M365 Group</label>
+            <pluralLabel>M365 Groups</pluralLabel>
+            <icon>
+                <cssClass>fa fa-solid fa-user-group</cssClass>
+                <color>darkgreen</color>
+            </icon>
+        </display>
+        <objectTemplateRef oid="08896b44-e92c-477a-b32f-fa1af466ffda" relation="org:default" type="c:ObjectTemplateType"/>
+    </archetypePolicy>
+</archetype>

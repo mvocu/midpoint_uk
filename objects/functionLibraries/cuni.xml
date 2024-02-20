@@ -1,0 +1,183 @@
+<functionLibrary xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="dfb4b472-206d-43e6-9a2b-e405c049737f" version="7" >
+    <name>cuni</name>
+    <description>Functions dealing with model specifics of CUNI</description>
+    <metadata>
+        <modifyTimestamp>2023-11-14T10:54:11.051+01:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</modifyChannel>
+    </metadata>
+    <operationExecution id="1">
+        <recordType>simple</recordType>
+        <timestamp>2023-11-14T10:54:11.057+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:FunctionLibraryType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000052667</token>
+            </executionResult>
+            <objectName>cuni</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</channel>
+    </operationExecution>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <function>
+        <name>jsonToObject</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <returnType>t:PolyStringType</returnType>
+        <script>
+            <code>
+                    return null
+                </code>
+        </script>
+    </function>
+    <function>
+        <name>jsonToPolyString</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <returnType>t:PolyStringType</returnType>
+        <script>
+            <code>
+                return null
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>reconcileUser</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>oid</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+
+                import com.evolveum.midpoint.model.api.ModelExecuteOptions
+                import com.evolveum.midpoint.xml.ns._public.common.common_3.UserType
+
+                emptyDelta = midpoint.getPrismContext().deltaFactory().object().createEmptyModifyDelta(UserType.class, oid)
+                midpoint.executeChanges(Collections.singletonList(emptyDelta), ModelExecuteOptions.create().reconcile())
+
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>reconcileOrg</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>oid</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+
+                import com.evolveum.midpoint.model.api.ModelExecuteOptions
+                import com.evolveum.midpoint.xml.ns._public.common.common_3.OrgType
+
+                emptyDelta = midpoint.getPrismContext().deltaFactory().object().createEmptyModifyDelta(OrgType.class, oid)
+                midpoint.executeChanges(Collections.singletonList(emptyDelta), ModelExecuteOptions.create().reconcile())
+
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>getPrimaryEmailForUser</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>user</name>
+            <type>c:UserType</type>
+        </parameter>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+                import groovy.json.*
+
+                def emails = basic.getExtensionPropertyValues(user, "http://midpoint.cuni.cz/xml/ns/cas", "mailData")
+                def primary = null
+                def jsonSlurper = new JsonSlurper()
+                for(String jsonMail : emails) {
+                    if(!jsonMail.startsWith(source)) {
+                        continue
+                    }
+                    def spos = jsonMail.indexOf(':')
+                    def mailData = jsonSlurper.parseText(jsonMail.substring(spos+1))
+                    if(!mailData?.isPrimary) {
+                        continue
+                    }
+                    return mailData.mail
+                }
+                return null
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>getPrimaryEmailFromData</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>emails</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:anyType</type>
+        </parameter>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+                import groovy.json.*
+
+                def primary = null
+                def jsonSlurper = new JsonSlurper()
+                for(String jsonMail : emails) {
+                    if(!jsonMail.startsWith(source)) {
+                        continue
+                    }
+                    def spos = jsonMail.indexOf(':')
+                    def mailData = jsonSlurper.parseText(jsonMail.substring(spos+1))
+                    if(!mailData?.isPrimary) {
+                        continue
+                    }
+                    return mailData.mail
+                }
+                return null
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>getChildrenOrgs</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>orgOid</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <returnMultiplicity>multi</returnMultiplicity>
+        <script>
+            <code>
+                import com.evolveum.midpoint.xml.ns._public.common.common_3.*
+
+                root = midpoint.getObject(OrgType.class, orgOid)
+                children = [ root ]
+                result = []
+                while(!children.isEmpty()) {
+                    children_new = []
+                    for(child in children) {
+                        query = prismContext.queryFor(OrgType.class).isDirectChildOf(child.oid).build()
+                        children_new.addAll(midpoint.searchObjects(OrgType.class, query))
+                    }
+                    children = children_new
+                    result.addAll(children.collect( it -> { it?.oid }))
+                }
+                return result
+            </code>
+        </script>
+    </function>
+</functionLibrary>

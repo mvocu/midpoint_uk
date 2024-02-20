@@ -1,0 +1,217 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="7baf2d23-3a54-4e88-83ef-69624aa9a0a6" version="44" >
+    <name>RecomputeOrgTreeDown</name>
+    <description>Task template that recomputes all orgs and users from top to bottom starting at the given org root.</description>
+    <metadata>
+        <requestTimestamp>2023-10-20T12:47:17.422+02:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2023-10-20T12:47:17.516+02:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</createChannel>
+        <modifyTimestamp>2023-06-15T18:32:51.178+02:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</modifyChannel>
+    </metadata>
+    <operationExecution id="12">
+        <recordType>simple</recordType>
+        <timestamp>2023-06-15T18:32:51.194+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:TaskType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000980987</token>
+            </executionResult>
+            <objectName>RecomputeOrgTreeDown</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="13">
+        <recordType>simple</recordType>
+        <timestamp>2023-06-16T17:23:23.847+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:TaskType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000001529149</token>
+            </executionResult>
+            <objectName>RecomputeOrgTreeDown</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</channel>
+    </operationExecution>
+    <operationExecution id="14">
+        <recordType>simple</recordType>
+        <timestamp>2023-06-17T10:25:05.575+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:TaskType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000001231</token>
+            </executionResult>
+            <objectName>RecomputeOrgTreeDown</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</channel>
+    </operationExecution>
+    <operationExecution id="15">
+        <recordType>simple</recordType>
+        <timestamp>2023-09-05T11:10:23.203+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:TaskType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000073685301</token>
+            </executionResult>
+            <objectName>RecomputeOrgTreeDown</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</channel>
+    </operationExecution>
+    <operationExecution id="16">
+        <recordType>simple</recordType>
+        <timestamp>2023-10-20T12:47:17.567+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:TaskType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000018377780</token>
+            </executionResult>
+            <objectName>RecomputeOrgTreeDown</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</channel>
+    </operationExecution>
+    <indestructible>true</indestructible>
+    <assignment id="1">
+        <metadata>
+            <requestTimestamp>2023-10-20T12:47:17.422+02:00</requestTimestamp>
+            <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+            <createTimestamp>2023-10-20T12:47:17.516+02:00</createTimestamp>
+            <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+            <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</createChannel>
+        </metadata>
+        <targetRef oid="00000000-0000-0000-0000-000000000508" relation="org:default" type="c:ArchetypeType"/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+    </assignment>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <archetypeRef oid="00000000-0000-0000-0000-000000000508" relation="org:default" type="c:ArchetypeType"/>
+    <roleMembershipRef oid="00000000-0000-0000-0000-000000000508" relation="org:default" type="c:ArchetypeType">
+        <_metadata>
+            <storage>
+                <createTimestamp>2023-09-05T11:10:23.131+02:00</createTimestamp>
+            </storage>
+            <provenance>
+                <assignmentPath>
+                    <sourceRef oid="7baf2d23-3a54-4e88-83ef-69624aa9a0a6" relation="org:default" type="c:TaskType"/>
+                    <segment>
+                        <segmentOrder>1</segmentOrder>
+                        <assignmentId>1</assignmentId>
+                        <targetRef oid="00000000-0000-0000-0000-000000000508" relation="org:default" type="c:ArchetypeType"/>
+                        <matchingOrder>true</matchingOrder>
+                    </segment>
+                </assignmentPath>
+            </provenance>
+        </_metadata>
+    </roleMembershipRef>
+    <taskIdentifier>1686730695715-26738-1</taskIdentifier>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+    <executionState>waiting</executionState>
+    <schedulingState>suspended</schedulingState>
+    <cleanupAfterCompletion>PT10M</cleanupAfterCompletion>
+    <binding>loose</binding>
+    <activity>
+        <work>
+            <nonIterativeScripting>
+                <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                    <s:execute>
+                        <s:forWholeInput>true</s:forWholeInput>
+                        <s:script>
+                            <code>
+                                import com.evolveum.midpoint.prism.PrismConstants
+                                import com.evolveum.midpoint.xml.ns._public.common.common_3.*
+
+                                TRIGGER_FIRE_AFTER = 60000
+                                TRIGGER_SAFETY_MARGIN = 10000
+                                
+                               log.info("Recomputing tree with root at {}", orgOid)
+                                root = midpoint.getObject(OrgType.class, orgOid)
+                                children = [ root ]
+                                while(!children.isEmpty()) {
+                                    children_new = []
+                                    for(child in children) {
+                                        log.info('Recomputing org: {}', child.name)
+                                        midpoint.recompute(OrgType.class, child.oid)
+                                        query = prismContext.queryFor(OrgType.class).isDirectChildOf(child.oid).build()
+                                        children_new.addAll(midpoint.searchObjects(OrgType.class, query))
+
+                                        log.info('Looking for members of {}', child.oid)
+                                        query = midpoint.prismContext.queryFor(UserType.class)
+                                                .item(FocusType.F_ROLE_MEMBERSHIP_REF)
+                                                .ref(child.oid, OrgType.COMPLEX_TYPE, PrismConstants.Q_ANY)
+                                                .build()
+                                        users = midpoint.searchObjects(UserType.class, query)
+                                        log.info('Users found: {}', users.size())
+
+                                        midpoint.searchObjectsIterative(UserType.class, query, { object, parentResult -&gt;
+                                            log.info('Recomputing user {}', object.name)
+                                            midpoint
+                                                    .getOptimizingTriggerCreator(TRIGGER_FIRE_AFTER, TRIGGER_SAFETY_MARGIN)
+                                                    .createForObject(UserType.class, object.oid)
+                                            return true
+                                        })
+                                    }
+                                    children = children_new
+                                }
+
+                        </code>
+                        </s:script>
+                    </s:execute>
+                    <s:variables>
+                        <s:variable>
+                            <s:name>orgOid</s:name>
+                            <s:expression>
+                                <path>$task/extension/orgOid</path>
+                            </s:expression>
+                        </s:variable>
+                    </s:variables>
+                </scriptExecutionRequest>
+            </nonIterativeScripting>
+        </work>
+        <distribution>
+            <workerThreads>16</workerThreads>
+        </distribution>
+    </activity>
+</task>
