@@ -1,0 +1,81 @@
+<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="4b249d16-eacc-4361-8d45-28c133cd91c3" version="10" >
+    <name>ConstructTestKISSAccount</name>
+    <metadata>
+        <requestTimestamp>2024-02-12T14:43:37.698+01:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2024-02-12T14:43:37.718+01:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>
+        <modifyTimestamp>2024-02-12T14:45:48.147+01:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</modifyChannel>
+    </metadata>
+    <operationExecution id="1">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-12T14:43:37.733+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:RoleType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000007787658</token>
+            </executionResult>
+            <objectName>ConstructTestKISSAccount</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="3">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-12T14:45:48.226+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:RoleType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000007787945</token>
+            </executionResult>
+            <objectName>ConstructTestKISSAccount</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</channel>
+    </operationExecution>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <activation>
+        <effectiveStatus>enabled</effectiveStatus>
+        <enableTimestamp>2024-02-12T14:43:37.700+01:00</enableTimestamp>
+    </activation>
+    <inducement id="152">
+        <construction>
+            <strength>strong</strength>
+            <resourceRef oid="75c37cc6-f5d5-49b9-ad3b-689850dd7096" relation="org:default" type="c:ResourceType"/>
+            <kind>account</kind>
+            <intent>contact</intent>
+        </construction>
+        <orderConstraint id="154">
+            <orderMin>1</orderMin>
+            <orderMax>unbounded</orderMax>
+        </orderConstraint>
+        <focusType>c:UserType</focusType>
+        <condition>
+            <expression>
+                <script>
+                    <code>
+                        midpoint.hasArchetype(focus, "ce545aee-a1f5-4509-af05-1ec3af2f2c79")
+                    </code>
+                </script>
+            </expression>
+        </condition>
+    </inducement>
+</role>
