@@ -1,0 +1,2206 @@
+<systemConfiguration xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="00000000-0000-0000-0000-000000000001" version="227" >
+    <name>SystemConfiguration</name>
+    <metadata>
+        <requestTimestamp>2023-10-11T13:37:06.827+02:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2023-10-11T13:37:06.884+02:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#rest</createChannel>
+        <modifyTimestamp>2024-01-23T17:08:48.142+01:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</modifyChannel>
+    </metadata>
+    <operationExecution id="718">
+        <recordType>complex</recordType>
+        <timestamp>2023-03-22T15:29:37.874+01:00</timestamp>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <taskRef oid="e5d06247-e120-4a44-9492-8eb98240fd64" relation="org:default" type="c:TaskType"/>
+        <activityPath/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="719">
+        <recordType>complex</recordType>
+        <timestamp>2023-03-23T11:42:58.467+01:00</timestamp>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <taskRef oid="73c66162-eeb0-403f-8246-1fb3cd22258f" relation="org:default" type="c:TaskType"/>
+        <activityPath/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="843">
+        <recordType>complex</recordType>
+        <timestamp>2023-10-20T13:06:45.870+02:00</timestamp>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <taskRef oid="94eb06ac-0a1e-47ba-9509-1cc3bad9bd91" relation="org:default" type="c:TaskType"/>
+        <activityPath/>
+    </operationExecution>
+    <operationExecution id="864">
+        <recordType>simple</recordType>
+        <timestamp>2023-11-13T15:02:56.148+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:SystemConfigurationType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000006653</token>
+            </executionResult>
+            <objectName>SystemConfiguration</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="865">
+        <recordType>simple</recordType>
+        <timestamp>2023-12-06T17:46:14.759+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:SystemConfigurationType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000001193174</token>
+            </executionResult>
+            <objectName>SystemConfiguration</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="866">
+        <recordType>simple</recordType>
+        <timestamp>2023-12-06T17:58:30.499+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:SystemConfigurationType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000001199333</token>
+            </executionResult>
+            <objectName>SystemConfiguration</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="867">
+        <recordType>simple</recordType>
+        <timestamp>2023-12-14T16:55:17.718+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:SystemConfigurationType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000001284393</token>
+            </executionResult>
+            <objectName>SystemConfiguration</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="869">
+        <recordType>simple</recordType>
+        <timestamp>2024-01-23T17:08:48.216+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:SystemConfigurationType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000005325</token>
+            </executionResult>
+            <objectName>SystemConfiguration</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <indestructible>true</indestructible>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <globalSecurityPolicyRef oid="00000000-0000-0000-0000-000000000120" relation="org:default" type="c:SecurityPolicyType"/>
+    <logging>
+        <classLogger id="2">
+            <level>OFF</level>
+            <package>org.springframework.security.web.DefaultSecurityFilterChain</package>
+        </classLogger>
+        <classLogger id="3">
+            <level>OFF</level>
+            <package>org.hibernate.engine.jdbc.spi.SqlExceptionHelper</package>
+        </classLogger>
+        <classLogger id="4">
+            <level>OFF</level>
+            <package>org.hibernate.engine.jdbc.batch.internal.BatchingBatch</package>
+        </classLogger>
+        <classLogger id="5">
+            <level>WARN</level>
+            <package>org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl</package>
+        </classLogger>
+        <classLogger id="6">
+            <level>OFF</level>
+            <package>org.hibernate.internal.ExceptionMapperStandardImpl</package>
+        </classLogger>
+        <classLogger id="8">
+            <level>WARN</level>
+            <package>org.apache.wicket.resource.PropertiesFactory</package>
+        </classLogger>
+        <classLogger id="9">
+            <level>ERROR</level>
+            <package>org.springframework.context.support.ResourceBundleMessageSource</package>
+        </classLogger>
+        <classLogger id="10">
+            <level>INFO</level>
+            <package>com.evolveum.midpoint.model.impl.lens.projector.Projector</package>
+        </classLogger>
+        <classLogger id="11">
+            <level>INFO</level>
+            <package>com.evolveum.midpoint.model.impl.lens.Clockwork</package>
+        </classLogger>
+        <classLogger id="691">
+            <level>INFO</level>
+            <package>org.identityconnectors.framework</package>
+        </classLogger>
+        <classLogger id="692">
+            <level>INFO</level>
+            <package>com.evolveum.polygon.connector.ldap.OperationLog</package>
+        </classLogger>
+        <classLogger id="693">
+            <level>INFO</level>
+            <package>org.forgerock.openicf.misc.scriptedcommon</package>
+        </classLogger>
+        <classLogger id="695">
+            <level>TRACE</level>
+            <package>SyncScript</package>
+        </classLogger>
+        <classLogger id="696">
+            <level>TRACE</level>
+            <package>SearchScript</package>
+        </classLogger>
+        <classLogger id="702">
+            <level>INFO</level>
+            <package>com.evolveum.polygon.connector.msgraphapi.MSGraphConnector</package>
+        </classLogger>
+        <classLogger id="704">
+            <level>INFO</level>
+            <package>com.evolveum.midpoint.schema.processor</package>
+        </classLogger>
+        <classLogger id="710">
+            <level>TRACE</level>
+            <package>groovy.sql.Sql</package>
+        </classLogger>
+        <classLogger id="734">
+            <level>TRACE</level>
+            <package>com.evolveum.midpoint.web.security</package>
+        </classLogger>
+        <classLogger id="781">
+            <level>INFO</level>
+            <package>com.evolveum.midpoint.model.impl.lens.assignments</package>
+        </classLogger>
+        <classLogger id="785">
+            <level>INFO</level>
+            <package>com.evolveum.midpoint.model.common.expression.script.ScriptExpression</package>
+        </classLogger>
+        <classLogger id="828">
+            <level>INFO</level>
+            <package>com.evolveum.polygon.connector.ldap</package>
+        </classLogger>
+        <classLogger id="851">
+            <level>INFO</level>
+            <package>cz.cuni.idm.connector.moodle</package>
+        </classLogger>
+        <classLogger id="868">
+            <level>TRACE</level>
+            <package>cz.cuni.idm.connector.kiss</package>
+        </classLogger>
+        <appender id="12" xsi:type="c:FileAppenderConfigurationType">
+            <pattern>%date [%X{subsystem}] [%thread] %level \(%logger\): %msg%n</pattern>
+            <name>MIDPOINT_LOG</name>
+            <fileName>${midpoint.home}/log/midpoint.log</fileName>
+            <filePattern>${midpoint.home}/log/midpoint-%d{yyyy-MM-dd}.%i.log</filePattern>
+            <maxHistory>10</maxHistory>
+            <maxFileSize>100MB</maxFileSize>
+            <append>true</append>
+        </appender>
+        <appender id="13" xsi:type="c:FileAppenderConfigurationType">
+            <pattern>%date %level: %msg%n</pattern>
+            <name>MIDPOINT_PROFILE_LOG</name>
+            <fileName>${midpoint.home}/log/midpoint-profile.log</fileName>
+            <filePattern>${midpoint.home}/log/midpoint-profile-%d{yyyy-MM-dd}.%i.log</filePattern>
+            <maxHistory>10</maxHistory>
+            <maxFileSize>100MB</maxFileSize>
+            <append>true</append>
+        </appender>
+        <rootLoggerAppender>MIDPOINT_LOG</rootLoggerAppender>
+        <rootLoggerLevel>INFO</rootLoggerLevel>
+        <auditing>
+            <enabled>false</enabled>
+            <details>false</details>
+        </auditing>
+    </logging>
+    <roleManagement>
+        <relations>
+            <relation id="737">
+                <ref>org:partof</ref>
+                <display>
+                    <label>Part of</label>
+                </display>
+                <category>organization</category>
+                <category>administration</category>
+            </relation>
+            <relation id="738">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:student</ref>
+                <display>
+                    <label>Student</label>
+                </display>
+                <category>administration</category>
+                <category>policy</category>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="739">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:interrupted-student</ref>
+                <display>
+                    <label>Interrupted student</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+            </relation>
+            <relation id="740">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:affiliate-student</ref>
+                <display>
+                    <label>Affiliate student</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+            </relation>
+            <relation id="741">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:staff</ref>
+                <display>
+                    <label>Staff</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="742">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:employee</ref>
+                <display>
+                    <label>Employee</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="743">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:member</ref>
+                <display>
+                    <label>Member</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="744">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:affiliate</ref>
+                <display>
+                    <label>Affiliate</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="745">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:alum</ref>
+                <display>
+                    <label>Alum</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+            </relation>
+            <relation id="746">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:applicant</ref>
+                <display>
+                    <label>Applicant</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="747">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:admitted-applicant</ref>
+                <display>
+                    <label>Admitted applicant</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="748">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:faculty</ref>
+                <display>
+                    <label>Faculty</label>
+                </display>
+                <category>administration</category>
+                <category>policy</category>
+                <category>organization</category>
+                <category>governance</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="749">
+                <ref xmlns:gen63="http://cas.cuni.cz/idm/affiliation">gen63:guest</ref>
+                <display>
+                    <label>Guest</label>
+                </display>
+                <category>administration</category>
+                <category>governance</category>
+                <category>policy</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="756">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:souvislost</ref>
+                <display>
+                    <label>Souvislost</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="758">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:system</ref>
+                <display>
+                    <label>System</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="759">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:zamestnavatel</ref>
+                <display>
+                    <label>Zamestnavatel</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="760">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:pracoviste</ref>
+                <display>
+                    <label>Pracoviste</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="761">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:fakulta</ref>
+                <display>
+                    <label>Fakulta</label>
+                </display>
+                <category>governance</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="762">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:fakulta_dalsi_obor</ref>
+                <display>
+                    <label>Fakulta (dalsi obor)</label>
+                </display>
+                <category>governance</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="763">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:studium</ref>
+                <display>
+                    <label>Studium</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="764">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:clen</ref>
+                <display>
+                    <label>Clen</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="765">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:externista</ref>
+                <display>
+                    <label>Externista</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="766">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:vyucujici</ref>
+                <display>
+                    <label>Vyucujici</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="767">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:uzivatel</ref>
+                <display>
+                    <label>Uzivatel</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="768">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:samosprava</ref>
+                <display>
+                    <label>Samosprava</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="769">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:prvouk_hlavni</ref>
+                <display>
+                    <label>Prvouk hlavni</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="770">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:prvouk_vztah</ref>
+                <display>
+                    <label>Prvouk vztah</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="771">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:ucastnik_habilitace</ref>
+                <display>
+                    <label>Ucastnik habilitace</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="772">
+                <ref xmlns:gen388="http://cas.cuni.cz/idm/relation">gen388:agenda</ref>
+                <display>
+                    <label>Agenda</label>
+                </display>
+                <category>governance</category>
+                <category>organization</category>
+                <processedOnRecompute>true</processedOnRecompute>
+                <automaticallyMatched>true</automaticallyMatched>
+            </relation>
+            <relation id="834">
+                <ref>org:creator</ref>
+                <display>
+                    <label>Creator</label>
+                </display>
+                <category>policy</category>
+            </relation>
+        </relations>
+    </roleManagement>
+    <cleanupPolicy>
+        <auditRecords>
+            <maxAge>P1M</maxAge>
+        </auditRecords>
+        <closedTasks>
+            <maxAge>P1M</maxAge>
+        </closedTasks>
+    </cleanupPolicy>
+    <internals>
+        <tracing>
+            <profile id="14">
+                <name>performance</name>
+                <displayName>Performance tracing</displayName>
+                <visible>true</visible>
+                <default>true</default>
+                <fileNamePattern>performance-trace %{timestamp} %{focusName} %{milliseconds}</fileNamePattern>
+                <createRepoObject>true</createRepoObject>
+                <compressOutput>true</compressOutput>
+            </profile>
+            <profile id="15">
+                <name>functional</name>
+                <displayName>Functional tracing</displayName>
+                <visible>true</visible>
+                <fileNamePattern>functional-trace %{timestamp} %{focusName}</fileNamePattern>
+                <createRepoObject>true</createRepoObject>
+                <compressOutput>true</compressOutput>
+                <collectLogEntries>true</collectLogEntries>
+                <tracingTypeProfile id="516">
+                    <level>normal</level>
+                </tracingTypeProfile>
+            </profile>
+            <profile id="16">
+                <name>functional-model-logging</name>
+                <displayName>Functional tracing (with model logging)</displayName>
+                <visible>true</visible>
+                <fileNamePattern>functional-trace %{timestamp} %{focusName}</fileNamePattern>
+                <createRepoObject>true</createRepoObject>
+                <compressOutput>true</compressOutput>
+                <collectLogEntries>true</collectLogEntries>
+                <loggingOverride>
+                    <levelOverride id="517">
+                        <logger>com.evolveum.midpoint.model</logger>
+                        <level>TRACE</level>
+                    </levelOverride>
+                </loggingOverride>
+                <tracingTypeProfile id="518">
+                    <level>normal</level>
+                </tracingTypeProfile>
+            </profile>
+            <profile id="17">
+                <name>functional-sql-logging</name>
+                <displayName>Functional tracing (with SQL logging)</displayName>
+                <visible>true</visible>
+                <fileNamePattern>functional-trace %{timestamp} %{focusName}</fileNamePattern>
+                <createRepoObject>true</createRepoObject>
+                <compressOutput>true</compressOutput>
+                <collectLogEntries>true</collectLogEntries>
+                <loggingOverride>
+                    <levelOverride id="519">
+                        <logger>org.hibernate.SQL</logger>
+                        <level>TRACE</level>
+                    </levelOverride>
+                </loggingOverride>
+                <tracingTypeProfile id="520">
+                    <level>normal</level>
+                </tracingTypeProfile>
+            </profile>
+        </tracing>
+    </internals>
+    <adminGuiConfiguration>
+        <objectCollectionViews>
+            <objectCollectionView id="27">
+                <identifier>my-cases</identifier>
+                <display>
+                    <label>My cases</label>
+                    <singularLabel>My case</singularLabel>
+                    <pluralLabel>
+                        <t:orig>My cases</t:orig>
+                        <t:norm>my cases</t:norm>
+                        <t:translation>
+                            <t:key>MyCases.title</t:key>
+                        </t:translation>
+                    </pluralLabel>
+                    <icon>
+                        <cssClass>fe fe-case-object</cssClass>
+                    </icon>
+                </display>
+                <displayOrder>1000</displayOrder>
+                <type>CaseType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000344" relation="org:default" type="c:ObjectCollectionType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="28">
+                <identifier>manual-case-view</identifier>
+                <display>
+                    <label>Manual cases</label>
+                    <singularLabel>Manual case</singularLabel>
+                    <pluralLabel>
+                        <t:orig>All manual cases</t:orig>
+                        <t:norm>all manual cases</t:norm>
+                        <t:translation>
+                            <t:key>AllManualCases.title</t:key>
+                        </t:translation>
+                    </pluralLabel>
+                    <tooltip>Manual provisioning cases</tooltip>
+                </display>
+                <displayOrder>1010</displayOrder>
+                <type>CaseType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000340" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="29">
+                <identifier>operation-request-case-view</identifier>
+                <display>
+                    <label>Requests</label>
+                    <singularLabel>Request</singularLabel>
+                    <pluralLabel>
+                        <t:orig>All requests</t:orig>
+                        <t:norm>all requests</t:norm>
+                        <t:translation>
+                            <t:key>AllRequests.title</t:key>
+                        </t:translation>
+                    </pluralLabel>
+                    <tooltip>Operation requests</tooltip>
+                </display>
+                <displayOrder>1020</displayOrder>
+                <type>CaseType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000341" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="30">
+                <identifier>approval-case-view</identifier>
+                <display>
+                    <label>Approvals</label>
+                    <singularLabel>Approval</singularLabel>
+                    <pluralLabel>
+                        <t:orig>All approvals</t:orig>
+                        <t:norm>all approvals</t:norm>
+                        <t:translation>
+                            <t:key>AllApprovals.title</t:key>
+                        </t:translation>
+                    </pluralLabel>
+                    <tooltip>Approval cases</tooltip>
+                </display>
+                <displayOrder>1030</displayOrder>
+                <type>CaseType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000342" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="31">
+                <identifier>reconciliation-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="32">
+                <identifier>recomputation-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000502" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="33">
+                <identifier>import-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000503" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="34">
+                <identifier>live-sync-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000504" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="35">
+                <identifier>async-update-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000505" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="36">
+                <identifier>cleanup-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000506" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="142">
+                <identifier>report-tasks-view</identifier>
+                <display>
+                    <label>Report task</label>
+                    <pluralLabel>
+                        <t:orig>Report tasks</t:orig>
+                        <t:norm>report tasks</t:norm>
+                        <t:translation>
+                            <t:key>ReportTasks.title</t:key>
+                        </t:translation>
+                    </pluralLabel>
+                    <icon>
+                        <cssClass>fa fa-chart-pie</cssClass>
+                        <color>green</color>
+                    </icon>
+                </display>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0002-000000000007" relation="org:default" type="c:ObjectCollectionType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="143">
+                <identifier>non-iterative-bulk-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000508" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="144">
+                <identifier>iterative-bulk-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000509" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="145">
+                <identifier>report-import-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000510" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="146">
+                <identifier>export-report-tasks-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000511" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="147">
+                <identifier>export-report-distributed-tasks-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000512" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="148">
+                <identifier>shadow-integrity-check-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000513" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="149">
+                <identifier>shadows-refresh-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000514" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="150">
+                <identifier>objects-delete-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000515" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="151">
+                <identifier>shadows-delete-long-time-not-updated-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000516" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="152">
+                <identifier>execute-change-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000517" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="153">
+                <identifier>execute-deltas-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000518" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="154">
+                <identifier>reindex-repository-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000519" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="155">
+                <identifier>object-integrity-check-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000522" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="156">
+                <identifier>validity-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000530" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="157">
+                <identifier>trigger-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000531" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="158">
+                <identifier>propagation-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000532" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="159">
+                <identifier>multi-propagation-task-view</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000533" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="40">
+                <identifier>certification-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000520" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="41">
+                <identifier>approval-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000521" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="42">
+                <identifier>utility-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000528" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="43">
+                <identifier>system-tasks-view</identifier>
+                <refreshInterval>30</refreshInterval>
+                <type>TaskType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000529" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="44">
+                <identifier>dashboard-reports-view</identifier>
+                <type>ReportType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000170" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="45">
+                <identifier>collection-reports-view</identifier>
+                <type>ReportType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000171" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="720">
+                <identifier>correlation-case-view</identifier>
+                <display>
+                    <label>Correlations</label>
+                    <singularLabel>Correlation</singularLabel>
+                    <pluralLabel>
+                        <t:orig>All correlations</t:orig>
+                        <t:norm>all correlations</t:norm>
+                        <t:translation>
+                            <t:key>AllCorrelations.title</t:key>
+                        </t:translation>
+                    </pluralLabel>
+                    <tooltip>Correlation cases</tooltip>
+                </display>
+                <displayOrder>1040</displayOrder>
+                <type>CaseType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000345" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="721">
+                <identifier>application-role</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <type>RoleType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="722">
+                <identifier>business-role</identifier>
+                <applicableForOperation>add</applicableForOperation>
+                <type>RoleType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000321" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="723">
+                <identifier>application</identifier>
+                <display>
+                    <label>Application.panel.applications</label>
+                </display>
+                <type>ServiceType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000329" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="724">
+                <identifier>event-mark</identifier>
+                <type>c:MarkType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000700" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="725">
+                <identifier>object-mark</identifier>
+                <type>c:MarkType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000701" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="840">
+                <identifier>person-view</identifier>
+                <description>Persons</description>
+                <documentation>This view displays all users with archetype "Person"</documentation>
+                <displayOrder>10</displayOrder>
+                <searchBoxConfiguration>
+                    <searchItems>
+                        <searchItem id="81">
+                            <filter>
+                                <q:text>
+                                    linkRef/@ matches (
+                                    . type ShadowType
+                                    and resourceRef/@/name = `resourceParameter?.getName()?.getOrig()`
+                                    and kind = "account" )
+                                </q:text>
+                            </filter>
+                            <description>Allow searching for users having account on specific resource. Intent is not considered. The search item is not displayed by default
+                                (visibleByDefault=false).
+                            </description>
+                            <display>
+                                <label>Users with account</label>
+                            </display>
+                            <parameter>
+                                <name>resourceParameter</name>
+                                <type>c:ObjectReferenceType</type>
+                                <targetType>ResourceType</targetType>
+                            </parameter>
+                            <visibleByDefault>true</visibleByDefault>
+                        </searchItem>
+                        <searchItem id="82">
+                            <filter>
+                                <q:text>
+                                    linkRef/@ not matches (
+                                    . type ShadowType
+                                    and resourceRef/@/name = `resourceParameter?.getName()?.getOrig()`
+                                    and kind = "account" )
+                                </q:text>
+                            </filter>
+                            <description>Allow searching for users not having account on specific resource. Intent is not considered. The search item is not displayed by default
+                                (visibleByDefault=false).
+                            </description>
+                            <display>
+                                <label>Users without account</label>
+                            </display>
+                            <parameter>
+                                <name>resourceParameter</name>
+                                <type>c:ObjectReferenceType</type>
+                                <targetType>ResourceType</targetType>
+                            </parameter>
+                            <visibleByDefault>true</visibleByDefault>
+                        </searchItem>
+                    </searchItems>
+                </searchBoxConfiguration>
+                <type>UserType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0000-000000000702" relation="org:default" type="c:ArchetypeType"/>
+                </collection>
+            </objectCollectionView>
+            <objectCollectionView id="841">
+                <identifier>resource-templates</identifier>
+                <display>
+                    <label>
+                        <t:orig>Resource templates</t:orig>
+                        <t:norm>resource templates</t:norm>
+                        <t:translation>
+                            <t:key>ResourceType.templates.title</t:key>
+                        </t:translation>
+                    </label>
+                    <singularLabel>Resource template</singularLabel>
+                    <pluralLabel>
+                        <t:orig>All resource templates</t:orig>
+                        <t:norm>all resource templates</t:norm>
+                        <t:translation>
+                            <t:key>ResourceType.template.all.title</t:key>
+                        </t:translation>
+                    </pluralLabel>
+                    <icon>
+                        <cssClass>fa fa-file-alt</cssClass>
+                    </icon>
+                </display>
+                <type>ResourceType</type>
+                <collection>
+                    <collectionRef oid="00000000-0000-0000-0001-000000000340" relation="org:default" type="c:ObjectCollectionType"/>
+                </collection>
+            </objectCollectionView>
+        </objectCollectionViews>
+        <objectDetails>
+            <objectDetailsPage id="160">
+                <type>c:TaskType</type>
+                <panel id="521">
+                    <identifier>advanced-options-panel</identifier>
+                    <display>
+                        <label>Advanced options</label>
+                    </display>
+                    <container id="523">
+                        <identifier>advanced-options</identifier>
+                        <display>
+                            <label>Advanced options</label>
+                        </display>
+                        <displayOrder>150</displayOrder>
+                        <item id="524">
+                            <path>cleanupAfterCompletion</path>
+                        </item>
+                        <item id="525">
+                            <path>threadStopAction</path>
+                        </item>
+                        <item id="526">
+                            <path>binding</path>
+                        </item>
+                        <item id="527">
+                            <path>dependent</path>
+                        </item>
+                    </container>
+                    <panelType>formPanel</panelType>
+                </panel>
+                <panel id="522">
+                    <identifier>operational-attributes-panel</identifier>
+                    <display>
+                        <label>Operational attributes</label>
+                    </display>
+                    <container id="528">
+                        <identifier>operational-attributes</identifier>
+                        <display>
+                            <label>Operational attributes (state)</label>
+                        </display>
+                        <displayOrder>900</displayOrder>
+                        <item id="530">
+                            <path>executionState</path>
+                        </item>
+                        <item id="531">
+                            <path>schedulingState</path>
+                        </item>
+                        <item id="532">
+                            <path>node</path>
+                        </item>
+                        <item id="533">
+                            <path>nodeAsObserved</path>
+                        </item>
+                        <item id="534">
+                            <path>resultStatus</path>
+                        </item>
+                        <item id="535">
+                            <path>result</path>
+                        </item>
+                        <item id="536">
+                            <path>nextRunStartTimestamp</path>
+                        </item>
+                        <item id="537">
+                            <path>nextRetryTimestamp</path>
+                        </item>
+                        <item id="538">
+                            <path>unpauseAction</path>
+                        </item>
+                        <item id="539">
+                            <path>taskIdentifier</path>
+                        </item>
+                        <item id="540">
+                            <path>parent</path>
+                        </item>
+                        <item id="541">
+                            <path>waitingReason</path>
+                        </item>
+                        <item id="542">
+                            <path>stateBeforeSuspend</path>
+                        </item>
+                        <item id="543">
+                            <path>schedulingStateBeforeSuspend</path>
+                        </item>
+                        <item id="544">
+                            <path>category</path>
+                        </item>
+                        <item id="545">
+                            <path>otherHandlersUriStack</path>
+                        </item>
+                        <item id="546">
+                            <path>channel</path>
+                        </item>
+                        <item id="547">
+                            <path>subtaskRef</path>
+                        </item>
+                        <item id="548">
+                            <path>dependentTaskRef</path>
+                        </item>
+                        <item id="549">
+                            <path>lastRunStartTimestamp</path>
+                        </item>
+                        <item id="550">
+                            <path>lastRunFinishTimestamp</path>
+                        </item>
+                        <item id="551">
+                            <path>completionTimestamp</path>
+                        </item>
+                    </container>
+                    <container id="529">
+                        <identifier>operation-attributes-progress</identifier>
+                        <display>
+                            <label>Operational attributes (progress)</label>
+                        </display>
+                        <visibility>hidden</visibility>
+                        <displayOrder>910</displayOrder>
+                        <item id="552">
+                            <path>progress</path>
+                        </item>
+                        <item id="553">
+                            <path>expectedTotal</path>
+                        </item>
+                        <item id="554">
+                            <path>stalledSince</path>
+                        </item>
+                    </container>
+                    <panelType>formPanel</panelType>
+                </panel>
+            </objectDetailsPage>
+            <objectDetailsPage id="726">
+                <type>c:UserType</type>
+                <panel id="727">
+                    <identifier>applications</identifier>
+                    <display>
+                        <label>Application.panel.applications</label>
+                    </display>
+                    <applicableForOperation>modify</applicableForOperation>
+                    <panelType>roleMemberships</panelType>
+                    <listView>
+                        <identifier>applications</identifier>
+                        <searchBoxConfiguration>
+                            <objectTypeConfiguration>
+                                <visibility>hidden</visibility>
+                                <defaultValue>ServiceType</defaultValue>
+                                <supportedTypes>ServiceType</supportedTypes>
+                            </objectTypeConfiguration>
+                        </searchBoxConfiguration>
+                        <type>c:ServiceType</type>
+                        <collection>
+                            <collectionRef oid="00000000-0000-0000-0001-000000000017" relation="org:default" type="c:ObjectCollectionType"/>
+                        </collection>
+                    </listView>
+                </panel>
+            </objectDetailsPage>
+            <resourceDetailsPage id="195">
+                <panel id="555">
+                    <identifier>rw-type-basic</identifier>
+                    <container id="562">
+                        <identifier>basic</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.objectType.basicSettings</label>
+                        </display>
+                        <item id="564">
+                            <path>schemaHandling/objectType/displayName</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="565">
+                            <path>schemaHandling/objectType/description</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="566">
+                            <path>schemaHandling/objectType/kind</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="567">
+                            <path>schemaHandling/objectType/intent</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="568">
+                            <path>schemaHandling/objectType/securityPolicyRef</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="569">
+                            <path>schemaHandling/objectType/default</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="563">
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType</path>
+                    </container>
+                    <panelType>rw-type-basic</panelType>
+                </panel>
+                <panel id="556">
+                    <identifier>rw-type-delineation</identifier>
+                    <container id="570">
+                        <identifier>delineation</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.objectType.delineation</label>
+                        </display>
+                        <item id="572">
+                            <path>schemaHandling/objectType/delineation/objectClass</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="573">
+                            <path>schemaHandling/objectType/delineation/auxiliaryObjectClass</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="574">
+                            <path>schemaHandling/objectType/delineation/searchHierarchyScope</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="575">
+                            <path>schemaHandling/objectType/delineation/filter</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="576">
+                            <path>schemaHandling/objectType/delineation/classificationCondition</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="571">
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/delineation</path>
+                    </container>
+                    <panelType>rw-type-delineation</panelType>
+                </panel>
+                <panel id="557">
+                    <identifier>rw-attribute-limitations</identifier>
+                    <container id="577">
+                        <identifier>limitationsMapping</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.attributes.limitation</label>
+                        </display>
+                        <item id="579">
+                            <path>schemaHandling/objectType/attribute/limitations/access/read</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="580">
+                            <path>schemaHandling/objectType/attribute/limitations/access/add</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="581">
+                            <path>schemaHandling/objectType/attribute/limitations/access/modify</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="582">
+                            <path>schemaHandling/objectType/attribute/limitations/minOccurs</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="583">
+                            <path>schemaHandling/objectType/attribute/limitations/maxOccurs</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="584">
+                            <path>schemaHandling/objectType/attribute/limitations/processing</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="578">
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/attribute/limitations</path>
+                    </container>
+                    <panelType>rw-attribute-limitations</panelType>
+                </panel>
+                <panel id="558">
+                    <identifier>rw-synchronization-reaction-main</identifier>
+                    <container id="585">
+                        <identifier>reactionMainSetting</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.synchronization.reaction.mainSettings</label>
+                        </display>
+                        <item id="587">
+                            <path>schemaHandling/objectType/synchronization/reaction/name</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="588">
+                            <path>schemaHandling/objectType/synchronization/reaction/description</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="589">
+                            <path>schemaHandling/objectType/synchronization/reaction/situation</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="586">
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/synchronization/reaction</path>
+                    </container>
+                    <panelType>rw-synchronization-reaction-main</panelType>
+                </panel>
+                <panel id="559">
+                    <identifier>rw-synchronization-reaction-optional</identifier>
+                    <container id="590">
+                        <identifier>reactionOptionalSetting</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.synchronization.reaction.optionalSettings</label>
+                        </display>
+                        <item id="592">
+                            <path>schemaHandling/objectType/synchronization/reaction/condition</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="593">
+                            <path>schemaHandling/objectType/synchronization/reaction/channel</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="594">
+                            <path>schemaHandling/objectType/synchronization/reaction/order</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="591">
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/synchronization/reaction</path>
+                    </container>
+                    <panelType>rw-synchronization-reaction-optional</panelType>
+                </panel>
+                <panel id="560">
+                    <identifier>rw-attribute</identifier>
+                    <container id="595">
+                        <identifier>mainConfigurationAttribute</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.attributes.mainConfiguration</label>
+                        </display>
+                        <item id="597">
+                            <path>schemaHandling/objectType/attribute/ref</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="598">
+                            <path>schemaHandling/objectType/attribute/displayName</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="599">
+                            <path>schemaHandling/objectType/attribute/help</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="600">
+                            <path>schemaHandling/objectType/attribute/description</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="601">
+                            <path>schemaHandling/objectType/attribute/tolerant</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="602">
+                            <path>schemaHandling/objectType/attribute/exclusiveStrong</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="603">
+                            <path>schemaHandling/objectType/attribute/readReplaceMode</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="604">
+                            <path>schemaHandling/objectType/attribute/fetchStrategy</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="605">
+                            <path>schemaHandling/objectType/attribute/matchingRule</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="596">
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/attribute</path>
+                    </container>
+                    <panelType>rw-attribute</panelType>
+                </panel>
+                <panel id="561">
+                    <identifier>rw-association</identifier>
+                    <container id="606">
+                        <identifier>association</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.associations</label>
+                        </display>
+                        <item id="608">
+                            <path>schemaHandling/objectType/association/ref</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="609">
+                            <path>schemaHandling/objectType/association/displayName</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="610">
+                            <path>schemaHandling/objectType/association/description</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="611">
+                            <path>schemaHandling/objectType/association/auxiliaryObjectClass</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="612">
+                            <path>schemaHandling/objectType/association/kind</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="613">
+                            <path>schemaHandling/objectType/association/intent</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="614">
+                            <path>schemaHandling/objectType/association/direction</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="615">
+                            <path>schemaHandling/objectType/association/associationAttribute</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="616">
+                            <path>schemaHandling/objectType/association/shortcutAssociationAttribute</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="617">
+                            <path>schemaHandling/objectType/association/valueAttribute</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="618">
+                            <path>schemaHandling/objectType/association/shortcutValueAttribute</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="619">
+                            <path>schemaHandling/objectType/association/explicitReferentialIntegrity</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="607">
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/association</path>
+                    </container>
+                    <panelType>rw-association</panelType>
+                </panel>
+            </resourceDetailsPage>
+            <resourceDetailsPage id="261">
+                <panel id="620">
+                    <identifier>rw-connectorConfiguration-partial</identifier>
+                    <container id="621">
+                        <identifier>required</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.configuration</label>
+                        </display>
+                        <item id="623">
+                            <path>connectorConfiguration/configurationProperties/jdbcUrlTemplate</path>
+                        </item>
+                        <item id="624">
+                            <path>connectorConfiguration/configurationProperties/jdbcDriver</path>
+                        </item>
+                        <item id="625">
+                            <path>connectorConfiguration/configurationProperties/password</path>
+                        </item>
+                        <item id="626">
+                            <path>connectorConfiguration/configurationProperties/user</path>
+                        </item>
+                        <item id="627">
+                            <path>connectorConfiguration/configurationProperties/port</path>
+                        </item>
+                        <item id="728">
+                            <path>connectorConfiguration/configurationProperties/host</path>
+                        </item>
+                        <item id="729">
+                            <path>connectorConfiguration/configurationProperties/database</path>
+                        </item>
+                    </container>
+                    <container id="622">
+                        <visibility>hidden</visibility>
+                        <path>connectorConfiguration/configurationProperties</path>
+                    </container>
+                    <panelType>rw-connectorConfiguration-partial</panelType>
+                </panel>
+                <connectorRef relation="org:default" type="c:ConnectorType">
+                    <filter>
+                        <q:and>
+                            <q:equal>
+                                <q:path>connectorType</q:path>
+                                <q:value>org.identityconnectors.databasetable.DatabaseTableConnector</q:value>
+                            </q:equal>
+                            <q:equal>
+                                <q:path>available</q:path>
+                                <q:value>true</q:value>
+                            </q:equal>
+                        </q:and>
+                    </filter>
+                    <resolutionTime>run</resolutionTime>
+                </connectorRef>
+            </resourceDetailsPage>
+            <resourceDetailsPage id="270">
+                <panel id="628">
+                    <identifier>rw-connectorConfiguration-partial</identifier>
+                    <container id="629">
+                        <identifier>required</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.configuration</label>
+                        </display>
+                        <item id="631">
+                            <path>connectorConfiguration/configurationProperties/host</path>
+                        </item>
+                        <item id="632">
+                            <path>connectorConfiguration/configurationProperties/port</path>
+                        </item>
+                        <item id="633">
+                            <path>connectorConfiguration/configurationProperties/connectionSecurity</path>
+                        </item>
+                        <item id="730">
+                            <path>connectorConfiguration/configurationProperties/bindDn</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="731">
+                            <path>connectorConfiguration/configurationProperties/bindPassword</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="630">
+                        <visibility>hidden</visibility>
+                        <path>connectorConfiguration/configurationProperties</path>
+                    </container>
+                    <panelType>rw-connectorConfiguration-partial</panelType>
+                </panel>
+                <connectorRef relation="org:default" type="c:ConnectorType">
+                    <filter>
+                        <q:and>
+                            <q:equal>
+                                <q:path>connectorType</q:path>
+                                <q:value>com.evolveum.polygon.connector.ldap.LdapConnector</q:value>
+                            </q:equal>
+                            <q:equal>
+                                <q:path>available</q:path>
+                                <q:value>true</q:value>
+                            </q:equal>
+                        </q:and>
+                    </filter>
+                    <resolutionTime>run</resolutionTime>
+                </connectorRef>
+            </resourceDetailsPage>
+            <resourceDetailsPage id="277">
+                <panel id="634">
+                    <identifier>rw-connectorConfiguration-partial</identifier>
+                    <container id="635">
+                        <identifier>required</identifier>
+                        <display>
+                            <label>PageResource.wizard.step.configuration</label>
+                        </display>
+                        <item id="637">
+                            <path>connectorConfiguration/configurationProperties/host</path>
+                        </item>
+                        <item id="638">
+                            <path>connectorConfiguration/configurationProperties/port</path>
+                        </item>
+                        <item id="639">
+                            <path>connectorConfiguration/configurationProperties/connectionSecurity</path>
+                        </item>
+                        <item id="732">
+                            <path>connectorConfiguration/configurationProperties/bindDn</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="733">
+                            <path>connectorConfiguration/configurationProperties/bindPassword</path>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="636">
+                        <visibility>hidden</visibility>
+                        <path>connectorConfiguration/configurationProperties</path>
+                    </container>
+                    <panelType>rw-connectorConfiguration-partial</panelType>
+                </panel>
+                <connectorRef relation="org:default" type="c:ConnectorType">
+                    <filter>
+                        <q:and>
+                            <q:equal>
+                                <q:path>connectorType</q:path>
+                                <q:value>com.evolveum.polygon.connector.ldap.ad.AdLdapConnector</q:value>
+                            </q:equal>
+                            <q:equal>
+                                <q:path>available</q:path>
+                                <q:value>true</q:value>
+                            </q:equal>
+                        </q:and>
+                    </filter>
+                    <resolutionTime>run</resolutionTime>
+                </connectorRef>
+            </resourceDetailsPage>
+        </objectDetails>
+        <configurableUserDashboard id="302">
+            <identifier>admin-dashboard</identifier>
+            <configurableDashboardRef oid="00000000-0000-0000-0001-000000000001" relation="org:default" type="c:DashboardType"/>
+        </configurableUserDashboard>
+        <accessRequest>
+            <roleCatalog>
+                <collection id="303">
+                    <identifier>allRoles</identifier>
+                    <default>true</default>
+                    <collectionIdentifier>allRoles</collectionIdentifier>
+                </collection>
+                <collection id="304">
+                    <identifier>allOrgs</identifier>
+                    <collectionIdentifier>allOrgs</collectionIdentifier>
+                </collection>
+                <collection id="305">
+                    <identifier>allServices</identifier>
+                    <collectionIdentifier>allServices</collectionIdentifier>
+                </collection>
+            </roleCatalog>
+        </accessRequest>
+        <homePage id="284">
+            <type>UserType</type>
+            <widget id="640">
+                <identifier>myAccesses</identifier>
+                <display>
+                    <label>
+                        <t:orig>My accesses</t:orig>
+                        <t:norm>my accesses</t:norm>
+                        <t:translation>
+                            <t:key>PageSelfDashboard.myAccesses</t:key>
+                        </t:translation>
+                    </label>
+                    <cssClass>col-12 col-xxl-6</cssClass>
+                    <icon>
+                        <cssClass>fe fe-assignment</cssClass>
+                    </icon>
+                </display>
+                <displayOrder>10</displayOrder>
+                <panelType>allAssignments</panelType>
+                <previewSize>5</previewSize>
+                <action id="648">
+                    <identifier>viewAll</identifier>
+                    <display>
+                        <label>
+                            <t:orig>View all</t:orig>
+                            <t:norm>view all</t:norm>
+                            <t:translation>
+                                <t:key>PageSelfDashboard.button.viewAll</t:key>
+                            </t:translation>
+                        </label>
+                        <icon>
+                            <cssClass>fa fa-search</cssClass>
+                        </icon>
+                    </display>
+                    <target>
+                        <panelIdentifier>allAssignments</panelIdentifier>
+                        <targetUrl>/self/profile/user</targetUrl>
+                    </target>
+                </action>
+                <action id="649">
+                    <identifier>requestAccess</identifier>
+                    <display>
+                        <label>
+                            <t:orig>Request access</t:orig>
+                            <t:norm>request access</t:norm>
+                            <t:translation>
+                                <t:key>PageRequestAccess.title</t:key>
+                            </t:translation>
+                        </label>
+                        <icon>
+                            <cssClass>fas fa-plus-circle</cssClass>
+                        </icon>
+                    </display>
+                    <target>
+                        <targetUrl>/self/requestAccess</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="641">
+                <identifier>myRequests</identifier>
+                <display>
+                    <label>
+                        <t:orig>My requests</t:orig>
+                        <t:norm>my requests</t:norm>
+                        <t:translation>
+                            <t:key>PageSelfDashboard.myRequests</t:key>
+                        </t:translation>
+                    </label>
+                    <cssClass>col-12 col-xxl-6</cssClass>
+                    <icon>
+                        <cssClass>fe fe-case</cssClass>
+                    </icon>
+                </display>
+                <displayOrder>20</displayOrder>
+                <panelType>myRequests</panelType>
+                <previewSize>5</previewSize>
+                <action id="650">
+                    <identifier>viewAll</identifier>
+                    <display>
+                        <label>
+                            <t:orig>View all</t:orig>
+                            <t:norm>view all</t:norm>
+                            <t:translation>
+                                <t:key>PageSelfDashboard.button.viewAll</t:key>
+                            </t:translation>
+                        </label>
+                        <icon>
+                            <cssClass>fa fa-search</cssClass>
+                        </icon>
+                    </display>
+                    <target>
+                        <collectionIdentifier>my-cases</collectionIdentifier>
+                        <targetUrl>/admin/casesAll</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="642">
+                <identifier>myWorkItems</identifier>
+                <display>
+                    <label>
+                        <t:orig>My work items</t:orig>
+                        <t:norm>my work items</t:norm>
+                        <t:translation>
+                            <t:key>PageSelfDashboard.workItems</t:key>
+                        </t:translation>
+                    </label>
+                    <cssClass>col-12 col-xxl-6</cssClass>
+                    <icon>
+                        <cssClass>fa fa-inbox</cssClass>
+                    </icon>
+                </display>
+                <displayOrder>40</displayOrder>
+                <panelType>myWorkItems</panelType>
+                <previewSize>5</previewSize>
+                <action id="651">
+                    <identifier>viewAll</identifier>
+                    <display>
+                        <label>
+                            <t:orig>View all</t:orig>
+                            <t:norm>view all</t:norm>
+                            <t:translation>
+                                <t:key>PageSelfDashboard.button.viewAll</t:key>
+                            </t:translation>
+                        </label>
+                        <icon>
+                            <cssClass>fa fa-search</cssClass>
+                        </icon>
+                    </display>
+                    <target>
+                        <targetUrl>/admin/myWorkItems</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="643">
+                <identifier>myAccounts</identifier>
+                <display>
+                    <label>
+                        <t:orig>My accounts</t:orig>
+                        <t:norm>my accounts</t:norm>
+                        <t:translation>
+                            <t:key>PageDashboard.accounts</t:key>
+                        </t:translation>
+                    </label>
+                    <cssClass>col-12 col-xxl-6</cssClass>
+                    <icon>
+                        <cssClass>fa fa-male</cssClass>
+                    </icon>
+                </display>
+                <displayOrder>30</displayOrder>
+                <panelType>projections</panelType>
+                <previewSize>5</previewSize>
+                <action id="652">
+                    <identifier>viewAll</identifier>
+                    <display>
+                        <label>
+                            <t:orig>View all</t:orig>
+                            <t:norm>view all</t:norm>
+                            <t:translation>
+                                <t:key>PageSelfDashboard.button.viewAll</t:key>
+                            </t:translation>
+                        </label>
+                        <icon>
+                            <cssClass>fa fa-search</cssClass>
+                        </icon>
+                    </display>
+                    <target>
+                        <panelIdentifier>projections</panelIdentifier>
+                        <targetUrl>/self/profile/user</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="644">
+                <identifier>profileWidget</identifier>
+                <display>
+                    <label>
+                        <t:orig>Profile</t:orig>
+                        <t:norm>profile</t:norm>
+                        <t:translation>
+                            <t:key>PageSelfDashboard.profile</t:key>
+                        </t:translation>
+                    </label>
+                    <help>PageSelfDashboard.profile.description</help>
+                    <cssClass>col-md-3</cssClass>
+                    <icon>
+                        <cssClass>bg-green fa fa-user</cssClass>
+                    </icon>
+                </display>
+                <panelType>linkWidget</panelType>
+                <action id="653">
+                    <identifier>profile-widget-action</identifier>
+                    <target>
+                        <targetUrl>/self/profile/user</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="645">
+                <identifier>credentialsWidget</identifier>
+                <display>
+                    <label>
+                        <t:orig>Credentials</t:orig>
+                        <t:norm>credentials</t:norm>
+                        <t:translation>
+                            <t:key>PageSelfDashboard.credentials</t:key>
+                        </t:translation>
+                    </label>
+                    <help>PageSelfDashboard.credentials.description</help>
+                    <cssClass>col-md-3</cssClass>
+                    <icon>
+                        <cssClass>bg-blue fa fa-shield-alt</cssClass>
+                    </icon>
+                </display>
+                <panelType>linkWidget</panelType>
+                <action id="654">
+                    <identifier>credentials-widget-action</identifier>
+                    <target>
+                        <targetUrl>/self/credentials</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="646">
+                <identifier>listResourcesWidget</identifier>
+                <display>
+                    <label>
+                        <t:orig>List resources</t:orig>
+                        <t:norm>list resources</t:norm>
+                        <t:translation>
+                            <t:key>PageSelfDashboard.listResources</t:key>
+                        </t:translation>
+                    </label>
+                    <cssClass>col-md-3</cssClass>
+                    <icon>
+                        <cssClass>bg-purple fa fa-database</cssClass>
+                    </icon>
+                </display>
+                <panelType>linkWidget</panelType>
+                <action id="655">
+                    <identifier>list-resources-widget-action</identifier>
+                    <target>
+                        <targetUrl>/admin/resources</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="647">
+                <identifier>listUsersWidget</identifier>
+                <display>
+                    <label>
+                        <t:orig>List users</t:orig>
+                        <t:norm>list users</t:norm>
+                        <t:translation>
+                            <t:key>PageSelfDashboard.listUsers</t:key>
+                        </t:translation>
+                    </label>
+                    <cssClass>col-md-3</cssClass>
+                    <icon>
+                        <cssClass>bg-red fa fa-user</cssClass>
+                    </icon>
+                </display>
+                <panelType>linkWidget</panelType>
+                <action id="656">
+                    <identifier>list-resources-widget-action</identifier>
+                    <target>
+                        <targetUrl>/admin/users</targetUrl>
+                    </target>
+                </action>
+            </widget>
+            <widget id="842">
+                <identifier>search</identifier>
+            </widget>
+        </homePage>
+    </adminGuiConfiguration>
+    <fullTextSearch>
+        <indexed id="712">
+            <item>name</item>
+            <item>identifier</item>
+        </indexed>
+        <indexed id="713">
+            <objectType>UserType</objectType>
+            <item>givenName</item>
+            <item>familyName</item>
+            <item>employeeNumber</item>
+            <item>emailAddress</item>
+            <item>extension/mobile</item>
+            <item>extension/uniqueid</item>
+            <item>extension/externalIds</item>
+        </indexed>
+        <indexed id="714">
+            <objectType>AbstractRoleType</objectType>
+            <item>displayName</item>
+        </indexed>
+        <indexed id="715">
+            <objectType>RoleType</objectType>
+            <item>roleType</item>
+        </indexed>
+        <indexed id="716">
+            <objectType>OrgType</objectType>
+            <item>mailDomain</item>
+            <item>displayName</item>
+        </indexed>
+    </fullTextSearch>
+    <expressions>
+        <expressionProfile id="77">
+            <identifier>safe</identifier>
+            <description>
+                "Safe" expression profile. It is supposed to contain only operations that are "safe",
+                i.e. operations that have very little risk to harm the system, circumvent midPoint security
+                and so on. Use of those operations should be reasonably safe in all expressions.
+                However, there are limitations. This profile may incomplete or it may even be not completely secure.
+                Proper security testing of this profile was not yet conducted. It is provided here "AS IS",
+                without any guarantees. Use at your own risk.
+            </description>
+            <decision>deny</decision>
+            <evaluator id="657">
+                <type>asIs</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="658">
+                <type>path</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="659">
+                <type>value</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="660">
+                <type>const</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="661">
+                <type>script</type>
+                <decision>deny</decision>
+                <script id="662">
+                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+                    <decision>allow</decision>
+                    <typeChecking>true</typeChecking>
+                    <permissionProfile>script-safe</permissionProfile>
+                </script>
+            </evaluator>
+        </expressionProfile>
+        <permissionProfile id="312">
+            <identifier>script-safe</identifier>
+            <decision>deny</decision>
+            <package id="663">
+                <name>com.evolveum.midpoint.xml.ns._public.common.common_3</name>
+                <description>MidPoint common schema - generated bean classes</description>
+                <decision>allow</decision>
+            </package>
+            <package id="664">
+                <name>com.evolveum.prism.xml.ns._public.types_3</name>
+                <description>Prism schema - bean classes</description>
+                <decision>allow</decision>
+            </package>
+            <class id="665">
+                <name>java.lang.Integer</name>
+                <decision>allow</decision>
+            </class>
+            <class id="666">
+                <name>java.lang.Object</name>
+                <description>Basic Java operations.</description>
+                <decision>deny</decision>
+                <method id="684">
+                    <name>equals</name>
+                    <decision>allow</decision>
+                </method>
+                <method id="685">
+                    <name>hashCode</name>
+                    <decision>allow</decision>
+                </method>
+            </class>
+            <class id="667">
+                <name>java.lang.String</name>
+                <description>String operations are generally safe. But Groovy is adding execute() method which is very dangerous.</description>
+                <decision>allow</decision>
+                <method id="686">
+                    <name>execute</name>
+                    <decision>deny</decision>
+                </method>
+            </class>
+            <class id="668">
+                <name>java.lang.CharSequence</name>
+                <decision>allow</decision>
+            </class>
+            <class id="669">
+                <name>java.lang.Enum</name>
+                <decision>allow</decision>
+            </class>
+            <class id="670">
+                <name>java.util.List</name>
+                <description>List operations are generally safe. But Groovy is adding execute() method which is very dangerous.</description>
+                <decision>allow</decision>
+                <method id="687">
+                    <name>execute</name>
+                    <decision>deny</decision>
+                </method>
+            </class>
+            <class id="671">
+                <name>java.util.ArrayList</name>
+                <description>List operations are generally safe. But Groovy is adding execute() method which is very dangerous.</description>
+                <decision>allow</decision>
+                <method id="688">
+                    <name>execute</name>
+                    <decision>deny</decision>
+                </method>
+            </class>
+            <class id="672">
+                <name>java.util.Map</name>
+                <decision>allow</decision>
+            </class>
+            <class id="673">
+                <name>java.util.HashMap</name>
+                <decision>allow</decision>
+            </class>
+            <class id="674">
+                <name>java.util.Date</name>
+                <decision>allow</decision>
+            </class>
+            <class id="675">
+                <name>javax.xml.namespace.QName</name>
+                <decision>allow</decision>
+            </class>
+            <class id="676">
+                <name>javax.xml.datatype.XMLGregorianCalendar</name>
+                <decision>allow</decision>
+            </class>
+            <class id="677">
+                <name>java.lang.System</name>
+                <description>Just a few methods of System are safe enough.</description>
+                <decision>deny</decision>
+                <method id="689">
+                    <name>currentTimeMillis</name>
+                    <decision>allow</decision>
+                </method>
+            </class>
+            <class id="678">
+                <name>java.lang.IllegalStateException</name>
+                <description>Basic Java exception. Also used in test.</description>
+                <decision>allow</decision>
+            </class>
+            <class id="679">
+                <name>java.lang.IllegalArgumentException</name>
+                <description>Basic Java exception.</description>
+                <decision>allow</decision>
+            </class>
+            <class id="680">
+                <name>com.evolveum.midpoint.model.common.expression.functions.BasicExpressionFunctions</name>
+                <description>MidPoint basic functions library</description>
+                <decision>allow</decision>
+            </class>
+            <class id="681">
+                <name>com.evolveum.midpoint.model.common.expression.functions.LogExpressionFunctions</name>
+                <description>MidPoint logging functions library</description>
+                <decision>allow</decision>
+            </class>
+            <class id="682">
+                <name>com.evolveum.midpoint.report.impl.ReportFunctions</name>
+                <description>MidPoint report functions library</description>
+                <decision>allow</decision>
+            </class>
+            <class id="683">
+                <name>org.apache.commons.lang3.StringUtils</name>
+                <description>Apache Commons: Strings</description>
+                <decision>allow</decision>
+            </class>
+        </permissionProfile>
+    </expressions>
+</systemConfiguration>

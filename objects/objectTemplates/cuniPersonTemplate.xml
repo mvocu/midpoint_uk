@@ -1,0 +1,232 @@
+<objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="e69c55e4-4380-499a-ae4f-6cbfa2e0792c" version="46" >
+    <name>cuniPersonTemplate</name>
+    <description>Template for people.</description>
+    <metadata>
+        <requestTimestamp>2022-07-20T17:06:24.940+02:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2022-07-20T17:06:24.950+02:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>
+        <modifyTimestamp>2023-10-23T14:16:07.052+02:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</modifyChannel>
+    </metadata>
+    <operationExecution id="1">
+        <recordType>simple</recordType>
+        <timestamp>2022-07-20T17:06:24.963+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:ObjectTemplateType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000001991370</token>
+            </executionResult>
+            <objectName>PersonTemplate</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="2">
+        <recordType>simple</recordType>
+        <timestamp>2022-07-20T17:06:45.440+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ObjectTemplateType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000001991527</token>
+            </executionResult>
+            <objectName>PersonTemplate</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="3">
+        <recordType>complex</recordType>
+        <timestamp>2023-03-23T07:15:25.260+01:00</timestamp>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <taskRef oid="e5d06247-e120-4a44-9492-8eb98240fd64" relation="org:default" type="c:TaskType"/>
+        <activityPath/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="4">
+        <recordType>complex</recordType>
+        <timestamp>2023-03-24T05:54:04.877+01:00</timestamp>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <taskRef oid="73c66162-eeb0-403f-8246-1fb3cd22258f" relation="org:default" type="c:TaskType"/>
+        <activityPath/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="5">
+        <recordType>simple</recordType>
+        <timestamp>2023-10-23T14:16:07.063+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ObjectTemplateType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000897258</token>
+            </executionResult>
+            <objectName>cuniPersonTemplate</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <mapping id="28">
+        <documentation>
+            Weed out all relation (vztah, hrana) assignments that were created by no longer existing shadows. Works around the situation when midPoint 
+            does not recompute mappings defined for resource objects that have been unlinked.    
+        </documentation>
+        <expression>
+            <script>
+                <relativityMode>absolute</relativityMode>
+                <code>
+                    return null
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>assignment</path>
+            <set>
+                <condition>
+                    <script>
+                        <trace>false</trace>
+                        <code>
+
+                            import com.evolveum.midpoint.xml.ns._public.common.common_3.ShadowKindType
+                            import com.evolveum.midpoint.xml.ns._public.common.common_3.ShadowType
+
+                            if (!(input.subtype.contains("relation_hrana") || input.subtype.contains("relation_vztah"))) {
+                                return false
+                            }
+
+                            /*
+                            id = null
+                            if (input.subtype.contains("relation_hrana")) {
+                                id = input.subtype.findAll({ it.startsWith("hrana_") }).first()?.replace("hrana_", "")
+                            } else {
+                                id = input.subtype.findAll({ it.startsWith("vztah_") }).first()?.replace("vztah_", "")
+                            }
+                            if (basic.isEmpty(id)) {
+                                return false
+                            }
+
+                            log.info("XXX looking for relation id {}", id)
+                            query = midpoint.queryFor(ShadowType.class, 'kind = "entitlement" and intent = "relation" and resourceRef matches ( oid = "3ce8c98b-3e5e-4d64-b355-5b632738987d" ) and tag = ' + id)
+                            shadows = midpoint.searchObjects(query)
+                            shadow = shadows?.first()
+                            log.info("XXX found shadow {}", shadow)
+                            hasActive = shadow != null &amp;&amp; !shadow.isDead()
+                            */
+
+                            // get all linked shadows on IS_UK
+                            shadows = midpoint.getLinkedShadows(focus, "3ce8c98b-3e5e-4d64-b355-5b632738987d", true)
+                            hasActive = false
+
+                            for (shadow in shadows) {
+                                // log.info("XXX Linked shadow {}", shadow)
+                                // check only alive shadows entitlement.relation
+                                if (!shadow.isDead() &amp;&amp; shadow.getKind() == ShadowKindType.ENTITLEMENT &amp;&amp; shadow.getIntent() == "relation") {
+                                    // does the shadow belong to the current assignment?
+                                    if (input.subtype.contains("vztah_" + basic.getIdentifierValue(shadow)) || input.subtype.contains("hrana_" + basic.getIdentifierValue(shadow))) {
+                                        hasActive = true
+                                        break
+                                    }
+                                }
+                            }
+
+                            // log.info("XXX has active relation: {}", hasActive)
+
+                            return !hasActive
+                        </code>
+                    </script>
+                </condition>
+            </set>
+        </target>
+    </mapping>
+    <mapping>
+        <strength>strong</strength>
+        <source>
+            <path>$focus/extension/mailData</path>
+        </source>
+        <expression>
+            <script>
+                <relativityMode>absolute</relativityMode>
+                <code>
+                    mail = cuni.execute("getPrimaryEmailFromData", [ "emails" : mailData, "source" : "WHOIS"])
+                    if(basic.isEmpty(mail)) {
+                        mail = cuni.execute("getPrimaryEmailFromData", [ "emails" : mailData, "source" : "UK_O365"])
+                    }
+                    return mail
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>emailAddress</path>
+            <set>
+                <predefined>all</predefined>
+            </set>
+        </target>
+    </mapping>
+    <mapping>
+        <strength>strong</strength>
+        <source>
+            <path>$focus/extension/phoneData</path>
+        </source>
+        <expression>
+            <script>
+                <relativityMode>absolute</relativityMode>
+                <code>
+                    phone = cuni.execute("getPrimaryPhoneFromData", [ "phones" : phoneData, "source" : "WHOIS"])
+                    return phone
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>telephoneNumber</path>
+            <set>
+                <predefined>all</predefined>
+            </set>
+        </target>
+    </mapping>
+    <mapping>
+        <strength>strong</strength>
+        <source>
+            <path>$focus/extension/phoneData</path>
+        </source>
+        <expression>
+            <script>
+                <relativityMode>absolute</relativityMode>
+                <code>
+                    mobile = cuni.execute("getPrimaryMobileFromData", [ "phones" : phoneData, "source" : "WHOIS"])
+                    return mobile
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>$focus/extension/pager</path>
+            <set>
+                <predefined>all</predefined>
+            </set>
+        </target>
+    </mapping>
+</objectTemplate>

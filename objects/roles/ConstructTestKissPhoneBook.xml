@@ -1,0 +1,315 @@
+<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="05db17e3-fdbc-40e7-b2f5-f05f21609fab" version="48" >
+    <name>ConstructTestKissPhoneBook</name>
+    <metadata>
+        <requestTimestamp>2024-02-13T11:16:17.812+01:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2024-02-13T11:16:17.841+01:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>
+        <modifyTimestamp>2024-02-19T16:43:00.744+01:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</modifyChannel>
+    </metadata>
+    <operationExecution id="1">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-13T11:16:17.857+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:RoleType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000017470</token>
+            </executionResult>
+            <objectName>ConstructTestKissPhoneBook</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="155">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-19T16:43:00.781+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:RoleType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000001794</token>
+            </executionResult>
+            <objectName>ConstructTestKissPhoneBook</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <activation>
+        <effectiveStatus>enabled</effectiveStatus>
+        <enableTimestamp>2024-02-13T11:16:17.818+01:00</enableTimestamp>
+    </activation>
+    <inducement id="2">
+        <description>Constructs phonebooks for all orgs in the subtree.</description>
+        <construction>
+            <strength>strong</strength>
+            <resourceRef oid="75c37cc6-f5d5-49b9-ad3b-689850dd7096" relation="org:default" type="c:ResourceType"/>
+            <kind>entitlement</kind>
+            <intent>phonebook</intent>
+            <association id="142">
+                <ref>ri:parent</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>parent</name>
+                        <path>$assignment/c:targetRef</path>
+                    </source>
+                    <expression>
+                        <trace>false</trace>
+                        <associationTargetSearch>
+                            <filter>
+                                <q:equal>
+                                    <q:path>attributes/ri:ExternalId</q:path>
+                                    <expression>
+                                        <script>
+                                            <code>
+                                                import com.evolveum.midpoint.xml.ns._public.common.common_3.OrgType
+
+                                                target = midpoint.getObject(OrgType.class, assignment.getTargetRef().getOid())
+                                                if(midpoint.hasArchetype(target, "52308e18-5bcb-4efc-ab88-295d86252a38")) {
+                                                    return '(' + target.name + ':staff)'
+                                                } else {
+                                                    return target.name
+                                                }
+                                            </code>
+                                        </script>
+                                    </expression>
+                                </q:equal>
+                            </filter>
+                            <searchStrategy>onResourceIfNeeded</searchStrategy>
+                        </associationTargetSearch>
+                    </expression>
+                    <target>
+                        <set>
+                            <predefined>all</predefined>
+                        </set>
+                    </target>
+                    <condition>
+                        <script>
+                            <trace>false</trace>
+                            <code>
+                                //log.warn("XXX parent {}, condition {}", parent, parent.getRelation()?.getLocalPart()?.equals("default"))
+                                return assignment.getSubtype().contains("org_parent")
+                                //return parent.getRelation()?.getLocalPart()?.equals("default")
+                            </code>
+                        </script>
+                    </condition>
+                </outbound>
+            </association>
+        </construction>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+        <orderConstraint id="9">
+            <orderMin>1</orderMin>
+            <orderMax>unbounded</orderMax>
+        </orderConstraint>
+        <focusType>c:OrgType</focusType>
+    </inducement>
+    <inducement id="135">
+        <description>Constructs student phonebook for the faculty with faculty as parent.</description>
+        <construction>
+            <strength>strong</strength>
+            <resourceRef oid="75c37cc6-f5d5-49b9-ad3b-689850dd7096" relation="org:default" type="c:ResourceType"/>
+            <kind>entitlement</kind>
+            <intent>phonebook_student</intent>
+            <association id="148">
+                <ref>ri:parent</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/name</path>
+                    </source>
+                    <expression>
+                        <trace>false</trace>
+                        <associationTargetSearch>
+                            <filter>
+                                <q:equal>
+                                    <q:path>attributes/ri:ExternalId</q:path>
+                                    <expression>
+                                        <script>
+                                            <code>
+                                                return '(' + name + ')'
+                                            </code>
+                                        </script>
+                                    </expression>
+                                </q:equal>
+                            </filter>
+                            <searchStrategy>onResourceIfNeeded</searchStrategy>
+                        </associationTargetSearch>
+                    </expression>
+                    <target>
+                        <set>
+                            <predefined>all</predefined>
+                        </set>
+                    </target>
+                </outbound>
+            </association>
+        </construction>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+        <orderConstraint id="149">
+            <orderMin>1</orderMin>
+            <orderMax>unbounded</orderMax>
+        </orderConstraint>
+        <focusType>c:OrgType</focusType>
+        <condition>
+            <expression>
+                <script>
+                    <code>
+                        return midpoint.hasArchetype(focus, "52308e18-5bcb-4efc-ab88-295d86252a38")
+                    </code>
+                </script>
+            </expression>
+        </condition>
+    </inducement>
+    <inducement id="138">
+        <description>Constructs staff phonebook for the faculty with faculty as parent.</description>
+        <construction>
+            <strength>strong</strength>
+            <resourceRef oid="75c37cc6-f5d5-49b9-ad3b-689850dd7096" relation="org:default" type="c:ResourceType"/>
+            <kind>entitlement</kind>
+            <intent>phonebook_staff</intent>
+            <association id="150">
+                <ref>ri:parent</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/name</path>
+                    </source>
+                    <expression>
+                        <trace>false</trace>
+                        <associationTargetSearch>
+                            <filter>
+                                <q:equal>
+                                    <q:path>attributes/ri:ExternalId</q:path>
+                                    <expression>
+                                        <script>
+                                            <code>
+                                                return '(' + name + ')'
+                                            </code>
+                                        </script>
+                                    </expression>
+                                </q:equal>
+                            </filter>
+                            <searchStrategy>onResourceIfNeeded</searchStrategy>
+                        </associationTargetSearch>
+                    </expression>
+                    <target>
+                        <set>
+                            <predefined>all</predefined>
+                        </set>
+                    </target>
+                </outbound>
+            </association>
+        </construction>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+        <orderConstraint id="151">
+            <orderMin>1</orderMin>
+            <orderMax>unbounded</orderMax>
+        </orderConstraint>
+        <focusType>c:OrgType</focusType>
+        <condition>
+            <expression>
+                <script>
+                    <code>
+                        return midpoint.hasArchetype(focus, "52308e18-5bcb-4efc-ab88-295d86252a38")
+                    </code>
+                </script>
+            </expression>
+        </condition>
+    </inducement>
+    <inducement id="152">
+        <construction>
+            <strength>weak</strength>
+            <resourceRef oid="75c37cc6-f5d5-49b9-ad3b-689850dd7096" relation="org:default" type="c:ResourceType"/>
+            <kind>account</kind>
+            <intent>contact</intent>
+            <association id="153">
+                <ref>ri:memberOf</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$assignment/c:targetRef</path>
+                    </source>
+                    <expression>
+                        <associationTargetSearch>
+                            <filter>
+                                <q:equal>
+                                    <q:path>attributes/ri:ExternalId</q:path>
+                                    <expression>
+                                        <script>
+                                            <code>
+                                                import com.evolveum.midpoint.xml.ns._public.common.common_3.OrgType
+
+                                                target = midpoint.getObject(OrgType.class, assignment.getTargetRef().getOid())
+                                                if(midpoint.hasArchetype(target, "52308e18-5bcb-4efc-ab88-295d86252a38")) {
+                                                    return '(' + target.name + ':staff)'
+                                                } else {
+                                                    return target.name
+                                                }
+                                            </code>
+                                        </script>
+                                    </expression>
+                                </q:equal>
+                            </filter>
+                            <searchStrategy>onResourceIfNeeded</searchStrategy>
+                        </associationTargetSearch>
+                    </expression>
+                    <target>
+                        <set>
+                            <predefined>all</predefined>
+                        </set>
+                    </target>
+                    <condition>
+                        <script>
+                            <code>
+                                // log.warn("XXX assignment {}", assignment)
+                                return assignment.getSubtype().contains("relation_hrana") &amp;&amp; assignment.getTargetRef().getRelation().getLocalPart().equals("pracoviste")
+                            </code>
+                        </script>
+                    </condition>
+                </outbound>
+            </association>
+        </construction>
+        <activation>
+            <administrativeStatus>enabled</administrativeStatus>
+        </activation>
+        <orderConstraint id="154">
+            <orderMin>2</orderMin>
+            <orderMax>unbounded</orderMax>
+        </orderConstraint>
+        <focusType>c:UserType</focusType>
+        <condition>
+            <expression>
+                <script>
+                    <code>
+                        midpoint.hasArchetype(focus, "ce545aee-a1f5-4509-af05-1ec3af2f2c79")
+                    </code>
+                </script>
+            </expression>
+        </condition>
+    </inducement>
+</role>
