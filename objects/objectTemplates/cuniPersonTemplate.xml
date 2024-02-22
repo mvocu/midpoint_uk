@@ -1,4 +1,4 @@
-<objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="e69c55e4-4380-499a-ae4f-6cbfa2e0792c" version="45" >
+<objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="e69c55e4-4380-499a-ae4f-6cbfa2e0792c" version="46" >
     <name>cuniPersonTemplate</name>
     <description>Template for people.</description>
     <metadata>
@@ -160,6 +160,72 @@
                         </code>
                     </script>
                 </condition>
+            </set>
+        </target>
+    </mapping>
+    <mapping>
+        <strength>strong</strength>
+        <source>
+            <path>$focus/extension/mailData</path>
+        </source>
+        <expression>
+            <script>
+                <relativityMode>absolute</relativityMode>
+                <code>
+                    mail = cuni.execute("getPrimaryEmailFromData", [ "emails" : mailData, "source" : "WHOIS"])
+                    if(basic.isEmpty(mail)) {
+                        mail = cuni.execute("getPrimaryEmailFromData", [ "emails" : mailData, "source" : "UK_O365"])
+                    }
+                    return mail
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>emailAddress</path>
+            <set>
+                <predefined>all</predefined>
+            </set>
+        </target>
+    </mapping>
+    <mapping>
+        <strength>strong</strength>
+        <source>
+            <path>$focus/extension/phoneData</path>
+        </source>
+        <expression>
+            <script>
+                <relativityMode>absolute</relativityMode>
+                <code>
+                    phone = cuni.execute("getPrimaryPhoneFromData", [ "phones" : phoneData, "source" : "WHOIS"])
+                    return phone
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>telephoneNumber</path>
+            <set>
+                <predefined>all</predefined>
+            </set>
+        </target>
+    </mapping>
+    <mapping>
+        <strength>strong</strength>
+        <source>
+            <path>$focus/extension/phoneData</path>
+        </source>
+        <expression>
+            <script>
+                <relativityMode>absolute</relativityMode>
+                <code>
+                    mobile = cuni.execute("getPrimaryMobileFromData", [ "phones" : phoneData, "source" : "WHOIS"])
+                    return mobile
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>$focus/extension/pager</path>
+            <set>
+                <predefined>all</predefined>
             </set>
         </target>
     </mapping>

@@ -154,6 +154,132 @@
         </script>
     </function>
     <function>
+        <name>getPrimaryPhoneForUser</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>user</name>
+            <type>c:UserType</type>
+        </parameter>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+                import groovy.json.*
+
+                def phones = basic.getExtensionPropertyValues(user, "http://midpoint.cuni.cz/xml/ns/cas", "phoneData")
+                def primary = null
+                def jsonSlurper = new JsonSlurper()
+                for(String jsonPhone : phones) {
+                    if(!jsonPhone.startsWith(source)) {
+                        continue
+                    }
+                    def spos = jsonPhone.indexOf(':')
+                    def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
+                    if(basic.isEmpty(phoneData?.phone) || !phoneData?.isPrimary) {
+                        continue
+                    }
+                    return phoneData.phone
+                }
+                return null
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>getPrimaryPhoneFromData</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>phones</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:anyType</type>
+        </parameter>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+                import groovy.json.*
+
+                def primary = null
+                def jsonSlurper = new JsonSlurper()
+                for(String jsonPhone : phones) {
+                    if(!jsonPhone.startsWith(source)) {
+                        continue
+                    }
+                    def spos = jsonPhone.indexOf(':')
+                    def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
+                    if(basic.isEmpty(phoneData?.phone) || !phoneData?.isPrimary) {
+                        continue
+                    }
+                    return phoneData.phone
+                }
+                return null
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>getPrimaryMobileForUser</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>user</name>
+            <type>c:UserType</type>
+        </parameter>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+                import groovy.json.*
+
+                def phones = basic.getExtensionPropertyValues(user, "http://midpoint.cuni.cz/xml/ns/cas", "phoneData")
+                def primary = null
+                def jsonSlurper = new JsonSlurper()
+                for(String jsonPhone : phones) {
+                    if(!jsonPhone.startsWith(source)) {
+                        continue
+                    }
+                    def spos = jsonPhone.indexOf(':')
+                    def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
+                    if(basic.isEmpty(phoneData?.mobile) || !phoneData?.isPrimary) {
+                        continue
+                    }
+                    return phoneData.mobile
+                }
+                return null
+            </code>
+        </script>
+    </function>
+    <function>
+        <name>getPrimaryMobileFromData</name>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>phones</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:anyType</type>
+        </parameter>
+        <parameter xsi:type="c:ExpressionParameterType">
+            <name>source</name>
+            <type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</type>
+        </parameter>
+        <script>
+            <code>
+                import groovy.json.*
+
+                def primary = null
+                def jsonSlurper = new JsonSlurper()
+                for(String jsonPhone : phones) {
+                    if(!jsonPhone.startsWith(source)) {
+                        continue
+                    }
+                    def spos = jsonPhone.indexOf(':')
+                    def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
+                    if(basic.isEmpty(phoneData?.mobile) || !phoneData?.isPrimary) {
+                        continue
+                    }
+                    return phoneData.mobile
+                }
+                return null
+            </code>
+        </script>
+    </function>
+    <function>
         <name>getChildrenOrgs</name>
         <parameter xsi:type="c:ExpressionParameterType">
             <name>orgOid</name>
