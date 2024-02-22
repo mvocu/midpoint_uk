@@ -143,8 +143,7 @@ SET
   X_MODIFICATION_TYPE = 'D'
 WHERE
   x_zaznam_platny = 1 AND 
-  x_exportovat_typ IS NULL AND 
-  ID_ORG NOT IN (SELECT ID_ORG FROM SKUNK_CAS.ORG_STRUKTURA) 
+  ( ID_ORG NOT IN (SELECT ID_ORG FROM SKUNK_CAS.ORG_STRUKTURA) OR sysdate > DATUM_DO )
 ''' as String
 
 	def updateQuery = '''\

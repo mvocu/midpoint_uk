@@ -63,7 +63,8 @@ def sqlquery = ""
 
 switch(objectClass) {
 	case BaseScript.ORGANIZATION:
-		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek FROM SKUNK_CAS.LDAP_ORG_STRUKTURA"	as String
+		sqlquery = "SELECT " + attrs.join(",") + ", ROW_NUMBER() OVER (ORDER BY id_org ASC) AS radek " + 
+				" FROM (SELECT * FROM SKUNK_CAS.LDAP_ORG_STRUKTURA WHERE x_zaznam_platny = 1)" as String
 		break;
 
 	case BaseScript.PERSON:
@@ -159,6 +160,7 @@ sql.eachRow((Map) whereParams, (String) sqlquery, { row ->
                 break;
 
             case BaseScript.ORGANIZATION:
+				log.warn("Org data: {0}", row)
 				connectorObject = SchemaAdapter.mapOrganizationToIcfObject(row, sql)
                 break;
 
