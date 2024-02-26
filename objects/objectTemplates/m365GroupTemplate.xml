@@ -1,0 +1,126 @@
+<objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="08896b44-e92c-477a-b32f-fa1af466ffda" version="7" >
+    <name>m365GroupTemplate</name>
+    <description>Template for groups from M365</description>
+    <metadata>
+        <requestTimestamp>2023-10-23T14:14:52.473+02:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2023-10-23T14:14:52.481+02:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>
+        <modifyTimestamp>2023-10-23T14:15:13.136+02:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</modifyChannel>
+    </metadata>
+    <operationExecution id="1">
+        <recordType>simple</recordType>
+        <timestamp>2023-10-23T14:14:52.494+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>add</t:changeType>
+                <t:objectType>c:ObjectTemplateType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000890032</token>
+            </executionResult>
+            <objectName>m365GroupTemplate</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="2">
+        <recordType>simple</recordType>
+        <timestamp>2023-10-23T14:15:13.142+02:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ObjectTemplateType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000892614</token>
+            </executionResult>
+            <objectName>m365GroupTemplate</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <mapping id="6">
+        <trace>false</trace>
+        <strength>strong</strength>
+        <source>
+            <name>isServicedeskGroup</name>
+            <path>extension/isServicedeskGroup</path>
+        </source>
+        <source>
+            <name>groupName</name>
+            <path>displayName</path>
+        </source>
+        <expression>
+            <assignmentTargetSearch>
+                <targetType>c:OrgType</targetType>
+                <filter>
+                    <q:equal>
+                        <q:path>name</q:path>
+                        <expression>
+                            <script>
+                                <code>
+                                    if (groupName.startsWith("UK-HD-")) {
+                                        return "GLPI:AP-Komunikace-řešitelé"
+                                    }
+                                    if (groupName.startsWith("UK-HDL1-")) {
+                                        return "GLPI:UK-HDL1"
+                                    }
+                                    return "Servicedesk"
+                                </code>
+                            </script>
+                        </expression>
+                    </q:equal>
+                </filter>
+                <populate>
+                    <populateItem>
+                        <expression>
+                            <value>servicedesk_group_tenant</value>
+                        </expression>
+                        <target>
+                            <path>subtype</path>
+                        </target>
+                    </populateItem>
+                </populate>
+            </assignmentTargetSearch>
+        </expression>
+        <target>
+            <path>assignment</path>
+            <set>
+                <condition>
+                    <script>
+                        <code>
+                            input.subtype.contains("servicedesk_group_tenant")
+                        </code>
+                    </script>
+                </condition>
+            </set>
+        </target>
+        <condition>
+            <script>
+                <trace>false</trace>
+                <code>
+                    return isServicedeskGroup
+                </code>
+            </script>
+        </condition>
+    </mapping>
+    <item>
+        <ref>extension/isServicedeskGroup</ref>
+        <displayName>Create group in servicedesk</displayName>
+        <emphasized>true</emphasized>
+    </item>
+</objectTemplate>
