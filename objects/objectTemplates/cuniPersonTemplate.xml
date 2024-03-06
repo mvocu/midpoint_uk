@@ -1,4 +1,4 @@
-<objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="e69c55e4-4380-499a-ae4f-6cbfa2e0792c" version="46" >
+<objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="e69c55e4-4380-499a-ae4f-6cbfa2e0792c" version="51" >
     <name>cuniPersonTemplate</name>
     <description>Template for people.</description>
     <metadata>
@@ -163,7 +163,7 @@
             </set>
         </target>
     </mapping>
-    <mapping>
+    <mapping id="29">
         <strength>strong</strength>
         <source>
             <path>$focus/extension/mailData</path>
@@ -187,17 +187,23 @@
             </set>
         </target>
     </mapping>
-    <mapping>
+    <mapping id="32">
         <strength>strong</strength>
         <source>
             <path>$focus/extension/phoneData</path>
+        </source>
+        <source>
+            <path>$focus/extension/phone</path>
         </source>
         <expression>
             <script>
                 <relativityMode>absolute</relativityMode>
                 <code>
-                    phone = cuni.execute("getPrimaryPhoneFromData", [ "phones" : phoneData, "source" : "WHOIS"])
-                    return phone
+                    number = cuni.execute("getPrimaryPhoneFromData", [ "phones" : phoneData, "source" : "WHOIS"])
+                    if(basic.isEmpty(number)) {
+                        number = phone?.first()
+                    }
+                    return number
                 </code>
             </script>
         </expression>
@@ -208,17 +214,23 @@
             </set>
         </target>
     </mapping>
-    <mapping>
+    <mapping id="35">
         <strength>strong</strength>
         <source>
             <path>$focus/extension/phoneData</path>
+        </source>
+        <source>
+            <path>$focus/extension/mobile</path>
         </source>
         <expression>
             <script>
                 <relativityMode>absolute</relativityMode>
                 <code>
-                    mobile = cuni.execute("getPrimaryMobileFromData", [ "phones" : phoneData, "source" : "WHOIS"])
-                    return mobile
+                    number = cuni.execute("getPrimaryMobileFromData", [ "phones" : phoneData, "source" : "WHOIS"])
+                    if(basic.isEmpty(number)) {
+                        number = mobile?.first()
+                    }
+                    return number
                 </code>
             </script>
         </expression>

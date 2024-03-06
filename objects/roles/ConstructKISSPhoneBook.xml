@@ -266,7 +266,18 @@
 
                                                 target = midpoint.getObject(OrgType.class, assignment.getTargetRef().getOid())
                                                 if(midpoint.hasArchetype(target, "52308e18-5bcb-4efc-ab88-295d86252a38")) {
-                                                    return '(' + target.name + ':staff)'
+                                                    switch(assignment.getTargetRef().getRelation().getLocalPart()) {
+                                                        case 'pracoviste':
+                                                            return '(' + target.name + ':staff)'
+
+                                                        case 'studium':
+                                                        case 'fakulta':
+                                                        case 'fakulta_dalsi_obor':
+                                                            return '(' + target.name + ':students)'
+
+                                                        default:
+                                                            return target.name
+                                                    }
                                                 } else {
                                                     return target.name
                                                 }
@@ -287,7 +298,8 @@
                         <script>
                             <code>
                                 // log.warn("XXX assignment {}", assignment)
-                                return assignment.getSubtype().contains("relation_hrana") &amp;&amp; assignment.getTargetRef().getRelation().getLocalPart().equals("pracoviste")
+                                def souvislosti = [ "pracoviste", "studium", "fakulta", "fakulta_dalsi_obor" ]
+                                return assignment.getSubtype().contains("relation_hrana") &amp;&amp; souvislosti.contains(assignment.getTargetRef().getRelation().getLocalPart())
                             </code>
                         </script>
                     </condition>

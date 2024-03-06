@@ -113,10 +113,9 @@
                     }
                     def spos = jsonMail.indexOf(':')
                     def mailData = jsonSlurper.parseText(jsonMail.substring(spos+1))
-                    if(!mailData?.isPrimary) {
-                        continue
+                    if(true.equals(mailData?.isPrimary) || mailData?.isPrimary?.toString().equalsIgnoreCase("true")) {
+                        return mailData.mail
                     }
-                    return mailData.mail
                 }
                 return null
             </code>
@@ -144,10 +143,9 @@
                     }
                     def spos = jsonMail.indexOf(':')
                     def mailData = jsonSlurper.parseText(jsonMail.substring(spos+1))
-                    if(!mailData?.isPrimary) {
-                        continue
+                    if(true.equals(mailData?.isPrimary) || mailData?.isPrimary?.toString().equalsIgnoreCase("true")) {
+                        return mailData.mail
                     }
-                    return mailData.mail
                 }
                 return null
             </code>
@@ -176,10 +174,12 @@
                     }
                     def spos = jsonPhone.indexOf(':')
                     def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
-                    if(basic.isEmpty(phoneData?.phone) || !phoneData?.isPrimary) {
+                    if(basic.isEmpty(phoneData?.phone)) {
                         continue
                     }
-                    return phoneData.phone
+                    if(true.equals(phoneData?.isPrimary) || phoneData?.isPrimary?.toString().equalsIgnoreCase("true")) {
+                        return phoneData.phone
+                    }
                 }
                 return null
             </code>
@@ -207,10 +207,12 @@
                     }
                     def spos = jsonPhone.indexOf(':')
                     def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
-                    if(basic.isEmpty(phoneData?.phone) || !phoneData?.isPrimary) {
+                    if(basic.isEmpty(phoneData?.phone)) {
                         continue
                     }
-                    return phoneData.phone
+                    if(true.equals(phoneData?.isPrimary) || phoneData?.isPrimary?.toString().equalsIgnoreCase("true")) {
+                        return phoneData.phone
+                    }
                 }
                 return null
             </code>
@@ -239,10 +241,12 @@
                     }
                     def spos = jsonPhone.indexOf(':')
                     def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
-                    if(basic.isEmpty(phoneData?.mobile) || !phoneData?.isPrimary) {
+                    if(basic.isEmpty(phoneData?.mobile)) {
                         continue
                     }
-                    return phoneData.mobile
+                    if(true.equals(phoneData?.isPrimary) || phoneData?.isPrimary?.toString().equalsIgnoreCase("true")) {
+                        return phoneData.mobile
+                    }
                 }
                 return null
             </code>
@@ -270,10 +274,12 @@
                     }
                     def spos = jsonPhone.indexOf(':')
                     def phoneData = jsonSlurper.parseText(jsonPhone.substring(spos+1))
-                    if(basic.isEmpty(phoneData?.mobile) || !phoneData?.isPrimary) {
+                    if(basic.isEmpty(phoneData?.mobile)) {
                         continue
                     }
-                    return phoneData.mobile
+                    if(true.equals(phoneData?.isPrimary) || phoneData?.isPrimary?.toString().equalsIgnoreCase("true")) {
+                        return phoneData.mobile
+                    }
                 }
                 return null
             </code>

@@ -1,0 +1,673 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="12d69ddd-311e-41ff-bca3-3fcf69564f1f" version="115338">
+    <name>IS_UK_ReconcileRelations</name>
+    <indestructible>true</indestructible>
+    <assignment id="1">
+        <targetRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType"/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+    </assignment>
+    <archetypeRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType"/>
+    <roleMembershipRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType">
+        <_metadata>
+            <storage>
+                <createTimestamp>2023-05-03T18:31:12.559+02:00</createTimestamp>
+            </storage>
+            <provenance>
+                <assignmentPath>
+                    <sourceRef oid="12d69ddd-311e-41ff-bca3-3fcf69564f1f" relation="org:default" type="c:TaskType"/>
+                    <segment>
+                        <segmentOrder>1</segmentOrder>
+                        <assignmentId>1</assignmentId>
+                        <targetRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType"/>
+                        <matchingOrder>true</matchingOrder>
+                    </segment>
+                </assignmentPath>
+            </provenance>
+        </_metadata>
+    </roleMembershipRef>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+    <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+    <executionState>closed</executionState>
+    <schedulingState>closed</schedulingState>
+    <category>Reconciliation</category>
+    <objectRef oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" relation="org:default" type="c:ResourceType"/>
+    <binding>loose</binding>
+    <activity>
+        <work>
+            <reconciliation>
+                <resourceObjects>
+                    <resourceRef oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" relation="org:default" type="c:ResourceType"/>
+                    <kind>entitlement</kind>
+                    <intent>relation</intent>
+                    <objectclass>ri:Relation</objectclass>
+                </resourceObjects>
+            </reconciliation>
+        </work>
+        <distribution>
+            <workerThreads>16</workerThreads>
+        </distribution>
+    </activity>
+    <activityState>
+        <activity>
+            <realizationState>complete</realizationState>
+            <resultStatus>partial_error</resultStatus>
+            <realizationStartTimestamp>2023-09-01T22:40:37.696+02:00</realizationStartTimestamp>
+            <realizationEndTimestamp>2023-09-02T12:03:30.735+02:00</realizationEndTimestamp>
+            <runStartTimestamp>2023-09-01T22:40:37.696+02:00</runStartTimestamp>
+            <runEndTimestamp>2023-09-02T12:03:30.735+02:00</runEndTimestamp>
+            <workState xsi:type="c:ReconciliationWorkStateType">
+                <resourceObjectsReconciliationStartTimestamp>2023-09-01T22:40:48.486+02:00</resourceObjectsReconciliationStartTimestamp>
+            </workState>
+            <persistence>singleRealization</persistence>
+            <activity id="1854209">
+                <identifier>operationCompletion</identifier>
+                <realizationState>complete</realizationState>
+                <resultStatus>success</resultStatus>
+                <realizationStartTimestamp>2023-09-01T22:40:37.847+02:00</realizationStartTimestamp>
+                <realizationEndTimestamp>2023-09-01T22:40:48.446+02:00</realizationEndTimestamp>
+                <runStartTimestamp>2023-09-01T22:40:37.847+02:00</runStartTimestamp>
+                <runEndTimestamp>2023-09-01T22:40:48.446+02:00</runEndTimestamp>
+                <progress>
+                    <expectedTotal>0</expectedTotal>
+                    <expectedInCurrentBucket>0</expectedInCurrentBucket>
+                </progress>
+                <statistics>
+                    <itemProcessing>
+                        <run id="1854215">
+                            <startTimestamp>2023-09-01T22:40:37.847+02:00</startTimestamp>
+                            <endTimestamp>2023-09-01T22:40:48.446+02:00</endTimestamp>
+                        </run>
+                    </itemProcessing>
+                </statistics>
+                <bucketing>
+                    <bucket id="1854213">
+                        <sequentialNumber>1</sequentialNumber>
+                        <state>complete</state>
+                        <content xsi:type="c:NullWorkBucketContentType"/>
+                    </bucket>
+                    <numberOfBuckets>1</numberOfBuckets>
+                    <workComplete>true</workComplete>
+                </bucketing>
+                <workState/>
+                <persistence>singleRealization</persistence>
+            </activity>
+            <activity id="1854210">
+                <identifier>resourceObjects</identifier>
+                <realizationState>complete</realizationState>
+                <resultStatus>partial_error</resultStatus>
+                <realizationStartTimestamp>2023-09-01T22:40:48.486+02:00</realizationStartTimestamp>
+                <realizationEndTimestamp>2023-09-02T12:02:21.160+02:00</realizationEndTimestamp>
+                <runStartTimestamp>2023-09-01T22:40:48.486+02:00</runStartTimestamp>
+                <runEndTimestamp>2023-09-02T12:02:21.160+02:00</runEndTimestamp>
+                <progress>
+                    <committed id="2222117">
+                        <outcome>
+                            <outcome>success</outcome>
+                        </outcome>
+                        <count>430906</count>
+                    </committed>
+                    <committed id="2222118">
+                        <outcome>
+                            <outcome>failure</outcome>
+                        </outcome>
+                        <count>13273</count>
+                    </committed>
+                </progress>
+                <statistics>
+                    <itemProcessing>
+                        <processed id="2222120">
+                            <outcome>
+                                <outcome>success</outcome>
+                            </outcome>
+                            <count>430906</count>
+                            <duration>7.065954975299923E8</duration>
+                            <lastItem>
+                                <name>603467747</name>
+                                <displayName>603467747 (ENTITLEMENT - relation - Relation)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>8e823caf-c713-4f24-a12a-bf5c1a18704a</oid>
+                                <startTimestamp>2023-09-02T12:02:18.778+02:00</startTimestamp>
+                                <endTimestamp>2023-09-02T12:02:20.825+02:00</endTimestamp>
+                                <operationId>1311686</operationId>
+                            </lastItem>
+                        </processed>
+                        <processed id="2222121">
+                            <outcome>
+                                <outcome>failure</outcome>
+                            </outcome>
+                            <count>13273</count>
+                            <duration>4.450513848000016E7</duration>
+                            <lastItem>
+                                <name>602655429</name>
+                                <displayName>602655429 (ENTITLEMENT - relation - Relation)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>b21adb84-ac78-4a27-902d-ac14cca61698</oid>
+                                <startTimestamp>2023-09-02T12:02:15.786+02:00</startTimestamp>
+                                <endTimestamp>2023-09-02T12:02:18.431+02:00</endTimestamp>
+                                <message>Error modifying LDAP entry cunipersonalid=77157270,ou=People,dc=cuni,dc=cz: [add:ou=null,Farmaceutická fakulta v Hradci Králové,1. lékařská fakulta,Katedra biologických a lékařských věd Farmaceutické fakulty v Hradci Králové,remove:ou=null,Farmaceutická fakulta v Hradci Králové,1. lékařská fakulta,]: attributeOrValueExists:  (20)</message>
+                                <operationId>1311661</operationId>
+                            </lastItem>
+                        </processed>
+                        <run id="2222119">
+                            <startTimestamp>2023-09-01T22:40:48.486+02:00</startTimestamp>
+                            <endTimestamp>2023-09-02T12:02:21.160+02:00</endTimestamp>
+                        </run>
+                    </itemProcessing>
+                    <synchronization>
+                        <transition id="2222122">
+                            <onProcessingStart>linked</onProcessingStart>
+                            <onSynchronizationStart>linked</onSynchronizationStart>
+                            <onSynchronizationEnd>linked</onSynchronizationEnd>
+                            <counter id="2222127">
+                                <outcome>
+                                    <outcome>success</outcome>
+                                </outcome>
+                                <count>430786</count>
+                            </counter>
+                            <counter id="2222128">
+                                <outcome>
+                                    <outcome>failure</outcome>
+                                </outcome>
+                                <count>13262</count>
+                            </counter>
+                        </transition>
+                        <transition id="2222123">
+                            <onProcessingStart>unmatched</onProcessingStart>
+                            <onSynchronizationStart>unmatched</onSynchronizationStart>
+                            <onSynchronizationEnd>unmatched</onSynchronizationEnd>
+                            <counter id="2222129">
+                                <outcome>
+                                    <outcome>success</outcome>
+                                </outcome>
+                                <count>2</count>
+                            </counter>
+                        </transition>
+                        <transition id="2222124">
+                            <onSynchronizationStart>unlinked</onSynchronizationStart>
+                            <onSynchronizationEnd>linked</onSynchronizationEnd>
+                            <counter id="2222130">
+                                <outcome>
+                                    <outcome>success</outcome>
+                                </outcome>
+                                <count>104</count>
+                            </counter>
+                            <counter id="2222131">
+                                <outcome>
+                                    <outcome>failure</outcome>
+                                </outcome>
+                                <count>8</count>
+                            </counter>
+                        </transition>
+                        <transition id="2222125">
+                            <onProcessingStart>unlinked</onProcessingStart>
+                            <onSynchronizationStart>unlinked</onSynchronizationStart>
+                            <onSynchronizationEnd>linked</onSynchronizationEnd>
+                            <counter id="2222132">
+                                <outcome>
+                                    <outcome>failure</outcome>
+                                </outcome>
+                                <count>1</count>
+                            </counter>
+                            <counter id="2222133">
+                                <outcome>
+                                    <outcome>success</outcome>
+                                </outcome>
+                                <count>14</count>
+                            </counter>
+                        </transition>
+                        <transition id="2222126">
+                            <onProcessingStart>unlinked</onProcessingStart>
+                            <onSynchronizationStart>unlinked</onSynchronizationStart>
+                            <onSynchronizationEnd>unlinked</onSynchronizationEnd>
+                            <counter id="2222134">
+                                <outcome>
+                                    <outcome>failure</outcome>
+                                </outcome>
+                                <count>2</count>
+                            </counter>
+                        </transition>
+                    </synchronization>
+                    <actionsExecuted>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>980797</totalSuccessCount>
+                            <lastSuccessObjectName>603467747</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>603467747 (ENTITLEMENT - relation - Relation)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>8e823caf-c713-4f24-a12a-bf5c1a18704a</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:20.825+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>10759</totalFailureCount>
+                            <lastFailureObjectName>cunipersonalid=77157270,ou=People,dc=cuni,dc=cz</lastFailureObjectName>
+                            <lastFailureObjectDisplayName>cunipersonalid=77157270,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>6916838f-8dfb-4959-bb62-9a047d7284ce</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Error modifying LDAP entry cunipersonalid=77157270,ou=People,dc=cuni,dc=cz: [add:ou=null,Farmaceutická fakulta v Hradci Králové,1. lékařská fakulta,Katedra biologických a lékařských věd Farmaceutické fakulty v Hradci Králové,remove:ou=null,Farmaceutická fakulta v Hradci Králové,1. lékařská fakulta,]: attributeOrValueExists:  (20)</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T12:02:17.683+02:00</lastFailureTimestamp>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>add</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>127476</totalSuccessCount>
+                            <lastSuccessObjectDisplayName>null (ACCOUNT - person - cuniPerson)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>3c8e6f48-6d69-41e0-8ae1-dd77aa0c195d</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:19.705+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>9409</totalFailureCount>
+                            <lastFailureObjectDisplayName>null (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>dummy-3152797</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Object already exists on the resource (I10s_LDAP: Person (cuniPerson), ConnId com.evolveum.polygon.connector.ldap.LdapConnector v3.6.1): org.identityconnectors.framework.common.exceptions.AlreadyExistsException(Error adding LDAP entry cunipersonalid=92432603,ou=people,dc=cuni,dc=cz: entryAlreadyExists:  (68))</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T12:02:11.845+02:00</lastFailureTimestamp>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:UserType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>650972</totalSuccessCount>
+                            <lastSuccessObjectName>97192384</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>Monika Pekařová</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>c65cb647-c07f-4608-aeef-1243d171243d</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:20.793+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#recompute</channel>
+                            <totalSuccessCount>2727</totalSuccessCount>
+                            <lastSuccessObjectName>cunipersonalid=34978088,ou=People,dc=cuni,dc=cz</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>cunipersonalid=34978088,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>d011ef77-4fe8-4210-b61d-493750764328</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T07:20:39.909+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>3307</totalFailureCount>
+                            <lastFailureObjectName>cunipersonalid=33086237,ou=People,dc=cuni,dc=cz</lastFailureObjectName>
+                            <lastFailureObjectDisplayName>cunipersonalid=33086237,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>da401a23-ee94-47fe-bc31-6c968ab74f54</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Error modifying LDAP entry cunipersonalid=33086237,ou=People,dc=cuni,dc=cz: [add:businessCategory=member,faculty,remove:businessCategory=member,]: attributeOrValueExists:  (20)</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T07:20:37.322+02:00</lastFailureTimestamp>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:UserType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#recompute</channel>
+                            <totalSuccessCount>7052</totalSuccessCount>
+                            <lastSuccessObjectName>34978088</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>David Tichý</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>10b515e6-a03d-4e7f-b983-24fa2b64ccc8</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T07:20:39.763+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#discovery</channel>
+                            <totalSuccessCount>19865</totalSuccessCount>
+                            <lastSuccessObjectName>cunipersonalid=92432603,ou=People,dc=cuni,dc=cz</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>cunipersonalid=92432603,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>a26248c6-2f6d-43a9-91a9-53873ffea480</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:11.834+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>833</totalFailureCount>
+                            <lastFailureObjectName>cunipersonalid=14574001,ou=People,dc=cuni,dc=cz</lastFailureObjectName>
+                            <lastFailureObjectDisplayName>cunipersonalid=14574001,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>26bfa392-02ca-4bd7-a5fc-99fc2fb4fded</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Error modifying LDAP entry cunipersonalid=14574001,ou=People,dc=cuni,dc=cz: [add:businessCategory=member,faculty,remove:businessCategory=member,]: attributeOrValueExists:  (20)</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T11:54:26.938+02:00</lastFailureTimestamp>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:UserType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#discovery</channel>
+                            <totalSuccessCount>9539</totalSuccessCount>
+                            <lastSuccessObjectName>92432603</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>John Fernandes</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>3a91f600-5df4-4434-8e91-3b0502704887</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:11.574+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>add</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#recompute</channel>
+                            <totalSuccessCount>0</totalSuccessCount>
+                            <totalFailureCount>132</totalFailureCount>
+                            <lastFailureObjectDisplayName>null (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>dummy-9797699</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Missing NAME attribute</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T07:20:30.189+02:00</lastFailureTimestamp>
+                        </objectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>533756</totalSuccessCount>
+                            <lastSuccessObjectName>603467747</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>603467747 (ENTITLEMENT - relation - Relation)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>8e823caf-c713-4f24-a12a-bf5c1a18704a</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:20.825+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>9081</totalFailureCount>
+                            <lastFailureObjectName>cunipersonalid=77157270,ou=People,dc=cuni,dc=cz</lastFailureObjectName>
+                            <lastFailureObjectDisplayName>cunipersonalid=77157270,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>6916838f-8dfb-4959-bb62-9a047d7284ce</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Error modifying LDAP entry cunipersonalid=77157270,ou=People,dc=cuni,dc=cz: [add:ou=null,Farmaceutická fakulta v Hradci Králové,1. lékařská fakulta,Katedra biologických a lékařských věd Farmaceutické fakulty v Hradci Králové,remove:ou=null,Farmaceutická fakulta v Hradci Králové,1. lékařská fakulta,]: attributeOrValueExists:  (20)</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T12:02:17.683+02:00</lastFailureTimestamp>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>add</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>127476</totalSuccessCount>
+                            <lastSuccessObjectDisplayName>null (ACCOUNT - person - cuniPerson)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>3c8e6f48-6d69-41e0-8ae1-dd77aa0c195d</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:19.705+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>9409</totalFailureCount>
+                            <lastFailureObjectDisplayName>null (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>dummy-3152797</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Object already exists on the resource (I10s_LDAP: Person (cuniPerson), ConnId com.evolveum.polygon.connector.ldap.LdapConnector v3.6.1): org.identityconnectors.framework.common.exceptions.AlreadyExistsException(Error adding LDAP entry cunipersonalid=92432603,ou=people,dc=cuni,dc=cz: entryAlreadyExists:  (68))</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T12:02:11.845+02:00</lastFailureTimestamp>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:UserType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>252206</totalSuccessCount>
+                            <lastSuccessObjectName>97192384</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>Monika Pekařová</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>c65cb647-c07f-4608-aeef-1243d171243d</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:02:20.793+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:UserType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#recompute</channel>
+                            <totalSuccessCount>6638</totalSuccessCount>
+                            <lastSuccessObjectName>34978088</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>David Tichý</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>10b515e6-a03d-4e7f-b983-24fa2b64ccc8</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T07:20:39.763+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#recompute</channel>
+                            <totalSuccessCount>2461</totalSuccessCount>
+                            <lastSuccessObjectName>cunipersonalid=34978088,ou=People,dc=cuni,dc=cz</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>cunipersonalid=34978088,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>d011ef77-4fe8-4210-b61d-493750764328</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T07:20:39.909+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>2046</totalFailureCount>
+                            <lastFailureObjectName>cunipersonalid=88689155,ou=People,dc=cuni,dc=cz</lastFailureObjectName>
+                            <lastFailureObjectDisplayName>cunipersonalid=88689155,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>a3d29d58-0757-41ba-9928-9353afc2920b</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Error modifying LDAP entry cunipersonalid=88689155,ou=People,dc=cuni,dc=cz: [add:businessCategory=member,faculty,remove:businessCategory=member,]: attributeOrValueExists:  (20)</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T07:20:26.785+02:00</lastFailureTimestamp>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>add</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#recompute</channel>
+                            <totalSuccessCount>0</totalSuccessCount>
+                            <totalFailureCount>132</totalFailureCount>
+                            <lastFailureObjectDisplayName>null (ACCOUNT - person - cuniPerson)</lastFailureObjectDisplayName>
+                            <lastFailureObjectOid>dummy-9797699</lastFailureObjectOid>
+                            <lastFailureExceptionMessage>Missing NAME attribute</lastFailureExceptionMessage>
+                            <lastFailureTimestamp>2023-09-02T07:20:30.189+02:00</lastFailureTimestamp>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#discovery</channel>
+                            <totalSuccessCount>5436</totalSuccessCount>
+                            <lastSuccessObjectName>cunipersonalid=58188654,ou=People,dc=cuni,dc=cz</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>cunipersonalid=58188654,ou=People,dc=cuni,dc=cz (ACCOUNT - person - cuniPerson)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>158ae4c9-4777-4f16-9062-43398e476c70</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T11:59:49.327+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:UserType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#discovery</channel>
+                            <totalSuccessCount>5046</totalSuccessCount>
+                            <lastSuccessObjectName>58188654</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>Vladimír Drbohlav</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>1f0ab0b4-167d-420a-b0ad-c7406e65dc7b</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T11:59:49.106+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                    </actionsExecuted>
+                </statistics>
+                <bucketing>
+                    <bucket id="1854217">
+                        <sequentialNumber>1</sequentialNumber>
+                        <state>complete</state>
+                        <content xsi:type="c:NullWorkBucketContentType"/>
+                    </bucket>
+                    <numberOfBuckets>1</numberOfBuckets>
+                    <workComplete>true</workComplete>
+                </bucketing>
+                <workState/>
+                <persistence>singleRealization</persistence>
+            </activity>
+            <activity id="1854211">
+                <identifier>remainingShadows</identifier>
+                <realizationState>complete</realizationState>
+                <resultStatus>success</resultStatus>
+                <realizationStartTimestamp>2023-09-02T12:02:21.255+02:00</realizationStartTimestamp>
+                <realizationEndTimestamp>2023-09-02T12:03:30.640+02:00</realizationEndTimestamp>
+                <runStartTimestamp>2023-09-02T12:02:21.255+02:00</runStartTimestamp>
+                <runEndTimestamp>2023-09-02T12:03:30.640+02:00</runEndTimestamp>
+                <progress>
+                    <committed id="2222253">
+                        <outcome>
+                            <outcome>skip</outcome>
+                        </outcome>
+                        <count>2442</count>
+                    </committed>
+                    <committed id="2222254">
+                        <outcome>
+                            <outcome>success</outcome>
+                        </outcome>
+                        <count>2</count>
+                    </committed>
+                    <expectedTotal>2444</expectedTotal>
+                    <expectedInCurrentBucket>2444</expectedInCurrentBucket>
+                </progress>
+                <statistics>
+                    <itemProcessing>
+                        <processed id="2222256">
+                            <outcome>
+                                <outcome>skip</outcome>
+                            </outcome>
+                            <count>2442</count>
+                            <duration>19933.779999999988</duration>
+                            <lastItem>
+                                <name>26025539</name>
+                                <displayName>26025539 (ENTITLEMENT - relation - Relation)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>ff216ff1-37d3-4ef6-9401-7bd3d27de2c4</oid>
+                                <startTimestamp>2023-09-02T12:03:30.450+02:00</startTimestamp>
+                                <endTimestamp>2023-09-02T12:03:30.475+02:00</endTimestamp>
+                                <operationId>1314140</operationId>
+                            </lastItem>
+                        </processed>
+                        <processed id="2222257">
+                            <outcome>
+                                <outcome>success</outcome>
+                            </outcome>
+                            <count>2</count>
+                            <duration>551.6600000000001</duration>
+                            <lastItem>
+                                <name>229973271</name>
+                                <displayName>229973271 (ENTITLEMENT - relation - Relation)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>e74f7d94-a3e9-47e7-a3d3-a67f84d3dc91</oid>
+                                <startTimestamp>2023-09-02T12:03:29.685+02:00</startTimestamp>
+                                <endTimestamp>2023-09-02T12:03:29.912+02:00</endTimestamp>
+                                <operationId>1313932</operationId>
+                            </lastItem>
+                        </processed>
+                        <run id="2222255">
+                            <startTimestamp>2023-09-02T12:02:21.255+02:00</startTimestamp>
+                            <endTimestamp>2023-09-02T12:03:30.640+02:00</endTimestamp>
+                        </run>
+                    </itemProcessing>
+                    <synchronization>
+                        <transition id="2222258">
+                            <onProcessingStart>deleted</onProcessingStart>
+                            <exclusionReason>synchronizationNotNeeded</exclusionReason>
+                            <counter id="2222262">
+                                <outcome>
+                                    <outcome>skip</outcome>
+                                </outcome>
+                                <count>2426</count>
+                            </counter>
+                        </transition>
+                        <transition id="2222259">
+                            <onProcessingStart>linked</onProcessingStart>
+                            <exclusionReason>synchronizationNotNeeded</exclusionReason>
+                            <counter id="2222263">
+                                <outcome>
+                                    <outcome>skip</outcome>
+                                </outcome>
+                                <count>14</count>
+                            </counter>
+                        </transition>
+                        <transition id="2222260">
+                            <onProcessingStart>deleted</onProcessingStart>
+                            <onSynchronizationStart>deleted</onSynchronizationStart>
+                            <onSynchronizationEnd>deleted</onSynchronizationEnd>
+                            <counter id="2222264">
+                                <outcome>
+                                    <outcome>success</outcome>
+                                </outcome>
+                                <count>2</count>
+                            </counter>
+                        </transition>
+                        <transition id="2222261">
+                            <onProcessingStart>unlinked</onProcessingStart>
+                            <exclusionReason>synchronizationNotNeeded</exclusionReason>
+                            <counter id="2222265">
+                                <outcome>
+                                    <outcome>skip</outcome>
+                                </outcome>
+                                <count>2</count>
+                            </counter>
+                        </transition>
+                    </synchronization>
+                    <actionsExecuted>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>4</totalSuccessCount>
+                            <lastSuccessObjectName>229973271</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>229973271 (ENTITLEMENT - relation - Relation)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>e74f7d94-a3e9-47e7-a3d3-a67f84d3dc91</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:03:29.912+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>2</totalSuccessCount>
+                            <lastSuccessObjectName>229973271</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>229973271 (ENTITLEMENT - relation - Relation)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>e74f7d94-a3e9-47e7-a3d3-a67f84d3dc91</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2023-09-02T12:03:29.912+02:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                    </actionsExecuted>
+                </statistics>
+                <bucketing>
+                    <bucket id="2222136">
+                        <sequentialNumber>1</sequentialNumber>
+                        <state>complete</state>
+                        <content xsi:type="c:NullWorkBucketContentType"/>
+                    </bucket>
+                    <numberOfBuckets>1</numberOfBuckets>
+                    <workComplete>true</workComplete>
+                </bucketing>
+                <workState/>
+                <persistence>singleRealization</persistence>
+            </activity>
+        </activity>
+        <tree>
+            <realizationState>complete</realizationState>
+            <activity>
+                <realizationState>complete</realizationState>
+                <resultStatus>partial_error</resultStatus>
+                <task>
+                    <taskRef oid="12d69ddd-311e-41ff-bca3-3fcf69564f1f" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                        <targetName>IS_UK_ReconcileRelations</targetName>
+                    </taskRef>
+                    <node>DefaultNode</node>
+                    <executionState>notRunning</executionState>
+                    <resultStatus>partial_error</resultStatus>
+                </task>
+                <progressInformationVisibility>hidden</progressInformationVisibility>
+                <persistence>singleRealization</persistence>
+                <activity>
+                    <identifier>operationCompletion</identifier>
+                    <realizationState>complete</realizationState>
+                    <resultStatus>success</resultStatus>
+                    <task>
+                        <taskRef oid="12d69ddd-311e-41ff-bca3-3fcf69564f1f" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                            <targetName>IS_UK_ReconcileRelations</targetName>
+                        </taskRef>
+                        <node>DefaultNode</node>
+                        <executionState>notRunning</executionState>
+                        <resultStatus>success</resultStatus>
+                    </task>
+                    <progressInformationVisibility>hidden</progressInformationVisibility>
+                    <persistence>singleRealization</persistence>
+                </activity>
+                <activity>
+                    <identifier>resourceObjects</identifier>
+                    <realizationState>complete</realizationState>
+                    <resultStatus>partial_error</resultStatus>
+                    <task>
+                        <taskRef oid="12d69ddd-311e-41ff-bca3-3fcf69564f1f" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                            <targetName>IS_UK_ReconcileRelations</targetName>
+                        </taskRef>
+                        <node>DefaultNode</node>
+                        <executionState>notRunning</executionState>
+                        <resultStatus>partial_error</resultStatus>
+                    </task>
+                    <progressInformationVisibility>hidden</progressInformationVisibility>
+                    <persistence>singleRealization</persistence>
+                </activity>
+                <activity>
+                    <identifier>remainingShadows</identifier>
+                    <realizationState>complete</realizationState>
+                    <resultStatus>success</resultStatus>
+                    <task>
+                        <taskRef oid="12d69ddd-311e-41ff-bca3-3fcf69564f1f" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                            <targetName>IS_UK_ReconcileRelations</targetName>
+                        </taskRef>
+                        <node>DefaultNode</node>
+                        <executionState>notRunning</executionState>
+                        <resultStatus>success</resultStatus>
+                    </task>
+                    <progressInformationVisibility>hidden</progressInformationVisibility>
+                    <persistence>singleRealization</persistence>
+                </activity>
+            </activity>
+        </tree>
+    </activityState>
+    <affectedObjects>
+        <activity id="2222266">
+            <activityType>c:reconciliation</activityType>
+            <resourceObjects>
+                <resourceRef oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" relation="org:default" type="c:ResourceType"/>
+                <kind>entitlement</kind>
+                <intent>relation</intent>
+                <objectclass>ri:Relation</objectclass>
+            </resourceObjects>
+            <executionMode>full</executionMode>
+            <predefinedConfigurationToUse>production</predefinedConfigurationToUse>
+        </activity>
+    </affectedObjects>
+</task>

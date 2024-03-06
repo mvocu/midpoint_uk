@@ -1,0 +1,223 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="3cf4752b-b45a-494a-92e2-f0ed463f4980" version="34490">
+    <name>IS_UK_ImportUsers</name>
+    <extension xmlns:mext="http://midpoint.evolveum.com/xml/ns/public/model/extension-3">
+        <mext:workerThreads>8</mext:workerThreads>
+    </extension>
+    <indestructible>true</indestructible>
+    <assignment id="1">
+        <targetRef oid="00000000-0000-0000-0000-000000000503" relation="org:default" type="c:ArchetypeType"/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+    </assignment>
+    <archetypeRef oid="00000000-0000-0000-0000-000000000503" relation="org:default" type="c:ArchetypeType"/>
+    <roleMembershipRef oid="00000000-0000-0000-0000-000000000503" relation="org:default" type="c:ArchetypeType"/>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+    <executionState>closed</executionState>
+    <schedulingState>closed</schedulingState>
+    <category>ImportingAccounts</category>
+    <objectRef oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" relation="org:default" type="c:ResourceType"/>
+    <binding>loose</binding>
+    <activity>
+        <work>
+            <import>
+                <resourceObjects>
+                    <resourceRef oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" relation="org:default" type="c:ResourceType"/>
+                    <kind>account</kind>
+                    <intent>default</intent>
+                    <objectclass>ri:Person</objectclass>
+                </resourceObjects>
+            </import>
+        </work>
+    </activity>
+    <activityState>
+        <activity>
+            <realizationState>complete</realizationState>
+            <resultStatus>success</resultStatus>
+            <realizationStartTimestamp>2023-02-24T18:40:53.640+01:00</realizationStartTimestamp>
+            <realizationEndTimestamp>2023-02-25T00:26:22.435+01:00</realizationEndTimestamp>
+            <runStartTimestamp>2023-02-24T18:40:53.640+01:00</runStartTimestamp>
+            <runEndTimestamp>2023-02-25T00:26:22.435+01:00</runEndTimestamp>
+            <progress>
+                <committed id="695492">
+                    <outcome>
+                        <outcome>success</outcome>
+                    </outcome>
+                    <count>650522</count>
+                </committed>
+                <committed id="695493">
+                    <outcome>
+                        <outcome>skip</outcome>
+                    </outcome>
+                    <count>454</count>
+                </committed>
+            </progress>
+            <statistics>
+                <itemProcessing>
+                    <processed id="695495">
+                        <outcome>
+                            <outcome>success</outcome>
+                        </outcome>
+                        <count>650522</count>
+                        <duration>1.2406764894999959E8</duration>
+                        <lastItem>
+                            <name>100000389454</name>
+                            <displayName>100000389454 (ACCOUNT - default - Person)</displayName>
+                            <type>c:ShadowType</type>
+                            <oid>332808b5-5dfc-4e35-b02c-60a3653a9f43</oid>
+                            <startTimestamp>2023-02-25T00:26:22.256+01:00</startTimestamp>
+                            <endTimestamp>2023-02-25T00:26:22.351+01:00</endTimestamp>
+                            <operationId>19792278</operationId>
+                        </lastItem>
+                    </processed>
+                    <processed id="695496">
+                        <outcome>
+                            <outcome>skip</outcome>
+                        </outcome>
+                        <count>454</count>
+                        <duration>37.09999999999996</duration>
+                        <lastItem>
+                            <name>100002126040</name>
+                            <displayName>100002126040 (ACCOUNT - default - Person)</displayName>
+                            <type>c:ShadowType</type>
+                            <oid>e92fbdf4-aae3-4404-b237-d86805c2040d</oid>
+                            <startTimestamp>2023-02-25T00:26:19.165+01:00</startTimestamp>
+                            <endTimestamp>2023-02-25T00:26:19.165+01:00</endTimestamp>
+                            <operationId>19792061</operationId>
+                        </lastItem>
+                    </processed>
+                    <run id="695494">
+                        <startTimestamp>2023-02-24T18:40:53.640+01:00</startTimestamp>
+                        <endTimestamp>2023-02-25T00:26:22.435+01:00</endTimestamp>
+                    </run>
+                </itemProcessing>
+                <synchronization>
+                    <transition id="695497">
+                        <onProcessingStart>linked</onProcessingStart>
+                        <onSynchronizationStart>linked</onSynchronizationStart>
+                        <onSynchronizationEnd>linked</onSynchronizationEnd>
+                        <counter id="695500">
+                            <outcome>
+                                <outcome>success</outcome>
+                            </outcome>
+                            <count>650069</count>
+                        </counter>
+                    </transition>
+                    <transition id="695498">
+                        <onSynchronizationStart>unmatched</onSynchronizationStart>
+                        <onSynchronizationEnd>linked</onSynchronizationEnd>
+                        <counter id="695501">
+                            <outcome>
+                                <outcome>success</outcome>
+                            </outcome>
+                            <count>453</count>
+                        </counter>
+                    </transition>
+                    <transition id="695499">
+                        <onProcessingStart>linked</onProcessingStart>
+                        <counter id="695502">
+                            <outcome>
+                                <outcome>skip</outcome>
+                            </outcome>
+                            <count>454</count>
+                        </counter>
+                    </transition>
+                </synchronization>
+                <actionsExecuted>
+                    <objectActionsEntry>
+                        <objectType>c:ShadowType</objectType>
+                        <operation>modify</operation>
+                        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#import</channel>
+                        <totalSuccessCount>650975</totalSuccessCount>
+                        <lastSuccessObjectName>100001950340</lastSuccessObjectName>
+                        <lastSuccessObjectDisplayName>100001950340 (ACCOUNT - default - Person)</lastSuccessObjectDisplayName>
+                        <lastSuccessObjectOid>2a7ad3ed-1862-4523-8f3e-c5d50d1ff74b</lastSuccessObjectOid>
+                        <lastSuccessTimestamp>2023-02-25T00:26:22.301+01:00</lastSuccessTimestamp>
+                        <totalFailureCount>0</totalFailureCount>
+                    </objectActionsEntry>
+                    <objectActionsEntry>
+                        <objectType>c:UserType</objectType>
+                        <operation>add</operation>
+                        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#import</channel>
+                        <totalSuccessCount>453</totalSuccessCount>
+                        <lastSuccessObjectName>99774773</lastSuccessObjectName>
+                        <lastSuccessObjectOid>1b893ca9-6e44-4816-891a-b2e08e5def02</lastSuccessObjectOid>
+                        <lastSuccessTimestamp>2023-02-25T00:25:56.931+01:00</lastSuccessTimestamp>
+                        <totalFailureCount>0</totalFailureCount>
+                    </objectActionsEntry>
+                    <objectActionsEntry>
+                        <objectType>c:UserType</objectType>
+                        <operation>modify</operation>
+                        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#import</channel>
+                        <totalSuccessCount>621</totalSuccessCount>
+                        <lastSuccessObjectName>99968510</lastSuccessObjectName>
+                        <lastSuccessObjectDisplayName>Anna Kulíková</lastSuccessObjectDisplayName>
+                        <lastSuccessObjectOid>e3f0e721-fe29-4e56-ab67-dae8fabbe405</lastSuccessObjectOid>
+                        <lastSuccessTimestamp>2023-02-25T00:26:19.085+01:00</lastSuccessTimestamp>
+                        <totalFailureCount>0</totalFailureCount>
+                    </objectActionsEntry>
+                    <resultingObjectActionsEntry>
+                        <objectType>c:ShadowType</objectType>
+                        <operation>modify</operation>
+                        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#import</channel>
+                        <totalSuccessCount>650522</totalSuccessCount>
+                        <lastSuccessObjectName>100001950340</lastSuccessObjectName>
+                        <lastSuccessObjectDisplayName>100001950340 (ACCOUNT - default - Person)</lastSuccessObjectDisplayName>
+                        <lastSuccessObjectOid>2a7ad3ed-1862-4523-8f3e-c5d50d1ff74b</lastSuccessObjectOid>
+                        <lastSuccessTimestamp>2023-02-25T00:26:22.301+01:00</lastSuccessTimestamp>
+                        <totalFailureCount>0</totalFailureCount>
+                    </resultingObjectActionsEntry>
+                    <resultingObjectActionsEntry>
+                        <objectType>c:UserType</objectType>
+                        <operation>add</operation>
+                        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#import</channel>
+                        <totalSuccessCount>453</totalSuccessCount>
+                        <lastSuccessObjectName>99774773</lastSuccessObjectName>
+                        <lastSuccessObjectOid>1b893ca9-6e44-4816-891a-b2e08e5def02</lastSuccessObjectOid>
+                        <lastSuccessTimestamp>2023-02-25T00:25:56.931+01:00</lastSuccessTimestamp>
+                        <totalFailureCount>0</totalFailureCount>
+                    </resultingObjectActionsEntry>
+                    <resultingObjectActionsEntry>
+                        <objectType>c:UserType</objectType>
+                        <operation>modify</operation>
+                        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#import</channel>
+                        <totalSuccessCount>168</totalSuccessCount>
+                        <lastSuccessObjectName>99968510</lastSuccessObjectName>
+                        <lastSuccessObjectDisplayName>Anna Kulíková</lastSuccessObjectDisplayName>
+                        <lastSuccessObjectOid>e3f0e721-fe29-4e56-ab67-dae8fabbe405</lastSuccessObjectOid>
+                        <lastSuccessTimestamp>2023-02-25T00:26:19.085+01:00</lastSuccessTimestamp>
+                        <totalFailureCount>0</totalFailureCount>
+                    </resultingObjectActionsEntry>
+                </actionsExecuted>
+            </statistics>
+            <bucketing>
+                <bucket id="587531">
+                    <sequentialNumber>1</sequentialNumber>
+                    <state>complete</state>
+                    <content xsi:type="c:NullWorkBucketContentType"/>
+                </bucket>
+                <numberOfBuckets>1</numberOfBuckets>
+                <workComplete>true</workComplete>
+            </bucketing>
+            <workState/>
+            <persistence>singleRealization</persistence>
+        </activity>
+        <tree>
+            <realizationState>complete</realizationState>
+            <activity>
+                <realizationState>complete</realizationState>
+                <resultStatus>success</resultStatus>
+                <task>
+                    <taskRef oid="3cf4752b-b45a-494a-92e2-f0ed463f4980" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                        <targetName>IS_UK_ImportUsers</targetName>
+                    </taskRef>
+                    <node>DefaultNode</node>
+                    <executionState>notRunning</executionState>
+                    <resultStatus>success</resultStatus>
+                </task>
+                <progressInformationVisibility>hidden</progressInformationVisibility>
+                <persistence>singleRealization</persistence>
+            </activity>
+        </tree>
+    </activityState>
+</task>
