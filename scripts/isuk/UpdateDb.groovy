@@ -24,7 +24,7 @@ FROM
   skunk.PER_OSOBA po 
   JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA 
   JOIN skunk.VAL_KONTAKT vk ON pk.VAL_KONTAKT = vk.VAL_KONTAKT
-WHERE pk.KONTAKT_TYP IN (1,2,7,20) AND pk.VEREJNY = 1 
+WHERE pk.KONTAKT_TYP IN (1,2,7,20)
 ) src
 WHERE 
   lr.nazev = src.nazev 
@@ -40,7 +40,7 @@ SELECT
   po.CISLO_UK AS cislo_osoby,
   decode(pk.KONTAKT_TYP, 1, 'phone_whois', 2, 'mobile_whois', 7, 'mail_whois', 20, 'pager_whois', NULL) AS nazev,
   decode(pk.KONTAKT_TYP, 1, 'skunk.telefon', 2, 'skunk.mobil', 7, 'skunk.email', 20, 'skunk.sms', NULL) AS zdroj,
-  decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, '+'||substr(vk.telefon,1,12), 7, vk.EMAIL, null) AS hodnota,
+  decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, '+'||substr(vk.telefon,1,12), 7, vk.EMAIL, 20, '+'||substr(vk.telefon,1,12), null) AS hodnota,
   row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
   pk.CTX_ORG AS id_org,
   pk.ID_KONTAKT AS zdroj_identifikator
@@ -49,7 +49,7 @@ FROM
   JOIN skunk.PER_OSOBA po ON po.cislo_uk = lo.cislo_osoby AND lo.x_zaznam_platny = 1
   JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA 
   JOIN skunk.VAL_KONTAKT vk ON pk.VAL_KONTAKT = vk.VAL_KONTAKT 
-WHERE pk.KONTAKT_TYP IN (1,2,7,20) AND pk.VEREJNY = 1 
+WHERE pk.KONTAKT_TYP IN (1,2,7,20)
 ) src
 ON (
   lr.cislo_osoby = src.cislo_osoby AND
@@ -127,8 +127,8 @@ WHERE src.X_LAST_MODIFIED > lo.X_LAST_MODIFIED
 	sql.execute(deleteContactsQuery);
 	sql.execute(updateContactsQuery);
 	sql.commit();
-	//sql.execute(markPeopleUpdateQuery);
-	//sql.commit();
+	sql.execute(markPeopleUpdateQuery);
+	sql.commit();
 }
 
 static void updateOrgs(Sql sql) {
