@@ -1,75 +1,69 @@
-<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="10047548-9926-4c1c-a3cc-7f6cd4551453" version="281">
+<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="10047548-9926-4c1c-a3cc-7f6cd4551453" version="301">
     <name>I10s_LDAP</name>
     <description>Integration LDAP server.</description>
     <operationalState>
         <lastAvailabilityStatus>up</lastAvailabilityStatus>
-        <message>Status changed from DOWN to UP because getting shadow:446c5cab-142b-4e54-be1c-5a693059c8cc(cunipersonalid=16597305,ou=People,dc=cuni,dc=cz) was successful.</message>
-        <timestamp>2024-01-02T03:50:33.746+01:00</timestamp>
+        <message>Status changed from DOWN to UP because getting shadow:6eb53c63-62dd-4653-af33-97b303c4bf94(cunipersonalid=86975344,ou=People,dc=cuni,dc=cz) was successful.</message>
+        <timestamp>2024-03-11T18:12:08.544+01:00</timestamp>
         <nodeId>DefaultNode</nodeId>
     </operationalState>
-    <operationalStateHistory id="258">
+    <operationalStateHistory id="271">
         <lastAvailabilityStatus>down</lastAvailabilityStatus>
-        <message>Status changed from UP to DOWN because deleting shadow:dd81be55-2ce4-4c89-8558-fa77f97ae99c(cunipersonalid=31256649,ou=People,dc=cuni,dc=cz) ended with communication problem, Error communicating with the resource (I10s_LDAP: Person (cuniPerson), ConnId com.evolveum.polygon.connector.ldap.LdapConnector v3.7): Connection failed: org.identityconnectors.framework.common.exceptions.ConnectionFailedException(Unable to connect to LDAP server ldap-i10s.cuni.cz:636: ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;org.apache.directory.ldap.client.api.exception.InvalidConnectionException(ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;java.net.ConnectException(Connection refused)</message>
-        <timestamp>2024-01-02T03:47:09.865+01:00</timestamp>
+        <message>Status changed from UP to DOWN because getting shadow:998dafa4-2a61-4346-98c6-94b61f75daa8(cunipersonalid=19859736,ou=People,dc=cuni,dc=cz) ended with communication problem, Connection failed: org.identityconnectors.framework.common.exceptions.ConnectionFailedException(Unable to connect to LDAP server ldap-i10s.cuni.cz:636: ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection timed out.)-&gt;org.apache.directory.ldap.client.api.exception.InvalidConnectionException(ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection timed out.)-&gt;java.net.ConnectException(Connection timed out.)</message>
+        <timestamp>2024-01-10T10:50:08.047+01:00</timestamp>
         <nodeId>DefaultNode</nodeId>
     </operationalStateHistory>
-    <operationalStateHistory id="259">
-        <lastAvailabilityStatus>down</lastAvailabilityStatus>
-        <message>Status changed from UP to DOWN because getting shadow:b3094abe-25a4-4695-bbfe-088274dc9564(cunipersonalid=52822847,ou=People,dc=cuni,dc=cz) ended with communication problem, Connection failed: org.identityconnectors.framework.common.exceptions.ConnectionFailedException(Unable to connect to LDAP server ldap-i10s.cuni.cz:636: ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;org.apache.directory.ldap.client.api.exception.InvalidConnectionException(ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;java.net.ConnectException(Connection refused)</message>
-        <timestamp>2024-01-02T03:47:09.865+01:00</timestamp>
-        <nodeId>DefaultNode</nodeId>
-    </operationalStateHistory>
-    <operationalStateHistory id="261">
-        <lastAvailabilityStatus>down</lastAvailabilityStatus>
-        <message>Status changed from UP to DOWN because deleting shadow:ec33bdba-bc8f-4aa5-9ad9-2fd337e9a3d9(cunipersonalid=15129200,ou=People,dc=cuni,dc=cz) ended with communication problem, Error communicating with the resource (I10s_LDAP: Person (cuniPerson), ConnId com.evolveum.polygon.connector.ldap.LdapConnector v3.7): Connection failed: org.identityconnectors.framework.common.exceptions.ConnectionFailedException(Unable to connect to LDAP server ldap-i10s.cuni.cz:636: ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;org.apache.directory.ldap.client.api.exception.InvalidConnectionException(ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;java.net.ConnectException(Connection refused)</message>
-        <timestamp>2024-01-02T03:47:09.869+01:00</timestamp>
-        <nodeId>DefaultNode</nodeId>
-    </operationalStateHistory>
-    <operationalStateHistory id="263">
-        <lastAvailabilityStatus>down</lastAvailabilityStatus>
-        <message>Status changed from UP to DOWN because modifying shadow:b8ff6cda-9d34-4760-a4bf-0a4c6efd3343(cunipersonalid=34211223,ou=People,dc=cuni,dc=cz) ended with communication problem, Error communicating with the resource (I10s_LDAP: Person (cuniPerson), ConnId com.evolveum.polygon.connector.ldap.LdapConnector v3.7): Connection failed: org.identityconnectors.framework.common.exceptions.ConnectionFailedException(Unable to connect to LDAP server ldap-i10s.cuni.cz:636: ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;org.apache.directory.ldap.client.api.exception.InvalidConnectionException(ERR_04110_CANNOT_CONNECT_TO_SERVER Cannot connect to the server: Connection refused)-&gt;java.net.ConnectException(Connection refused)</message>
-        <timestamp>2024-01-02T03:47:09.945+01:00</timestamp>
-        <nodeId>DefaultNode</nodeId>
-    </operationalStateHistory>
-    <operationalStateHistory id="264">
+    <operationalStateHistory id="272">
         <lastAvailabilityStatus>up</lastAvailabilityStatus>
-        <message>Status changed from DOWN to UP because getting shadow:2076745b-3a61-486f-a3e8-389460b393ca(cunipersonalid=16593305,ou=People,dc=cuni,dc=cz) was successful.</message>
-        <timestamp>2024-01-02T03:50:33.732+01:00</timestamp>
+        <message>Status changed from DOWN to UP because getting shadow:1d950550-09dd-4500-b26c-b3a2b67e35a6(cunipersonalid=22237051,ou=People,dc=cuni,dc=cz) was successful.</message>
+        <timestamp>2024-01-10T10:50:39.497+01:00</timestamp>
         <nodeId>DefaultNode</nodeId>
     </operationalStateHistory>
-    <operationalStateHistory id="265">
+    <operationalStateHistory id="273">
         <lastAvailabilityStatus>up</lastAvailabilityStatus>
-        <message>Status changed from DOWN to UP because getting shadow:446c5cab-142b-4e54-be1c-5a693059c8cc(cunipersonalid=16597305,ou=People,dc=cuni,dc=cz) was successful.</message>
-        <timestamp>2024-01-02T03:50:33.746+01:00</timestamp>
+        <message>Status changed from DOWN to UP because getting shadow:998dafa4-2a61-4346-98c6-94b61f75daa8(cunipersonalid=19859736,ou=People,dc=cuni,dc=cz) was successful.</message>
+        <timestamp>2024-01-10T10:50:40.505+01:00</timestamp>
         <nodeId>DefaultNode</nodeId>
     </operationalStateHistory>
-    <connectorRef oid="df51af09-2859-4133-b049-00159eb27ff5" relation="org:default" type="c:ConnectorType"/>
+    <operationalStateHistory id="275">
+        <lastAvailabilityStatus>down</lastAvailabilityStatus>
+        <message>Status changed from UP to DOWN because getting shadow:da0c7489-e659-4f31-945c-2b0e623436f2(cunipersonalid=46854222,ou=People,dc=cuni,dc=cz) ended with communication problem, IO error: org.identityconnectors.framework.common.exceptions.ConnectorIOException(Error searching for UID 'a936801e-495611ee-8804bdb4-7c58e230': ERR_04169_RESPONSE_QUEUE_EMPTIED The response queue has been emptied, no response was found.)-&gt;org.apache.directory.api.ldap.model.exception.LdapException(ERR_04169_RESPONSE_QUEUE_EMPTIED The response queue has been emptied, no response was found.)-&gt;java.lang.InterruptedException(null)</message>
+        <timestamp>2024-03-11T18:12:08.045+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalStateHistory>
+    <operationalStateHistory id="276">
+        <lastAvailabilityStatus>up</lastAvailabilityStatus>
+        <message>Status changed from DOWN to UP because getting shadow:6eb53c63-62dd-4653-af33-97b303c4bf94(cunipersonalid=86975344,ou=People,dc=cuni,dc=cz) was successful.</message>
+        <timestamp>2024-03-11T18:12:08.544+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalStateHistory>
+    <connectorRef oid="f174acda-f34c-463c-8ef7-d5ee1a3e7829" relation="org:default" type="c:ConnectorType"/>
     <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3">
-        <icfc:configurationProperties xmlns:gen750="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-ldap/com.evolveum.polygon.connector.ldap.LdapConnector">
-            <gen750:host>ldap-i10s.cuni.cz</gen750:host>
-            <gen750:port>636</gen750:port>
-            <gen750:connectionSecurity>ssl</gen750:connectionSecurity>
-            <gen750:bindDn>
+        <icfc:configurationProperties xmlns:gen775="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-ldap/com.evolveum.polygon.connector.ldap.LdapConnector">
+            <gen775:host>ldap-i10s.cuni.cz</gen775:host>
+            <gen775:port>636</gen775:port>
+            <gen775:connectionSecurity>ssl</gen775:connectionSecurity>
+            <gen775:bindDn>
                 <expression>
                     <const>i10s_bind_dn</const>
                 </expression>
-            </gen750:bindDn>
-            <gen750:bindPassword>
+            </gen775:bindDn>
+            <gen775:bindPassword>
                 <expression>
                     <const>i10s_bind_pw</const>
                 </expression>
-            </gen750:bindPassword>
-            <gen750:baseContext>dc=cuni,dc=cz</gen750:baseContext>
-            <gen750:vlvSortAttribute>cn,givenname,o,ou,sn</gen750:vlvSortAttribute>
-            <gen750:operationalAttributes>memberOf</gen750:operationalAttributes>
-            <gen750:operationalAttributes>nsUniqueId</gen750:operationalAttributes>
-            <gen750:operationalAttributes>nsRole</gen750:operationalAttributes>
-            <gen750:operationalAttributes>passwordExpirationTime</gen750:operationalAttributes>
-            <gen750:operationalAttributes>nsAccountLock</gen750:operationalAttributes>
-            <gen750:uidAttribute>nsUniqueId</gen750:uidAttribute>
-            <gen750:schemaQuirksMode>true</gen750:schemaQuirksMode>
-            <gen750:usePermissiveModify>always</gen750:usePermissiveModify>
-            <gen750:structuralObjectClassesToAuxiliary>true</gen750:structuralObjectClassesToAuxiliary>
+            </gen775:bindPassword>
+            <gen775:baseContext>dc=cuni,dc=cz</gen775:baseContext>
+            <gen775:vlvSortAttribute>cn,givenname,o,ou,sn</gen775:vlvSortAttribute>
+            <gen775:operationalAttributes>memberOf</gen775:operationalAttributes>
+            <gen775:operationalAttributes>nsUniqueId</gen775:operationalAttributes>
+            <gen775:operationalAttributes>nsRole</gen775:operationalAttributes>
+            <gen775:operationalAttributes>passwordExpirationTime</gen775:operationalAttributes>
+            <gen775:operationalAttributes>nsAccountLock</gen775:operationalAttributes>
+            <gen775:uidAttribute>nsUniqueId</gen775:uidAttribute>
+            <gen775:schemaQuirksMode>true</gen775:schemaQuirksMode>
+            <gen775:usePermissiveModify>always</gen775:usePermissiveModify>
+            <gen775:structuralObjectClassesToAuxiliary>true</gen775:structuralObjectClassesToAuxiliary>
         </icfc:configurationProperties>
         <icfc:resultsHandlerConfiguration>
             <icfc:enableNormalizingResultsHandler>false</icfc:enableNormalizingResultsHandler>
@@ -274,17 +268,23 @@
                     <source>
                         <path>$focus/extension/phoneData</path>
                     </source>
+                    <source>
+                        <path>$focus/extension/pager</path>
+                    </source>
                     <expression>
                         <script>
                             <relativityMode>absolute</relativityMode>
                             <code>import groovy.json.*
 
+                                if(!basic.isEmpty(pager)) {
+                                    return pager
+                                }
                                 def jsonSlurper = new JsonSlurper()
                                 return phoneData
                                         ?.findAll( { it.startsWith('WHOIS:{"mobile":') } )
                                         .collect( { val = it.substring(it.indexOf(':') + 1); jsonSlurper.parseText(val) } )
                                         .find( { it?.isPrimary == 'true' })
-                                        ?.phone</code>
+                                        ?.mobile</code>
                         </script>
                     </expression>
                     <target>
@@ -312,7 +312,14 @@
 
                                 return assignments
                                         .findAll( { it.subtype?.contains("relation_vztah") || it.subtype?.contains("relation_hrana") } )
-                                        .collect( { midpoint.getObject(OrgType.class, it.targetRef.oid )?.description } )
+                                        .collect(
+                                                {
+                                                    try {
+                                                        midpoint.getObject(OrgType.class, it.targetRef.oid)?.description
+                                                    } catch(Exception e) {
+                                                        return null
+                                                    }
+                                                } )
                                         .unique()
                                         .join(',')</code>
                         </script>

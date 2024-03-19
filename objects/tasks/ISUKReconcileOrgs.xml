@@ -1,0 +1,473 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="ca5a49a3-5bdb-46ba-afe1-d341f59a2864" version="2550">
+    <name>IS_UK_ReconcileOrgs</name>
+    <indestructible>true</indestructible>
+    <assignment id="1">
+        <targetRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType"/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+    </assignment>
+    <archetypeRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType"/>
+    <roleMembershipRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType">
+        <_metadata>
+            <storage>
+                <createTimestamp>2022-09-16T17:37:34.142+02:00</createTimestamp>
+            </storage>
+            <provenance>
+                <assignmentPath>
+                    <sourceRef oid="ca5a49a3-5bdb-46ba-afe1-d341f59a2864" relation="org:default" type="c:TaskType"/>
+                    <segment>
+                        <segmentOrder>1</segmentOrder>
+                        <assignmentId>1</assignmentId>
+                        <targetRef oid="00000000-0000-0000-0000-000000000501" relation="org:default" type="c:ArchetypeType"/>
+                        <matchingOrder>true</matchingOrder>
+                    </segment>
+                </assignmentPath>
+            </provenance>
+        </_metadata>
+    </roleMembershipRef>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+    <executionState>closed</executionState>
+    <schedulingState>closed</schedulingState>
+    <category>Reconciliation</category>
+    <objectRef oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" relation="org:default" type="c:ResourceType"/>
+    <binding>loose</binding>
+    <activity>
+        <work>
+            <reconciliation>
+                <resourceObjects>
+                    <resourceRef oid="3ce8c98b-3e5e-4d64-b355-5b632738987d" relation="org:default" type="c:ResourceType"/>
+                    <kind>entitlement</kind>
+                    <intent>orgunit</intent>
+                    <objectclass>ri:Organization</objectclass>
+                </resourceObjects>
+            </reconciliation>
+        </work>
+        <distribution>
+            <workerThreads>8</workerThreads>
+        </distribution>
+    </activity>
+    <activityState>
+        <activity>
+            <realizationState>complete</realizationState>
+            <resultStatus>partial_error</resultStatus>
+            <realizationStartTimestamp>2024-02-15T14:08:45.649+01:00</realizationStartTimestamp>
+            <realizationEndTimestamp>2024-02-15T14:10:20.248+01:00</realizationEndTimestamp>
+            <runStartTimestamp>2024-02-15T14:08:45.649+01:00</runStartTimestamp>
+            <runEndTimestamp>2024-02-15T14:10:20.248+01:00</runEndTimestamp>
+            <workState xsi:type="c:ReconciliationWorkStateType">
+                <resourceObjectsReconciliationStartTimestamp>2024-02-15T14:08:47.320+01:00</resourceObjectsReconciliationStartTimestamp>
+            </workState>
+            <persistence>singleRealization</persistence>
+            <activity id="10519">
+                <identifier>operationCompletion</identifier>
+                <realizationState>complete</realizationState>
+                <resultStatus>success</resultStatus>
+                <realizationStartTimestamp>2024-02-15T14:08:45.675+01:00</realizationStartTimestamp>
+                <realizationEndTimestamp>2024-02-15T14:08:47.309+01:00</realizationEndTimestamp>
+                <runStartTimestamp>2024-02-15T14:08:45.675+01:00</runStartTimestamp>
+                <runEndTimestamp>2024-02-15T14:08:47.309+01:00</runEndTimestamp>
+                <progress>
+                    <expectedTotal>0</expectedTotal>
+                    <expectedInCurrentBucket>0</expectedInCurrentBucket>
+                </progress>
+                <statistics>
+                    <itemProcessing>
+                        <run id="10525">
+                            <startTimestamp>2024-02-15T14:08:45.675+01:00</startTimestamp>
+                            <endTimestamp>2024-02-15T14:08:47.309+01:00</endTimestamp>
+                        </run>
+                    </itemProcessing>
+                </statistics>
+                <bucketing>
+                    <bucket id="10523">
+                        <sequentialNumber>1</sequentialNumber>
+                        <state>complete</state>
+                        <content xsi:type="c:NullWorkBucketContentType"/>
+                    </bucket>
+                    <numberOfBuckets>1</numberOfBuckets>
+                    <workComplete>true</workComplete>
+                </bucketing>
+                <workState/>
+                <persistence>singleRealization</persistence>
+            </activity>
+            <activity id="10520">
+                <identifier>resourceObjects</identifier>
+                <realizationState>complete</realizationState>
+                <resultStatus>partial_error</resultStatus>
+                <realizationStartTimestamp>2024-02-15T14:08:47.320+01:00</realizationStartTimestamp>
+                <realizationEndTimestamp>2024-02-15T14:10:00.048+01:00</realizationEndTimestamp>
+                <runStartTimestamp>2024-02-15T14:08:47.320+01:00</runStartTimestamp>
+                <runEndTimestamp>2024-02-15T14:10:00.048+01:00</runEndTimestamp>
+                <progress>
+                    <committed id="10899">
+                        <outcome>
+                            <outcome>success</outcome>
+                        </outcome>
+                        <count>2829</count>
+                    </committed>
+                    <committed id="10900">
+                        <outcome>
+                            <outcome>failure</outcome>
+                        </outcome>
+                        <count>6</count>
+                    </committed>
+                </progress>
+                <statistics>
+                    <itemProcessing>
+                        <processed id="10902">
+                            <outcome>
+                                <outcome>success</outcome>
+                            </outcome>
+                            <count>2829</count>
+                            <duration>562691.9299999999</duration>
+                            <lastItem>
+                                <name>1869050755228655</name>
+                                <displayName>1869050755228655 (ENTITLEMENT - orgunit - Organization)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>1d04fc1d-0cef-4589-9c3e-61cf72022643</oid>
+                                <startTimestamp>2024-02-15T14:09:59.823+01:00</startTimestamp>
+                                <endTimestamp>2024-02-15T14:10:00.015+01:00</endTimestamp>
+                                <operationId>61001</operationId>
+                            </lastItem>
+                        </processed>
+                        <processed id="10903">
+                            <outcome>
+                                <outcome>failure</outcome>
+                            </outcome>
+                            <count>6</count>
+                            <duration>2449.14</duration>
+                            <lastItem>
+                                <name>1120177294873855</name>
+                                <displayName>1120177294873855 (ENTITLEMENT - orgunit - Organization)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>14fb8e6a-a28d-48a9-acf1-9462bbc52f03</oid>
+                                <startTimestamp>2024-02-15T14:09:57.956+01:00</startTimestamp>
+                                <endTimestamp>2024-02-15T14:09:58.161+01:00</endTimestamp>
+                                <message>org.identityconnectors.framework.common.exceptions.PermissionDeniedException(HTTP error 403 Forbidden)</message>
+                                <operationId>60936</operationId>
+                            </lastItem>
+                        </processed>
+                        <run id="10901">
+                            <startTimestamp>2024-02-15T14:08:47.320+01:00</startTimestamp>
+                            <endTimestamp>2024-02-15T14:10:00.048+01:00</endTimestamp>
+                        </run>
+                    </itemProcessing>
+                    <synchronization>
+                        <transition id="10904">
+                            <onProcessingStart>linked</onProcessingStart>
+                            <onSynchronizationStart>linked</onSynchronizationStart>
+                            <onSynchronizationEnd>linked</onSynchronizationEnd>
+                            <counter id="10905">
+                                <outcome>
+                                    <outcome>success</outcome>
+                                </outcome>
+                                <count>2829</count>
+                            </counter>
+                            <counter id="10906">
+                                <outcome>
+                                    <outcome>failure</outcome>
+                                </outcome>
+                                <count>6</count>
+                            </counter>
+                        </transition>
+                    </synchronization>
+                    <actionsExecuted>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>5664</totalSuccessCount>
+                            <lastSuccessObjectName>1869050755228655</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>1869050755228655 (ENTITLEMENT - orgunit - Organization)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>1d04fc1d-0cef-4589-9c3e-61cf72022643</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:00.015+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>2835</totalSuccessCount>
+                            <lastSuccessObjectName>1869050755228655</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>1869050755228655 (ENTITLEMENT - orgunit - Organization)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>1d04fc1d-0cef-4589-9c3e-61cf72022643</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:00.015+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                    </actionsExecuted>
+                </statistics>
+                <bucketing>
+                    <bucket id="10527">
+                        <sequentialNumber>1</sequentialNumber>
+                        <state>complete</state>
+                        <content xsi:type="c:NullWorkBucketContentType"/>
+                    </bucket>
+                    <numberOfBuckets>1</numberOfBuckets>
+                    <workComplete>true</workComplete>
+                </bucketing>
+                <workState/>
+                <persistence>singleRealization</persistence>
+            </activity>
+            <activity id="10521">
+                <identifier>remainingShadows</identifier>
+                <realizationState>complete</realizationState>
+                <resultStatus>success</resultStatus>
+                <realizationStartTimestamp>2024-02-15T14:10:00.064+01:00</realizationStartTimestamp>
+                <realizationEndTimestamp>2024-02-15T14:10:20.228+01:00</realizationEndTimestamp>
+                <runStartTimestamp>2024-02-15T14:10:00.064+01:00</runStartTimestamp>
+                <runEndTimestamp>2024-02-15T14:10:20.228+01:00</runEndTimestamp>
+                <progress>
+                    <committed id="11017">
+                        <outcome>
+                            <outcome>skip</outcome>
+                        </outcome>
+                        <count>7</count>
+                    </committed>
+                    <committed id="11018">
+                        <outcome>
+                            <outcome>success</outcome>
+                        </outcome>
+                        <count>520</count>
+                    </committed>
+                    <expectedTotal>527</expectedTotal>
+                    <expectedInCurrentBucket>527</expectedInCurrentBucket>
+                </progress>
+                <statistics>
+                    <itemProcessing>
+                        <processed id="11020">
+                            <outcome>
+                                <outcome>skip</outcome>
+                            </outcome>
+                            <count>7</count>
+                            <duration>373.78</duration>
+                            <lastItem>
+                                <name>1951374714892961</name>
+                                <displayName>1951374714892961 (ENTITLEMENT - orgunit - Organization)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>c6222f71-98ee-47e8-9d66-87de5c92a29d</oid>
+                                <startTimestamp>2024-02-15T14:10:17.207+01:00</startTimestamp>
+                                <endTimestamp>2024-02-15T14:10:17.208+01:00</endTimestamp>
+                                <operationId>61997</operationId>
+                            </lastItem>
+                        </processed>
+                        <processed id="11021">
+                            <outcome>
+                                <outcome>success</outcome>
+                            </outcome>
+                            <count>520</count>
+                            <duration>149073.43000000005</duration>
+                            <lastItem>
+                                <name>1791957228661105</name>
+                                <displayName>1791957228661105 (ENTITLEMENT - orgunit - Organization)</displayName>
+                                <type>c:ShadowType</type>
+                                <oid>ff3920bf-aae4-4aff-ac9a-9dabeee01d60</oid>
+                                <startTimestamp>2024-02-15T14:10:19.879+01:00</startTimestamp>
+                                <endTimestamp>2024-02-15T14:10:20.172+01:00</endTimestamp>
+                                <operationId>62221</operationId>
+                            </lastItem>
+                        </processed>
+                        <run id="11019">
+                            <startTimestamp>2024-02-15T14:10:00.064+01:00</startTimestamp>
+                            <endTimestamp>2024-02-15T14:10:20.228+01:00</endTimestamp>
+                        </run>
+                    </itemProcessing>
+                    <synchronization>
+                        <transition id="11022">
+                            <onProcessingStart>linked</onProcessingStart>
+                            <exclusionReason>synchronizationNotNeeded</exclusionReason>
+                            <counter id="11025">
+                                <outcome>
+                                    <outcome>skip</outcome>
+                                </outcome>
+                                <count>6</count>
+                            </counter>
+                        </transition>
+                        <transition id="11023">
+                            <onProcessingStart>linked</onProcessingStart>
+                            <onSynchronizationStart>deleted</onSynchronizationStart>
+                            <onSynchronizationEnd>deleted</onSynchronizationEnd>
+                            <counter id="11026">
+                                <outcome>
+                                    <outcome>success</outcome>
+                                </outcome>
+                                <count>520</count>
+                            </counter>
+                        </transition>
+                        <transition id="11024">
+                            <onProcessingStart>deleted</onProcessingStart>
+                            <exclusionReason>synchronizationNotNeeded</exclusionReason>
+                            <counter id="11027">
+                                <outcome>
+                                    <outcome>skip</outcome>
+                                </outcome>
+                                <count>1</count>
+                            </counter>
+                        </transition>
+                    </synchronization>
+                    <actionsExecuted>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>1040</totalSuccessCount>
+                            <lastSuccessObjectName>1791957228661105</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>1791957228661105 (ENTITLEMENT - orgunit - Organization)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>ff3920bf-aae4-4aff-ac9a-9dabeee01d60</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:20.171+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:OrgType</objectType>
+                            <operation>delete</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>520</totalSuccessCount>
+                            <lastSuccessObjectName>1791957228661105</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>Institut základů vzdělanosti</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>2f9f47fc-ecb8-4f24-b2f4-e7323744ff4c</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:19.975+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>delete</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>525</totalSuccessCount>
+                            <lastSuccessObjectName>cn=258,ou=Groups,dc=cuni,dc=cz</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>cn=258,ou=Groups,dc=cuni,dc=cz (ENTITLEMENT - group - groupOfUniqueNames)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>1483462a-cec6-4de4-a6d8-8f2d7d78b8c8</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:20.157+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <objectActionsEntry>
+                            <objectType>c:TaskType</objectType>
+                            <operation>add</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>1</totalSuccessCount>
+                            <lastSuccessObjectName>RecomputeOrgTreeDown 3832</lastSuccessObjectName>
+                            <lastSuccessObjectOid>37c13306-6314-4396-8e56-72a6af7d6dde</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:13.332+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </objectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>modify</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>520</totalSuccessCount>
+                            <lastSuccessObjectName>1791957228661105</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>1791957228661105 (ENTITLEMENT - orgunit - Organization)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>ff3920bf-aae4-4aff-ac9a-9dabeee01d60</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:20.171+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:OrgType</objectType>
+                            <operation>delete</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>520</totalSuccessCount>
+                            <lastSuccessObjectName>1791957228661105</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>Institut základů vzdělanosti</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>2f9f47fc-ecb8-4f24-b2f4-e7323744ff4c</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:19.975+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:ShadowType</objectType>
+                            <operation>delete</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>525</totalSuccessCount>
+                            <lastSuccessObjectName>cn=258,ou=Groups,dc=cuni,dc=cz</lastSuccessObjectName>
+                            <lastSuccessObjectDisplayName>cn=258,ou=Groups,dc=cuni,dc=cz (ENTITLEMENT - group - groupOfUniqueNames)</lastSuccessObjectDisplayName>
+                            <lastSuccessObjectOid>1483462a-cec6-4de4-a6d8-8f2d7d78b8c8</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:20.157+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                        <resultingObjectActionsEntry>
+                            <objectType>c:TaskType</objectType>
+                            <operation>add</operation>
+                            <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#reconciliation</channel>
+                            <totalSuccessCount>1</totalSuccessCount>
+                            <lastSuccessObjectName>RecomputeOrgTreeDown 3832</lastSuccessObjectName>
+                            <lastSuccessObjectOid>37c13306-6314-4396-8e56-72a6af7d6dde</lastSuccessObjectOid>
+                            <lastSuccessTimestamp>2024-02-15T14:10:13.332+01:00</lastSuccessTimestamp>
+                            <totalFailureCount>0</totalFailureCount>
+                        </resultingObjectActionsEntry>
+                    </actionsExecuted>
+                </statistics>
+                <bucketing>
+                    <bucket id="10908">
+                        <sequentialNumber>1</sequentialNumber>
+                        <state>complete</state>
+                        <content xsi:type="c:NullWorkBucketContentType"/>
+                    </bucket>
+                    <numberOfBuckets>1</numberOfBuckets>
+                    <workComplete>true</workComplete>
+                </bucketing>
+                <workState/>
+                <persistence>singleRealization</persistence>
+            </activity>
+        </activity>
+        <tree>
+            <realizationState>complete</realizationState>
+            <activity>
+                <realizationState>complete</realizationState>
+                <resultStatus>partial_error</resultStatus>
+                <task>
+                    <taskRef oid="ca5a49a3-5bdb-46ba-afe1-d341f59a2864" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                        <targetName>IS_UK_ReconcileOrgs</targetName>
+                    </taskRef>
+                    <node>DefaultNode</node>
+                    <executionState>notRunning</executionState>
+                    <resultStatus>partial_error</resultStatus>
+                </task>
+                <progressInformationVisibility>hidden</progressInformationVisibility>
+                <persistence>singleRealization</persistence>
+                <activity>
+                    <identifier>operationCompletion</identifier>
+                    <realizationState>complete</realizationState>
+                    <resultStatus>success</resultStatus>
+                    <task>
+                        <taskRef oid="ca5a49a3-5bdb-46ba-afe1-d341f59a2864" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                            <targetName>IS_UK_ReconcileOrgs</targetName>
+                        </taskRef>
+                        <node>DefaultNode</node>
+                        <executionState>notRunning</executionState>
+                        <resultStatus>success</resultStatus>
+                    </task>
+                    <progressInformationVisibility>hidden</progressInformationVisibility>
+                    <persistence>singleRealization</persistence>
+                </activity>
+                <activity>
+                    <identifier>resourceObjects</identifier>
+                    <realizationState>complete</realizationState>
+                    <resultStatus>partial_error</resultStatus>
+                    <task>
+                        <taskRef oid="ca5a49a3-5bdb-46ba-afe1-d341f59a2864" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                            <targetName>IS_UK_ReconcileOrgs</targetName>
+                        </taskRef>
+                        <node>DefaultNode</node>
+                        <executionState>notRunning</executionState>
+                        <resultStatus>partial_error</resultStatus>
+                    </task>
+                    <progressInformationVisibility>hidden</progressInformationVisibility>
+                    <persistence>singleRealization</persistence>
+                </activity>
+                <activity>
+                    <identifier>remainingShadows</identifier>
+                    <realizationState>complete</realizationState>
+                    <resultStatus>success</resultStatus>
+                    <task>
+                        <taskRef oid="ca5a49a3-5bdb-46ba-afe1-d341f59a2864" relation="org:default" type="c:TaskType" xsi:type="c:ObjectReferenceType">
+                            <targetName>IS_UK_ReconcileOrgs</targetName>
+                        </taskRef>
+                        <node>DefaultNode</node>
+                        <executionState>notRunning</executionState>
+                        <resultStatus>success</resultStatus>
+                    </task>
+                    <progressInformationVisibility>hidden</progressInformationVisibility>
+                    <persistence>singleRealization</persistence>
+                </activity>
+            </activity>
+        </tree>
+    </activityState>
+</task>

@@ -1,0 +1,1017 @@
+<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="75c37cc6-f5d5-49b9-ad3b-689850dd7096" version="109" >
+    <name>Test_KISS</name>
+    <metadata>
+        <requestTimestamp>2024-01-23T17:26:09.959+01:00</requestTimestamp>
+        <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createTimestamp>2024-01-23T17:26:09.991+01:00</createTimestamp>
+        <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>
+        <modifyTimestamp>2024-02-28T13:45:24.806+01:00</modifyTimestamp>
+        <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</modifyChannel>
+    </metadata>
+    <lifecycleState>active</lifecycleState>
+    <operationExecution id="84">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-19T11:34:46.673+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000025488</token>
+            </executionResult>
+            <objectName>Test_KISS</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="85">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-19T11:35:12.263+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000025830</token>
+            </executionResult>
+            <objectName>Test_KISS</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="134">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-26T12:31:10.731+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000004760296</token>
+            </executionResult>
+            <objectName>Test_KISS</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="135">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-28T11:23:26.500+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000000736</token>
+            </executionResult>
+            <objectName>Test_KISS</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <operationExecution id="136">
+        <recordType>simple</recordType>
+        <timestamp>2024-02-28T13:45:24.846+01:00</timestamp>
+        <operation>
+            <objectDelta>
+                <t:changeType>modify</t:changeType>
+                <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+                <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+                <status>success</status>
+                <importance>normal</importance>
+                <token>1000000000000000687</token>
+            </executionResult>
+            <objectName>Test_KISS</objectName>
+        </operation>
+        <status>success</status>
+        <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    </operationExecution>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <operationalState>
+        <lastAvailabilityStatus>up</lastAvailabilityStatus>
+        <message>Status changed from DOWN to UP because getting shadow:a0dd688c-341f-4acc-95c8-16057e0375e5(michal.vocu@ruk.cuni.cz) was successful.</message>
+        <timestamp>2024-02-20T12:45:17.765+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalState>
+    <operationalStateHistory id="129">
+        <lastAvailabilityStatus>up</lastAvailabilityStatus>
+        <message>Status changed from DOWN to UP because resource test was successful</message>
+        <timestamp>2024-02-20T07:42:55.386+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalStateHistory>
+    <operationalStateHistory id="130">
+        <lastAvailabilityStatus>down</lastAvailabilityStatus>
+        <message>Status changed from UP to DOWN because adding shadow:f0493ae8-d648-46b9-a252-a8a4479477c9(michal.vocu@ruk.cuni.cz) ended with communication problem, Error communicating with the resource (Test_KISS: Contact (Contact), ConnId cz.cuni.idm.connector.kiss.KissConnector v0.0.1-SNAPSHOT): IO error: org.identityconnectors.framework.common.exceptions.ConnectorIOException(HTTP error 400 Bad Request)</message>
+        <timestamp>2024-02-20T07:45:10.234+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalStateHistory>
+    <operationalStateHistory id="131">
+        <lastAvailabilityStatus>up</lastAvailabilityStatus>
+        <message>Status changed from DOWN to UP because resource test was successful</message>
+        <timestamp>2024-02-20T10:25:07.711+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalStateHistory>
+    <operationalStateHistory id="132">
+        <lastAvailabilityStatus>down</lastAvailabilityStatus>
+        <message>Status changed from UP to DOWN because adding null ended with communication problem, Error communicating with the resource (Test_KISS: Contact (Contact), ConnId cz.cuni.idm.connector.kiss.KissConnector v0.0.1-SNAPSHOT): IO error: org.identityconnectors.framework.common.exceptions.ConnectorIOException(HTTP error 400 Bad Request)</message>
+        <timestamp>2024-02-20T10:25:34.598+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalStateHistory>
+    <operationalStateHistory id="133">
+        <lastAvailabilityStatus>up</lastAvailabilityStatus>
+        <message>Status changed from DOWN to UP because getting shadow:a0dd688c-341f-4acc-95c8-16057e0375e5(michal.vocu@ruk.cuni.cz) was successful.</message>
+        <timestamp>2024-02-20T12:45:17.765+01:00</timestamp>
+        <nodeId>DefaultNode</nodeId>
+    </operationalStateHistory>
+    <connectorRef oid="a23510f7-7f1f-4dbf-85f0-df0f9b82b603" relation="org:default" type="c:ConnectorType"/>
+    <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3">
+        <icfc:configurationProperties xmlns:gen673="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-kiss/cz.cuni.idm.connector.kiss.KissConnector">
+            <gen673:password>
+                <t:encryptedData>
+                    <t:encryptionMethod>
+                        <t:algorithm xmlns="http://prism.evolveum.com/xml/ns/public/types-3">http://www.w3.org/2001/04/xmlenc#aes256-cbc</t:algorithm>
+                    </t:encryptionMethod>
+                    <t:keyInfo>
+                        <t:keyName>nlEUijFi8mCeLBcN94sQAJUWunE=</t:keyName>
+                    </t:keyInfo>
+                    <t:cipherData>
+                        <t:cipherValue>+aB09i4IxQWPtaahs2JTmUQAvHvNsNsuXaUBayBEDWY=</t:cipherValue>
+                    </t:cipherData>
+                </t:encryptedData>
+            </gen673:password>
+            <gen673:serviceAddress xmlns="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-kiss/cz.cuni.idm.connector.kiss.KissConnector" xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">https://kisstest.svolavac.cz:5001</gen673:serviceAddress>
+            <gen673:username>uktest-admin</gen673:username>
+        </icfc:configurationProperties>
+    </connectorConfiguration>
+    <schema>
+        <cachingMetadata>
+            <retrievalTimestamp>2024-02-28T13:45:25.232+01:00</retrievalTimestamp>
+            <serialNumber>51c039da0d0bd4bd-d207b96595f3deac</serialNumber>
+        </cachingMetadata>
+        <generationConstraints>
+            <generateObjectClass>ri:Contact</generateObjectClass>
+            <generateObjectClass>ri:PhoneBook</generateObjectClass>
+        </generationConstraints>
+        <definition>
+            <xsd:schema xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3" xmlns:ra="http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3" xmlns:tns="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">
+                <xsd:import namespace="http://prism.evolveum.com/xml/ns/public/annotation-3"/>
+                <xsd:import namespace="http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3"/>
+                <xsd:complexType name="Contact">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <a:container/>
+                            <ra:resourceObject/>
+                            <ra:identifier>ri:ContactId</ra:identifier>
+                            <ra:secondaryIdentifier>ri:MailAddress</ra:secondaryIdentifier>
+                            <ra:displayNameAttribute>ri:MailAddress</ra:displayNameAttribute>
+                            <ra:namingAttribute>ri:MailAddress</ra:namingAttribute>
+                            <ra:nativeObjectClass>Contact</ra:nativeObjectClass>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="ZIP" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>120</a:displayOrder>
+                                    <ra:frameworkAttributeName>ZIP</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="TitleAfter" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>130</a:displayOrder>
+                                    <ra:frameworkAttributeName>TitleAfter</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="VoiceAddress2" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>140</a:displayOrder>
+                                    <ra:frameworkAttributeName>VoiceAddress2</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="FirstName" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>150</a:displayOrder>
+                                    <ra:frameworkAttributeName>FirstName</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Settings" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>160</a:displayOrder>
+                                    <ra:frameworkAttributeName>Settings</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Deleted" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>170</a:displayOrder>
+                                    <ra:frameworkAttributeName>Deleted</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="TitleBefore" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>180</a:displayOrder>
+                                    <ra:frameworkAttributeName>TitleBefore</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Description" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>190</a:displayOrder>
+                                    <ra:frameworkAttributeName>Description</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="LastName" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>200</a:displayOrder>
+                                    <ra:frameworkAttributeName>LastName</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Pozice" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>210</a:displayOrder>
+                                    <ra:frameworkAttributeName>Pozice</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Mistnost" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>220</a:displayOrder>
+                                    <ra:frameworkAttributeName>Mistnost</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="MailAddress" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayName>MailAddress</a:displayName>
+                                    <a:displayOrder>110</a:displayOrder>
+                                    <ra:nativeAttributeName>MailAddress</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__NAME__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="CompanyId" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>230</a:displayOrder>
+                                    <ra:frameworkAttributeName>CompanyId</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="DisplayName" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>240</a:displayOrder>
+                                    <ra:frameworkAttributeName>DisplayName</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="PasswdSalt" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>250</a:displayOrder>
+                                    <ra:frameworkAttributeName>PasswdSalt</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="StreetNo" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>260</a:displayOrder>
+                                    <ra:frameworkAttributeName>StreetNo</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="CompanyDisplayName" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>270</a:displayOrder>
+                                    <ra:frameworkAttributeName>CompanyDisplayName</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="phonebooks" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>280</a:displayOrder>
+                                    <ra:frameworkAttributeName>phonebooks</ra:frameworkAttributeName>
+                                    <ra:returnedByDefault>false</ra:returnedByDefault>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Street" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>290</a:displayOrder>
+                                    <ra:frameworkAttributeName>Street</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="VoiceAddress" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>300</a:displayOrder>
+                                    <ra:frameworkAttributeName>VoiceAddress</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="SmsAddress" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>310</a:displayOrder>
+                                    <ra:frameworkAttributeName>SmsAddress</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Password" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>320</a:displayOrder>
+                                    <ra:frameworkAttributeName>Password</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="City" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>330</a:displayOrder>
+                                    <ra:frameworkAttributeName>City</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Activated" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>340</a:displayOrder>
+                                    <ra:frameworkAttributeName>Activated</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Ticket" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>350</a:displayOrder>
+                                    <ra:frameworkAttributeName>Ticket</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="ExternalId" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>360</a:displayOrder>
+                                    <ra:frameworkAttributeName>ExternalId</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="ContactId" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayName>ContactId</a:displayName>
+                                    <a:displayOrder>100</a:displayOrder>
+                                    <a:access>read</a:access>
+                                    <ra:nativeAttributeName>ContactId</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__UID__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+                <xsd:complexType name="PhoneBook">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <a:container/>
+                            <ra:resourceObject/>
+                            <ra:identifier>ri:PhoneBookId</ra:identifier>
+                            <ra:secondaryIdentifier>ri:DisplayName</ra:secondaryIdentifier>
+                            <ra:displayNameAttribute>ri:DisplayName</ra:displayNameAttribute>
+                            <ra:namingAttribute>ri:DisplayName</ra:namingAttribute>
+                            <ra:nativeObjectClass>PhoneBook</ra:nativeObjectClass>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="ParentPhoneBookId" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>120</a:displayOrder>
+                                    <ra:frameworkAttributeName>ParentPhoneBookId</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="members" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>130</a:displayOrder>
+                                    <ra:frameworkAttributeName>members</ra:frameworkAttributeName>
+                                    <ra:returnedByDefault>false</ra:returnedByDefault>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Description" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>140</a:displayOrder>
+                                    <ra:frameworkAttributeName>Description</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="IsPublic" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>150</a:displayOrder>
+                                    <ra:frameworkAttributeName>IsPublic</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="CompanyId" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>160</a:displayOrder>
+                                    <ra:frameworkAttributeName>CompanyId</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="DisplayName" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayName>DisplayName</a:displayName>
+                                    <a:displayOrder>110</a:displayOrder>
+                                    <ra:nativeAttributeName>DisplayName</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__NAME__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="Deleted" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>170</a:displayOrder>
+                                    <ra:frameworkAttributeName>Deleted</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="ExternalId" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>180</a:displayOrder>
+                                    <ra:frameworkAttributeName>ExternalId</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="Children" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayOrder>190</a:displayOrder>
+                                    <a:access>read</a:access>
+                                    <ra:frameworkAttributeName>Children</ra:frameworkAttributeName>
+                                    <ra:returnedByDefault>false</ra:returnedByDefault>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="PhoneBookId" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:appinfo>
+                                    <a:displayName>PhoneBookId</a:displayName>
+                                    <a:displayOrder>100</a:displayOrder>
+                                    <a:access>read</a:access>
+                                    <ra:nativeAttributeName>PhoneBookId</ra:nativeAttributeName>
+                                    <ra:frameworkAttributeName>__UID__</ra:frameworkAttributeName>
+                                </xsd:appinfo>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:schema>
+        </definition>
+    </schema>
+    <schemaHandling>
+        <objectType id="6">
+            <kind>account</kind>
+            <intent>contact</intent>
+            <displayName>Contact</displayName>
+            <default>true</default>
+            <delineation>
+                <objectClass>ri:Contact</objectClass>
+            </delineation>
+            <focus>
+                <type>c:UserType</type>
+            </focus>
+            <attribute id="11">
+                <ref>ri:ExternalId</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/personalNumber</path>
+                    </source>
+                </outbound>
+                <inbound id="12">
+                    <strength>strong</strength>
+                    <target>
+                        <path>personalNumber</path>
+                    </target>
+                    <use>correlation</use>
+                </inbound>
+            </attribute>
+            <attribute id="14">
+                <ref>ri:FirstName</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/givenName</path>
+                    </source>
+                </outbound>
+            </attribute>
+            <attribute id="15">
+                <ref>ri:LastName</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/familyName</path>
+                    </source>
+                </outbound>
+            </attribute>
+            <attribute id="33">
+                <ref>ri:MailAddress</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/emailAddress</path>
+                    </source>
+                </outbound>
+            </attribute>
+            <attribute id="47">
+                <ref>ri:VoiceAddress</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/telephoneNumber</path>
+                    </source>
+                </outbound>
+            </attribute>
+            <attribute id="49">
+                <ref>ri:SmsAddress</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/extension/pager</path>
+                    </source>
+                </outbound>
+            </attribute>
+            <attribute id="51">
+                <ref>ri:DisplayName</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/fullName</path>
+                    </source>
+                </outbound>
+            </attribute>
+            <attribute id="122">
+                <ref>ri:phonebooks</ref>
+            </attribute>
+            <association id="123">
+                <ref>ri:memberOf</ref>
+                <kind>entitlement</kind>
+                <intent>phonebook</intent>
+                <intent>phonebook_staff</intent>
+                <intent>phonebook_student</intent>
+                <direction>objectToSubject</direction>
+                <associationAttribute>ri:members</associationAttribute>
+                <valueAttribute>ri:ContactId</valueAttribute>
+                <shortcutAssociationAttribute>ri:phonebooks</shortcutAssociationAttribute>
+                <shortcutValueAttribute>ri:PhoneBookId</shortcutValueAttribute>
+            </association>
+            <correlation>
+                <correlators>
+                    <items id="8">
+                        <name>cunipersonalid</name>
+                        <item id="9">
+                            <ref>c:personalNumber</ref>
+                        </item>
+                    </items>
+                </correlators>
+            </correlation>
+            <synchronization>
+                <reaction id="64">
+                    <situation>linked</situation>
+                    <actions>
+                        <synchronize id="67"/>
+                    </actions>
+                </reaction>
+                <reaction id="65">
+                    <situation>deleted</situation>
+                    <actions>
+                        <unlink id="68"/>
+                    </actions>
+                </reaction>
+                <reaction id="66">
+                    <situation>unlinked</situation>
+                    <actions>
+                        <link id="69"/>
+                    </actions>
+                </reaction>
+            </synchronization>
+        </objectType>
+        <objectType id="20">
+            <kind>entitlement</kind>
+            <intent>phonebook</intent>
+            <displayName>PhoneBook</displayName>
+            <default>true</default>
+            <delineation>
+                <objectClass>ri:PhoneBook</objectClass>
+            </delineation>
+            <focus>
+                <type>c:OrgType</type>
+            </focus>
+            <attribute id="24">
+                <ref>ri:DisplayName</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/displayName</path>
+                    </source>
+                    <source>
+                        <name>id</name>
+                        <path>$focus/identifier</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return id + " - " + name
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+            </attribute>
+            <attribute id="74">
+                <ref>ri:ExternalId</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <path>$focus/name</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return '(' + name + ')'
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+                <inbound id="75">
+                    <strength>strong</strength>
+                    <target>
+                        <path>name</path>
+                    </target>
+                    <use>correlation</use>
+                </inbound>
+            </attribute>
+            <attribute id="80">
+                <ref>ri:Description</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/displayName</path>
+                    </source>
+                </outbound>
+            </attribute>
+            <association id="53">
+                <ref>ri:parent</ref>
+                <limitations id="71">
+                    <maxOccurs>1</maxOccurs>
+                </limitations>
+                <kind>entitlement</kind>
+                <intent>phonebook</intent>
+                <direction>subjectToObject</direction>
+                <associationAttribute>ri:ParentPhoneBookId</associationAttribute>
+                <valueAttribute>ri:PhoneBookId</valueAttribute>
+            </association>
+            <correlation>
+                <correlators>
+                    <items id="26">
+                        <name>poid</name>
+                        <item id="27">
+                            <ref>c:name</ref>
+                        </item>
+                    </items>
+                </correlators>
+            </correlation>
+            <synchronization>
+                <reaction id="55">
+                    <situation>deleted</situation>
+                    <actions>
+                        <unlink id="59"/>
+                    </actions>
+                </reaction>
+                <reaction id="56">
+                    <situation>linked</situation>
+                    <actions>
+                        <synchronize id="60"/>
+                    </actions>
+                </reaction>
+                <reaction id="57">
+                    <situation>unlinked</situation>
+                    <actions>
+                        <link id="61"/>
+                    </actions>
+                </reaction>
+                <reaction id="58">
+                    <situation>unmatched</situation>
+                    <actions>
+                        <deleteResourceObject id="62"/>
+                    </actions>
+                </reaction>
+            </synchronization>
+        </objectType>
+        <objectType id="81">
+            <kind>entitlement</kind>
+            <intent>phonebook_student</intent>
+            <displayName>StudentPhoneBook</displayName>
+            <default>false</default>
+            <delineation>
+                <objectClass>ri:PhoneBook</objectClass>
+                <classificationCondition>
+                    <script>
+                        <code>return true</code>
+                    </script>
+                </classificationCondition>
+            </delineation>
+            <focus>
+                <type>c:OrgType</type>
+            </focus>
+            <attribute id="86">
+                <ref>ri:DisplayName</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/displayName</path>
+                    </source>
+                    <source>
+                        <name>id</name>
+                        <path>$focus/identifier</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return id + " - " + name + ' (students)'
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+            </attribute>
+            <attribute id="87">
+                <ref>ri:ExternalId</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/name</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return '(' + name + ':students)' 
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+                <inbound id="88">
+                    <strength>strong</strength>
+                    <target>
+                        <path>name</path>
+                    </target>
+                    <use>correlation</use>
+                </inbound>
+            </attribute>
+            <attribute id="89">
+                <ref>ri:Description</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/displayName</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return name + ' (students)'
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+            </attribute>
+            <association id="90">
+                <ref>ri:parent</ref>
+                <limitations id="91">
+                    <maxOccurs>1</maxOccurs>
+                </limitations>
+                <kind>entitlement</kind>
+                <intent>phonebook</intent>
+                <direction>subjectToObject</direction>
+                <associationAttribute>ri:ParentPhoneBookId</associationAttribute>
+                <valueAttribute>ri:PhoneBookId</valueAttribute>
+            </association>
+            <synchronization>
+                <reaction id="98">
+                    <situation>deleted</situation>
+                    <actions>
+                        <unlink id="116"/>
+                    </actions>
+                </reaction>
+                <reaction id="99">
+                    <situation>linked</situation>
+                    <actions>
+                        <synchronize id="117"/>
+                    </actions>
+                </reaction>
+                <reaction id="100">
+                    <situation>unlinked</situation>
+                    <actions>
+                        <link id="118"/>
+                    </actions>
+                </reaction>
+            </synchronization>
+        </objectType>
+        <objectType id="83">
+            <kind>entitlement</kind>
+            <intent>phonebook_staff</intent>
+            <displayName>StaffPhoneBook</displayName>
+            <default>false</default>
+            <delineation>
+                <objectClass>ri:PhoneBook</objectClass>
+                <classificationCondition>
+                    <script>
+                        <code>return true</code>
+                    </script>
+                </classificationCondition>
+            </delineation>
+            <focus>
+                <type>c:OrgType</type>
+            </focus>
+            <attribute id="92">
+                <ref>ri:DisplayName</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/displayName</path>
+                    </source>
+                    <source>
+                        <name>id</name>
+                        <path>$focus/identifier</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return id + " - " + name + ' (staff)'
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+            </attribute>
+            <attribute id="93">
+                <ref>ri:ExternalId</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/name</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return '(' + name + ':staff)'
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+                <inbound id="94">
+                    <strength>strong</strength>
+                    <target>
+                        <path>name</path>
+                    </target>
+                    <use>correlation</use>
+                </inbound>
+            </attribute>
+            <attribute id="95">
+                <ref>ri:Description</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <source>
+                        <name>name</name>
+                        <path>$focus/displayName</path>
+                    </source>
+                    <expression>
+                        <script>
+                            <code>
+                                return name + ' (staff)'
+                            </code>
+                        </script>
+                    </expression>
+                </outbound>
+            </attribute>
+            <association id="96">
+                <ref>ri:parent</ref>
+                <limitations id="97">
+                    <maxOccurs>1</maxOccurs>
+                </limitations>
+                <kind>entitlement</kind>
+                <intent>phonebook</intent>
+                <direction>subjectToObject</direction>
+                <associationAttribute>ri:ParentPhoneBookId</associationAttribute>
+                <valueAttribute>ri:PhoneBookId</valueAttribute>
+            </association>
+            <synchronization>
+                <reaction id="104">
+                    <situation>deleted</situation>
+                    <actions>
+                        <unlink id="119"/>
+                    </actions>
+                </reaction>
+                <reaction id="105">
+                    <situation>linked</situation>
+                    <actions>
+                        <synchronize id="120"/>
+                    </actions>
+                </reaction>
+                <reaction id="106">
+                    <situation>unlinked</situation>
+                    <actions>
+                        <link id="121"/>
+                    </actions>
+                </reaction>
+            </synchronization>
+        </objectType>
+    </schemaHandling>
+    <capabilities>
+        <cachingMetadata>
+            <retrievalTimestamp>2024-02-19T08:41:25.497+01:00</retrievalTimestamp>
+            <serialNumber>d0db525d609975f9-dfbac1bb184683a7</serialNumber>
+        </cachingMetadata>
+        <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3">
+            <cap:schema/>
+            <cap:liveSync/>
+            <cap:create/>
+            <cap:read>
+                <cap:returnDefaultAttributesOption>true</cap:returnDefaultAttributesOption>
+            </cap:read>
+            <cap:update>
+                <cap:delta>true</cap:delta>
+                <cap:addRemoveAttributeValues>true</cap:addRemoveAttributeValues>
+            </cap:update>
+            <cap:delete/>
+            <cap:testConnection/>
+            <cap:script>
+                <cap:host id="73">
+                    <cap:type>connector</cap:type>
+                </cap:host>
+            </cap:script>
+        </native>
+    </capabilities>
+</resource>
