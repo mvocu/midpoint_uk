@@ -448,10 +448,10 @@ class SchemaAdapter {
             id row.kod.toString()
             setObjectClass BaseScript.FUNCTION
 
-            attribute 'r_kod', row.kod
-            attribute 'typ_kod', row.funkce_typ
-            attribute 'dulezitost', row.dulezitost
-            attribute 'samospravni_funkce', row.samospravni_funkce
+            attribute 'r_kod', row.kod.toBigInteger()
+            attribute 'typ_kod', row.funkce_typ.toBigInteger()
+            attribute 'dulezitost', row.dulezitost.toBigInteger()
+            attribute 'samospravni_funkce', row.samospravni_funkce.toBigInteger()
             attribute 'nazev', row.nazev
             attribute 'datum_od', ZonedDateTime.ofInstant(row.datum_od.toInstant(), ZoneId.systemDefault())
             attribute 'datum_do', ZonedDateTime.ofInstant(row.datum_do.toInstant(), ZoneId.systemDefault())
