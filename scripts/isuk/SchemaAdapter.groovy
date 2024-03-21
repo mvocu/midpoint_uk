@@ -102,6 +102,7 @@ class SchemaAdapter {
                 mail String.class, MULTIVALUED
                 mail_o365 String.class, MULTIVALUED
                 mail_o365_primary String.class
+		mail_student String.class, MULTIVALUED
                 phone String.class, MULTIVALUED
                 mobile String.class, MULTIVALUED
                 identifikace String.class
@@ -346,10 +347,17 @@ class SchemaAdapter {
 
             // get attributes from ldap_ruzne
             def ruzne = [:]
+	    def mail_student = []
             def orderedRuzne = ['phone_whois', 'mail_whois', 'mobile_whois', 'pager_whois'];
             sql.eachRow(["id": row.cislo_osoby],
-                    "SELECT DISTINCT nazev, hodnota, poradi FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1 ORDER BY poradi",
+                    "SELECT DISTINCT nazev, hodnota, poradi, vztah_typ FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1 ORDER BY poradi",
                     {
+			if (it.nazev == 'mail_o365' && it.vztah_typ == 2) {
+			    if(!mail_student.contains(it.hodnota)) {
+			        mail_student.add(it.hodnota)
+			    }
+			}
+
                         if (ruzne.containsKey(it.nazev)) {
                             if(orderedRuzne.contains(it.nazev)) {
                                 (ruzne[it.nazev] as List).add(it.poradi + ":" + it.hodnota)
@@ -376,6 +384,8 @@ class SchemaAdapter {
             attribute 'mail_o365', ruzne['mail_o365']
             // mail_o365_primary
             attribute 'mail_o365_primary', ruzne['mail_o365_primary']?.first()
+	    // mail_student
+	    attribute 'mail_student', mail_student
             // phone
             attribute 'phone', ruzne['telephoneNumber']
             // mobile
