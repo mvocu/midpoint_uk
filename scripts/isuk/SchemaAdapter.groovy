@@ -102,7 +102,7 @@ class SchemaAdapter {
                 mail String.class, MULTIVALUED
                 mail_o365 String.class, MULTIVALUED
                 mail_o365_primary String.class
-		mail_student String.class, MULTIVALUED
+                mail_student String.class, MULTIVALUED
                 phone String.class, MULTIVALUED
                 mobile String.class, MULTIVALUED
                 identifikace String.class

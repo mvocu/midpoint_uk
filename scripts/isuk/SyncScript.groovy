@@ -51,11 +51,24 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
     def finalToken = new SyncToken(tokenObject)
     def tokenTimestamp = new Timestamp(token)
 
-    if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL)
-    {
+    if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL) {
         log.info("Updating organizations")
         UpdateDb.updateOrgs(sql)
         log.info("Organization update complete")
+    }
+    if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
+        log.info("Updating people")
+        UpdateDb.updatePeople(sql);
+        log.info("People update complete")
+    }
+    if(objectClass == BaseScript.RELATION || objectClass == ObjectClass.ALL) {
+        log.info("Updating relations")
+        UpdateDb.updateRelations(sql)
+        log.info("Relations update complete")
+    }
+
+    if(objectClass == BaseScript.ORGANIZATION || objectClass == ObjectClass.ALL)
+    {
         log.info("Reading updated organization records")
         attrs = SchemaAdapter.getOrganizationFieldMap().collect([] as HashSet) { entry -> entry.value }
         sqlquery = "SELECT " + attrs.join(",") + ", x_last_modified, x_modification_type FROM SKUNK_CAS.LDAP_ORG_STRUKTURA WHERE x_last_modified > ? ORDER BY x_last_modified ASC"
@@ -94,9 +107,6 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
     }
 
     if(objectClass == BaseScript.PERSON || objectClass == ObjectClass.ALL) {
-        log.info("Updating people")
-        UpdateDb.updatePeople(sql);
-        log.info("People update complete")
         log.info("Reading updated people records")
         attrs = SchemaAdapter.getPersonFieldMap().collect([] as HashSet) { entry -> entry.value }
         sqlquery = "SELECT " + attrs.join(",") + ",x_last_modified,x_modification_type FROM SKUNK_CAS.LDAP_OSOBA WHERE cuni_unique_id > 0 AND ou = 'people' AND X_LAST_MODIFIED > ? ORDER BY x_last_modified ASC"
@@ -135,9 +145,6 @@ Object handleSync(Sql sql, Object tokenObject, SyncResultsHandler handler) {
     }
 
     if(objectClass == BaseScript.RELATION || objectClass == ObjectClass.ALL) {
-        log.info("Updating relations")
-        UpdateDb.updateRelations(sql)
-        log.info("Relations update complete")
         log.info("Reading updated relation records")
         attrs = SchemaAdapter.getRelationFieldMap().collect([] as HashSet) { entry -> entry.value }
         def cols = attrs.join(",")
