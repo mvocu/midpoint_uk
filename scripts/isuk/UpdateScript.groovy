@@ -1,4 +1,5 @@
 import groovy.sql.Sql
+import groovy.transform.Field
 import org.forgerock.openicf.connectors.scriptedsql.ScriptedSQLConfiguration
 import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
@@ -19,73 +20,27 @@ log.info("Entering " + operation + " Script")
 
 def sql = new Sql(connection)
 
-def wavky_login = '''
+switch (objectClass) {
+    case BaseScript.PERSON:
+        return handlePerson(sql, uid, attributes, operation)
+
+    default:
+        throw new UnsupportedOperationException("Update of object class " + objectClass + " not implemented")
+}
+
+def static Uid handlePerson(Sql sql, Uid uid, Set<Attribute> attributes, OperationType operation) {
+
+    def wavky_login = '''
 begin
   jadro.wv_login('db_api_whois-midpoint', 'SQL Developer', 'O365 - test - studentske e-maily');
 end;
-/
 '''
 
-def wavky_logout = '''
+    def wavky_logout = '''
 begin
   jadro.wv_logout;
 end;
-/
 '''
-
-def sql_add_mail_stud = '''
-DECLARE 
-  v_id_kontakt skunk.per_kontakt.id_kontakt%TYPE;
-  v_id_osoba skunk.per_osoba.id_osoba%TYPE;
-BEGIN
-   SELECT id_osoba INTO v_id_osoba
-   FROM skunk.per_osoba po 
-   WHERE po.cislo_uk = :cislo_osoby ;
-   skunk.API2_CON_MIDPOINT.NEW_EMAIL_O365_STUD(
-		p_id_kontakt => v_id_kontakt, p_id_osoba => v_id_osoba, p_email => :email, p_verejny => 0);
-END;
-/
-'''
-
-def sql_remove_mail_stud = '''
-BEGIN
-   FOR kontakt IN 
-     (SELECT id_kontakt FROM skunk.per_kontakt pk
-      JOIN skunk.val_kontakt vk ON vk.val_kontakt = pk.val_kontakt
-      JOIN skunk.per_osoba po ON pk.id_osoba = po.id_osoba
-      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND vk.email IN ( :emails ) AND po.cislo_uk = :cislo_osoby)
-   LOOP 
-      skunk.API2_CON_MIDPOINT.DEL_EMAIL_O365_STUD(
-           p_id_kontakt => kontakt.id_kontakt );
-   END LOOP;
-END;
-/
-'''
-
-def sql_remove_all_mail_stud = '''
-BEGIN
-   FOR kontakt IN 
-     (SELECT id_kontakt FROM skunk.per_kontakt pk
-      JOIN skunk.val_kontakt vk ON vk.val_kontakt = pk.val_kontakt
-      JOIN skunk.per_osoba po ON pk.id_osoba = po.id_osoba
-      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND po.cislo_uk = :cislo_osoby)
-   LOOP 
-      skunk.API2_CON_MIDPOINT.DEL_EMAIL_O365_STUD(
-           p_id_kontakt => kontakt.id_kontakt );
-   END LOOP;
-END;
-/
-'''
-
-switch (objectClass) {
-    case BaseScript.Person:
-        return handlePerson(sql)
-
-    default:
-        throw new ConnectorException("Update of object class " + objectClass + " not implemented")
-}
-
-Uid handlePerson(Sql sql) {
 
     sql.withTransaction {
         Map<String, Object> params = [:]
@@ -122,7 +77,7 @@ Uid handlePerson(Sql sql) {
             params.put(attribute.getName(), value)
         }
 
-        handlePersonMailStudent(sql, uid.getUidValue(), mail_student)
+        handlePersonMailStudent(sql, uid.getUidValue(), operation, mail_student)
 
         // ScriptedSqlUtils.buildAndExecuteUpdateQuery(sql, BaseScript.TABLE_USER, params, [id: uid.getUidValue() as Integer])
 
@@ -132,7 +87,49 @@ Uid handlePerson(Sql sql) {
     return new Uid(uid.getUidValue())
 }
 
-void handlePersonMailStudent(Sql sql, String uid, List<Object> mail_student) {
+def static void handlePersonMailStudent(Sql sql, String uid, OperationType operation, List<Object> mail_student) {
+
+    def sql_add_mail_stud = '''
+DECLARE 
+  v_id_kontakt skunk.per_kontakt.id_kontakt%TYPE;
+  v_id_osoba skunk.per_osoba.id_osoba%TYPE;
+BEGIN
+   SELECT id_osoba INTO v_id_osoba
+   FROM skunk.per_osoba po 
+   WHERE po.cislo_uk = :cislo_osoby ;
+   skunk.API2_CON_MIDPOINT.NEW_EMAIL_O365_STUD(
+		p_id_kontakt => v_id_kontakt, p_id_osoba => v_id_osoba, p_email => :email, p_verejny => 0);
+END;
+'''
+
+    def sql_remove_mail_stud = '''
+BEGIN
+   FOR kontakt IN 
+     (SELECT id_kontakt FROM skunk.per_kontakt pk
+      JOIN skunk.val_kontakt vk ON vk.val_kontakt = pk.val_kontakt
+      JOIN skunk.per_osoba po ON pk.id_osoba = po.id_osoba
+      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND vk.email IN ( :emails ) AND po.cislo_uk = :cislo_osoby)
+   LOOP 
+      skunk.API2_CON_MIDPOINT.DEL_EMAIL_O365_STUD(
+           p_id_kontakt => kontakt.id_kontakt );
+   END LOOP;
+END;
+'''
+
+    def sql_remove_all_mail_stud = '''
+BEGIN
+   FOR kontakt IN 
+     (SELECT id_kontakt FROM skunk.per_kontakt pk
+      JOIN skunk.val_kontakt vk ON vk.val_kontakt = pk.val_kontakt
+      JOIN skunk.per_osoba po ON pk.id_osoba = po.id_osoba
+      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND po.cislo_uk = :cislo_osoby)
+   LOOP 
+      skunk.API2_CON_MIDPOINT.DEL_EMAIL_O365_STUD(
+           p_id_kontakt => kontakt.id_kontakt );
+   END LOOP;
+END;
+'''
+
     switch (operation) {
         case OperationType.ADD_ATTRIBUTE_VALUES:
             mail_student.each ({
@@ -141,7 +138,7 @@ void handlePersonMailStudent(Sql sql, String uid, List<Object> mail_student) {
             break;
 
         case OperationType.REMOVE_ATTRIBUTE_VALUES:
-            sql.execute(sql_remove_mail_stud, ['cislo_osoby' : uid, 'emails' : mail_student.map( { return "'" + String.valueOf(it) + "'"}).join(',')])
+            sql.execute(sql_remove_mail_stud, ['cislo_osoby' : uid, 'emails' : mail_student.collect( { return "'" + String.valueOf(it) + "'"}).join(',')])
             break;
 
         case OperationType.UPDATE:
