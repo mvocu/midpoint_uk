@@ -107,7 +107,7 @@ BEGIN
      (SELECT id_kontakt FROM skunk.per_kontakt pk
       JOIN skunk.val_kontakt vk ON vk.val_kontakt = pk.val_kontakt
       JOIN skunk.per_osoba po ON pk.id_osoba = po.id_osoba
-      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND vk.email IN ( :emails ) AND po.cislo_uk = :cislo_osoby)
+      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND pk.ctx_vztah_typ = 2 AND vk.email IN ( :emails ) AND po.cislo_uk = :cislo_osoby)
    LOOP 
       skunk.API2_CON_MIDPOINT.DEL_EMAIL_O365_STUD(
            p_id_kontakt => kontakt.id_kontakt );
@@ -121,7 +121,7 @@ BEGIN
      (SELECT id_kontakt FROM skunk.per_kontakt pk
       JOIN skunk.val_kontakt vk ON vk.val_kontakt = pk.val_kontakt
       JOIN skunk.per_osoba po ON pk.id_osoba = po.id_osoba
-      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND po.cislo_uk = :cislo_osoby)
+      WHERE pk.kontakt_typ = 7 AND pk.o365 = 1 AND pk.ctx_vztah_typ = 2 AND po.cislo_uk = :cislo_osoby)
    LOOP 
       skunk.API2_CON_MIDPOINT.DEL_EMAIL_O365_STUD(
            p_id_kontakt => kontakt.id_kontakt );
