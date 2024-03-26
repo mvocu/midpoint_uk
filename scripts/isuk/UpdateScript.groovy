@@ -32,7 +32,7 @@ def static Uid handlePerson(Sql sql, Uid uid, Set<Attribute> attributes, Operati
 
     def wavky_login = '''
 begin
-  jadro.wv_login('db_api_whois-midpoint', 'SQL Developer', 'O365 - test - studentske e-maily');
+  jadro.wv_login('db_api_whois-midpoint', 'SQL Developer', '', 'O365 - test - studentske e-maily');
 end;
 '''
 
