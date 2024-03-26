@@ -19,7 +19,8 @@ SELECT
   decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, '+'||substr(vk.telefon,1,12), 7, vk.EMAIL, null) AS hodnota,
   row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
   pk.CTX_ORG AS id_org,
-  pk.ID_KONTAKT AS zdroj_identifikator
+  pk.ID_KONTAKT AS zdroj_identifikator,
+  pk.CTX_VZTAH_TYP AS vztah_typ
 FROM 
   skunk.PER_OSOBA po 
   JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA 
@@ -43,7 +44,8 @@ SELECT
   decode(pk.KONTAKT_TYP, 1, '+'||substr(vk.telefon,1,12), 2, '+'||substr(vk.telefon,1,12), 7, vk.EMAIL, 20, '+'||substr(vk.telefon,1,12), null) AS hodnota,
   row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
   pk.CTX_ORG AS id_org,
-  pk.ID_KONTAKT AS zdroj_identifikator
+  pk.ID_KONTAKT AS zdroj_identifikator,
+  pk.CTX_VZTAH_TYP AS vztah_typ
 FROM 
   LDAP_OSOBA lo
   JOIN skunk.PER_OSOBA po ON po.cislo_uk = lo.cislo_osoby AND lo.x_zaznam_platny = 1
@@ -62,6 +64,7 @@ UPDATE SET
   lr.hodnota = src.hodnota,
   lr.zdroj_identifikator = src.zdroj_identifikator,
   lr.id_org = src.id_org,
+  lr.vztah_typ = src.vztah_typ,
   lr.x_modification_type = decode(lr.x_zaznam_platny, 0, 'C', 'U'),
   lr.x_zaznam_platny = 1,
   lr.x_last_modified = sysdate,
@@ -70,7 +73,8 @@ WHERE
   lr.x_zaznam_platny = 0 OR
   lr.hodnota <> src.hodnota OR 
   lr.zdroj_identifikator <> src.zdroj_identifikator OR 
-  lr.id_org <> src.id_org
+  lr.id_org <> src.id_org OR
+  lr.vztah_typ <> src.vztah_typ
 WHEN NOT MATCHED THEN  
 INSERT ( 
   id, 
@@ -78,6 +82,7 @@ INSERT (
   zdroj,
   id_org,
   zdroj_identifikator,
+  vztah_typ,
   cislo_osoby,
   hodnota,
   poradi,
@@ -94,6 +99,7 @@ VALUES (
   src.zdroj,
   src.id_org,
   src.zdroj_identifikator,
+  src.vztah_typ,
   src.cislo_osoby,
   src.hodnota,
   src.poradi,

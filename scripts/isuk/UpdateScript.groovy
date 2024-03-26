@@ -1,5 +1,4 @@
 import groovy.sql.Sql
-import groovy.transform.Field
 import org.forgerock.openicf.connectors.scriptedsql.ScriptedSQLConfiguration
 import org.forgerock.openicf.misc.scriptedcommon.OperationType
 import org.identityconnectors.common.logging.Log
@@ -130,6 +129,116 @@ BEGIN
 END;
 '''
 
+    def sql_sync_changes = '''
+    UPDATE LDAP_RUZNE lr
+    SET
+    x_zaznam_platny = 0,
+    x_last_modified = sysdate,
+    x_dtime_delete = sysdate,
+    x_modification_type = 'D'
+    WHERE lr.x_zaznam_platny = 1 AND lr.nazev IN ('mail_o365') AND lr.CISLO_OSOBY = :cislo_osoby AND NOT EXISTS (
+         SELECT *
+         FROM
+            (
+            SELECT
+              po.CISLO_UK AS cislo_osoby,
+              'mail_o365' AS nazev,
+              'skunk.osoba' AS zdroj,
+              vk.EMAIL AS hodnota,
+              row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
+              pk.CTX_ORG AS id_org,
+              pk.ID_KONTAKT AS zdroj_identifikator,
+              pk.ctx_vztah_typ AS vztah_typ
+            FROM
+              skunk.PER_OSOBA po
+              JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA
+              JOIN skunk.VAL_KONTAKT vk ON pk.VAL_KONTAKT = vk.VAL_KONTAKT
+            WHERE pk.KONTAKT_TYP IN (7) AND pk.o365 = 1
+          ) src
+         WHERE
+            lr.nazev = src.nazev
+            AND lr.zdroj = src.zdroj
+            AND lr.poradi = src.poradi
+            AND lr.cislo_osoby = src.cislo_osoby
+    );
+    MERGE INTO LDAP_RUZNE lr
+    USING (
+            SELECT
+              po.CISLO_UK AS cislo_osoby,
+              'mail_o365' AS nazev,
+              'skunk.osoba' AS zdroj,
+              vk.EMAIL AS hodnota,
+              row_number() OVER (PARTITION BY po.CISLO_UK, pk.KONTAKT_TYP ORDER BY pk.PORADI) AS poradi,
+              pk.CTX_ORG AS id_org,
+              pk.ID_KONTAKT AS zdroj_identifikator,
+              pk.ctx_vztah_typ AS vztah_typ
+            FROM
+              LDAP_OSOBA lo
+              JOIN skunk.PER_OSOBA po ON po.cislo_uk = lo.cislo_osoby AND lo.x_zaznam_platny = 1
+              JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA
+              JOIN skunk.VAL_KONTAKT vk ON pk.VAL_KONTAKT = vk.VAL_KONTAKT
+            WHERE pk.KONTAKT_TYP IN (7) AND lo.cislo_osoby = :cislo_osoby
+    ) src
+    ON (
+            lr.cislo_osoby = src.cislo_osoby AND
+            lr.nazev = src.nazev AND
+            lr.zdroj = src.zdroj AND
+            lr.poradi = src.poradi
+    )
+    WHEN MATCHED THEN
+    UPDATE SET
+      lr.hodnota = src.hodnota,
+      lr.zdroj_identifikator = src.zdroj_identifikator,
+      lr.id_org = src.id_org,
+      lr.vztah_typ = src.vztah_typ,
+      lr.x_modification_type = decode(lr.x_zaznam_platny, 0, 'C', 'U'),
+      lr.x_zaznam_platny = 1,
+      lr.x_last_modified = sysdate,
+      lr.x_dtime_update = sysdate
+    WHERE
+      lr.x_zaznam_platny = 0 OR
+      lr.hodnota <> src.hodnota OR
+      lr.zdroj_identifikator <> src.zdroj_identifikator OR
+      lr.id_org <> src.id_org OR
+      lr.vztah_typ <> src.vztah_typ
+    WHEN NOT MATCHED THEN
+    INSERT (
+            id,
+            nazev,
+            zdroj,
+            id_org,
+            zdroj_identifikator,
+            vztah_typ,
+            cislo_osoby,
+            hodnota,
+            poradi,
+            x_zaznam_platny,
+            x_exportovat_typ,
+            x_dtime_create,
+            x_dtime_update,
+            x_dtime_delete,
+            x_last_modified,
+            x_modification_type)
+    VALUES (
+            skunk_cas.seq_ldap_id.nextval,
+            src.nazev,
+            src.zdroj,
+            src.id_org,
+            src.zdroj_identifikator,
+            src.vztah_typ,
+            src.cislo_osoby,
+            src.hodnota,
+            src.poradi,
+            '1',
+            'C',
+            sysdate,
+            NULL,
+            NULL,
+            sysdate,
+            'C'
+    );
+'''
+
     switch (operation) {
         case OperationType.ADD_ATTRIBUTE_VALUES:
             mail_student.each ({
@@ -148,6 +257,8 @@ END;
             })
             break;
     }
+
+    sql.execute(sql_sync_changes, ['cislo_osoby' : uid])
 
 }
 
