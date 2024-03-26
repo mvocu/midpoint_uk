@@ -129,7 +129,7 @@ BEGIN
 END;
 '''
 
-    def sql_sync_changes = '''
+    def sql_sync_changes_1 = '''
     UPDATE LDAP_RUZNE lr
     SET
     x_zaznam_platny = 0,
@@ -160,7 +160,10 @@ END;
             AND lr.zdroj = src.zdroj
             AND lr.poradi = src.poradi
             AND lr.cislo_osoby = src.cislo_osoby
-    );
+    )
+    '''
+
+    def sql_sync_changes_2 = '''
     MERGE INTO LDAP_RUZNE lr
     USING (
             SELECT
@@ -236,7 +239,7 @@ END;
             NULL,
             sysdate,
             'C'
-    );
+    )
 '''
 
     switch (operation) {
@@ -258,7 +261,8 @@ END;
             break;
     }
 
-    sql.execute(sql_sync_changes, ['cislo_osoby' : uid])
+    sql.execute(sql_sync_changes_1, ['cislo_osoby' : uid])
+    sql.execute(sql_sync_changes_2, ['cislo_osoby' : uid])
 
 }
 
