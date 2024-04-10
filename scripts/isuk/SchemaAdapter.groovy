@@ -350,7 +350,7 @@ class SchemaAdapter {
 	    def mail_student = []
             def orderedRuzne = ['phone_whois', 'mail_whois', 'mobile_whois', 'pager_whois'];
             sql.eachRow(["id": row.cislo_osoby],
-                    "SELECT DISTINCT nazev, hodnota, poradi, vztah_typ FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1 ORDER BY poradi",
+                    "SELECT DISTINCT nazev, hodnota, poradi, vztah_typ, id_org FROM skunk_cas.ldap_ruzne WHERE cislo_osoby = :id AND x_zaznam_platny = 1 ORDER BY poradi",
                     {
 			if (it.nazev == 'mail_o365' && it.vztah_typ == 2) {
 			    if(!mail_student.contains(it.hodnota)) {
@@ -360,7 +360,7 @@ class SchemaAdapter {
 
                         if (ruzne.containsKey(it.nazev)) {
                             if(orderedRuzne.contains(it.nazev)) {
-                                (ruzne[it.nazev] as List).add(it.poradi + ":" + it.hodnota)
+                                (ruzne[it.nazev] as List).add(it.poradi + ":" + it.hodnota + ":" + it.id_org)
                             } else {
                                 if(!(ruzne[it.nazev] as List).contains(it.hodnota)) {
                                     (ruzne[it.nazev] as List).add(it.hodnota)
@@ -368,7 +368,7 @@ class SchemaAdapter {
                             }
                         } else {
                             if(orderedRuzne.contains(it.nazev)) {
-                                ruzne[it.nazev] = [ it.poradi + ":" + it.hodnota ]
+                                ruzne[it.nazev] = [ it.poradi + ":" + it.hodnota + ":" + it.id_org ]
                             } else {
                                 ruzne[it.nazev] = [it.hodnota]
                             }
