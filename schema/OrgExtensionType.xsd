@@ -25,6 +25,10 @@
 		   <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
 		   <xsd:element name="hasO365Email" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
 		   <xsd:element name='isServicedeskGroup' type='xsd:boolean' minOccurs='0' maxOccurs='1' />
+		   <xsd:element name='abbreviation' type='xsd:string' minOccurs='0' maxOccurs='1' />
+		   <xsd:element name='abbreviationLong' type='xsd:string' minOccurs='0' maxOccurs='1' />
+		   <xsd:element name='facultyAAD' type='xsd:string' minOccurs='0' maxOccurs='1' />
+		   <xsd:element name='facultyId' type='xsd:integer' minOccurs='0' maxOccurs='1' />
            </xsd:sequence>
        </xsd:complexType>
 </xsd:schema>
