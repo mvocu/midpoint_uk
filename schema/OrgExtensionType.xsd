@@ -4,8 +4,14 @@
             xmlns:tns="http://midpoint.cuni.cz/xml/ns/cas"
             xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3"
             xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	    xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="https://github.com/Evolveum/midpoint/raw/v4.3.1/infra/schema/src/main/resources/xml/ns/public/common/common-3.xsd">
+
+    <xsd:import namespace="http://midpoint.evolveum.com/xml/ns/public/common/common-3"/>
+    <xsd:import namespace="http://prism.evolveum.com/xml/ns/public/types-3"/>
+
+
        <xsd:complexType name="OrgExtensionType">
            <xsd:annotation>
                <xsd:appinfo>
@@ -25,10 +31,8 @@
 		   <xsd:element name='mailData' type='xsd:string' minOccurs='0' maxOccurs='unbounded' />
 		   <xsd:element name="hasO365Email" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
 		   <xsd:element name='isServicedeskGroup' type='xsd:boolean' minOccurs='0' maxOccurs='1' />
-		   <xsd:element name='abbreviation' type='xsd:string' minOccurs='0' maxOccurs='1' />
-		   <xsd:element name='abbreviationLong' type='xsd:string' minOccurs='0' maxOccurs='1' />
-		   <xsd:element name='facultyAAD' type='xsd:string' minOccurs='0' maxOccurs='1' />
-		   <xsd:element name='facultyId' type='xsd:integer' minOccurs='0' maxOccurs='1' />
+		   <xsd:element name='abbreviation' type="t:PolyStringType" minOccurs='0' maxOccurs='1' />
+		   <xsd:element name='abbreviationLong' type="t:PolyStringType" minOccurs='0' maxOccurs='1' />
            </xsd:sequence>
        </xsd:complexType>
 </xsd:schema>

@@ -390,8 +390,10 @@ END;
         case OperationType.REMOVE_ATTRIBUTE_VALUES:
             //log.warn("Executing query {0} with parameters {1}", sql_remove_mail_stud, ['cislo_osoby' : uid, 'emails' : mail_student.collect( { return "'" + String.valueOf(it) + "'"}).join(',')])
             //sql.execute(sql_remove_mail_stud, ['cislo_osoby' : uid, 'emails' : mail_student.collect( { return "" + String.valueOf(it) + "" }).join(',')])
-            log.warn("Executing query {0}", g_sql_remove_mail_stud)
-            sql.execute(g_sql_remove_mail_stud)
+	    if(!mail_student.isEmpty()) {
+               log.warn("Executing query {0}", g_sql_remove_mail_stud)
+               sql.execute(g_sql_remove_mail_stud)
+            }
             break;
 
         case OperationType.UPDATE:

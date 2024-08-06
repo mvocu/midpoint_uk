@@ -131,7 +131,8 @@
                         <a:displayOrder>210</a:displayOrder>
                     </xsd:appinfo>
                 </xsd:annotation>
-            </xsd:element>
+	    </xsd:element>
+            <xsd:element name="gender" type="xsd:string" minOccurs="0" maxOccurs="1" />
         </xsd:sequence>
     </xsd:complexType>
 

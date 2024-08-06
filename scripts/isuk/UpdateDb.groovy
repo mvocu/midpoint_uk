@@ -52,6 +52,24 @@ FROM
   JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA 
   JOIN skunk.VAL_KONTAKT vk ON pk.VAL_KONTAKT = vk.VAL_KONTAKT 
 WHERE pk.KONTAKT_TYP IN (1,2,7,20)
+
+UNION ALL
+
+SELECT
+  po.CISLO_UK AS cislo_osoby,
+  'room_whois' AS nazev,
+  'skunk.mistnost' AS zdroj,
+  pm.ID_MISTNOST || ':' || pm.ID_BUDOVA AS hodnota,
+  row_number() OVER (PARTITION BY po.CISLO_UK ORDER BY pk.PORADI) AS poradi,
+  pk.CTX_ORG AS id_org,
+  pk.ID_KONTAKT AS zdroj_identifikator,
+  pk.CTX_VZTAH_TYP AS vztah_typ
+FROM
+  LDAP_OSOBA lo
+  JOIN skunk.PER_OSOBA po ON po.cislo_uk = lo.cislo_osoby AND lo.x_zaznam_platny = 1
+  JOIN skunk.PER_KONTAKT pk ON po.ID_OSOBA = pk.ID_OSOBA
+  JOIN skunk.PLC_MISTNOST pm ON pm.ID_MISTNOST = pk.VAL_MISTNOST
+WHERE pk.KONTAKT_TYP IN (19)
 ) src
 ON (
   lr.cislo_osoby = src.cislo_osoby AND

@@ -117,6 +117,7 @@ class SchemaAdapter {
                 mail_whois String.class, MULTIVALUED
                 mobile_whois String.class, MULTIVALUED
                 pager_whois String.class, MULTIVALUED
+                room_whois String.class, MULTIVALUED
             }
         }
     }
@@ -398,6 +399,8 @@ class SchemaAdapter {
             attribute 'mobile_whois', ruzne['mobile_whois']
             // pager_whois
             attribute 'pager_whois', ruzne['pager_whois']
+            // mistnost_whois
+            attribute 'room_whois', ruzne['room_whois']
             /*
                     identifikace String.class
                     adresa_stat String.class
